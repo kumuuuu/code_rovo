@@ -9,19 +9,19 @@ interface HeroSectionProps {
 
 export function HeroSection({ onOpenContact }: HeroSectionProps) {
   return (
-    <section className="relative min-h-[92vh] sm:min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 pt-32 pb-20 overflow-hidden">
+    <section id="home" className="relative min-h-[92vh] sm:min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 pt-32 pb-20 overflow-hidden">
       {/* Interactive Canvas Background with nodes and atmospheric glows */}
       <HeroCanvas />
 
       {/* Hero Content */}
       <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
         {/* Minimal Pill Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs sm:text-sm font-mono tracking-wider text-slate-300 mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(0,240,255,0.12)]">
-          <span className="w-2 h-2 rounded-full bg-[#00F0FF] shadow-[0_0_10px_#00F0FF] animate-pulse" />
-          <span className="uppercase tracking-widest text-[11px] font-semibold text-cyan-200">
+        {/* <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs sm:text-sm font-mono tracking-wider text-slate-300 mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(0,240,255,0.12)]"> */}
+        {/* <span className="w-2 h-2 rounded-full bg-[#00F0FF] shadow-[0_0_10px_#00F0FF] animate-pulse" /> */}
+        {/* <span className="uppercase tracking-widest text-[11px] font-semibold text-cyan-200">
             IT SOLUTIONS & DEDICATED ENGINEERING
-          </span>
-        </div>
+          </span> */}
+        {/* </div> */}
 
         {/* Display Headline */}
         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-[-0.035em] leading-[1.08] max-w-4xl">

@@ -42,10 +42,10 @@ export function CompanyStats() {
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Editorial Narrative */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono text-cyan-300">
+            {/* <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono text-cyan-300">
               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
               <span>CRAFTSMANSHIP & RIGOR</span>
-            </div>
+            </div> */}
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white tracking-tight leading-[1.15]">
               Building technology.
@@ -56,7 +56,7 @@ export function CompanyStats() {
               We help businesses build, extend, and maintain reliable software through flexible engineering teams and IT solutions. From individual development needs to complete projects, Coderovo works alongside your business to turn requirements into working technology.
             </p>
 
-            <div className="pt-2 flex items-center gap-4 text-xs font-mono text-slate-400">
+            {/* <div className="pt-2 flex items-center gap-4 text-xs font-mono text-slate-400">
               <span className="flex items-center gap-1.5">
                 <svg className="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -75,7 +75,7 @@ export function CompanyStats() {
                 </svg>
                 Senior Talent
               </span>
-            </div>
+            </div> */}
           </div>
 
           {/* Right Column: 4-Metric Grid */}

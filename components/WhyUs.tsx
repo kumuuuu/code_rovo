@@ -33,7 +33,7 @@ export function WhyUs() {
   ];
 
   return (
-    <section id="why-us" className="relative px-4 sm:px-6 py-24 max-w-7xl mx-auto scroll-mt-20">
+    <section id="about" className="relative px-4 sm:px-6 py-24 max-w-7xl mx-auto scroll-mt-20">
       <div className="max-w-3xl mb-16 sm:mb-20">
         <span className="text-xs uppercase font-mono font-medium tracking-[0.2em] text-[#00F0FF]">
           WHY CODEROVO

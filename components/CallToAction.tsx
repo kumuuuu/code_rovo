@@ -15,10 +15,10 @@ export function CallToAction({ onOpenContact }: CallToActionProps) {
         <div className="absolute inset-0 bg-dot-matrix opacity-30 pointer-events-none" />
 
         <div className="relative z-10 max-w-3xl mx-auto space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono text-cyan-300">
+          {/* <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono text-cyan-300">
             <span className="w-2 h-2 rounded-full bg-[#00F0FF] shadow-[0_0_8px_#00F0FF] animate-pulse" />
             <span>LET&apos;S CONNECT</span>
-          </div>
+          </div> */}
 
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight leading-[1.1]">
             Let&apos;s build something<br />great together.
