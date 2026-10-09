@@ -1,7 +1,13 @@
 "use client";
 
-import React, { useId, useRef } from "react";
-import { motion, useMotionValue, useSpring, useReducedMotion } from "motion/react";
+import React, { useId, useRef, useState } from "react";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  useReducedMotion,
+} from "motion/react";
 import { LOGO_PATHS, LOGO_CENTERS } from "./logoPaths";
 
 export interface CoderovoLogoProps {
@@ -30,28 +36,74 @@ export function CoderovoLogo({
   const idPrefix = useId().replace(/:/g, "");
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
+  const [isHovered, setIsHovered] = useState(false);
 
   const isAnimated = animated && !shouldReduceMotion;
   const isInteractive = interactive && !shouldReduceMotion;
 
-  // Pointer tracking for subtle liquid highlight shift
+  // Pointer tracking for organic liquid fluid shift
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const springConfig = { stiffness: 120, damping: 24, mass: 0.8 };
+
+  // Viscous fluid spring physics: gentle damping, authentic liquid momentum
+  const springConfig = { stiffness: 90, damping: 18, mass: 1.1 };
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
+
+  // Differential parallax transforms for distinct liquid color streams:
+  // Cyan surges fastest toward cursor (+1.35x offset)
+  const cyanX = useTransform(smoothX, (v) => v * 1.35);
+  const cyanY = useTransform(smoothY, (v) => v * 1.35);
+
+  // Magenta flows with differential drift (+0.85x)
+  const magentaX = useTransform(smoothX, (v) => v * 0.85);
+  const magentaY = useTransform(smoothY, (v) => v * 0.85);
+
+  // Electric Blue anchors the central core (+1.05x)
+  const blueX = useTransform(smoothX, (v) => v * 1.05);
+  const blueY = useTransform(smoothY, (v) => v * 1.05);
+
+  // Violet lower streams (+0.70x)
+  const violetX = useTransform(smoothX, (v) => v * 0.7);
+  const violetY = useTransform(smoothY, (v) => v * 0.7);
+
+  // Aquamarine diagonal streams (+1.2x)
+  const aquaX = useTransform(smoothX, (v) => v * 1.2);
+  const aquaY = useTransform(smoothY, (v) => v * 1.2);
+
+  // Localized fluid tilts for the 3 isolated dots
+  const dotTopRightX = useTransform(smoothX, (v) => v * 0.75);
+  const dotTopRightY = useTransform(smoothY, (v) => v * 0.75);
+
+  const dotBottomCenterX = useTransform(smoothX, (v) => v * 0.6);
+  const dotBottomCenterY = useTransform(smoothY, (v) => v * 0.85);
+
+  const dotMiddleLeftX = useTransform(smoothX, (v) => v * 0.85);
+  const dotMiddleLeftY = useTransform(smoothY, (v) => v * 0.6);
+
+  // 3D Glass specular highlights subtle counter-parallax (creates true optical refraction depth)
+  const specularX = useTransform(smoothX, (v) => -v * 0.15);
+  const specularY = useTransform(smoothY, (v) => -v * 0.15);
+
+  const handlePointerEnter = () => {
+    if (!isInteractive) return;
+    setIsHovered(true);
+  };
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (e.pointerType === "touch" || !isInteractive || !containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2; // -1 to 1
     const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2; // -1 to 1
-    mouseX.set(x * 35); // max ±35 SVG coordinate offset
-    mouseY.set(y * 35);
+    // Generous ±135px SVG coordinate displacement for clearly visible fluid sloshing
+    mouseX.set(x * 135);
+    mouseY.set(y * 135);
+    if (!isHovered) setIsHovered(true);
   };
 
   const handlePointerLeave = () => {
     if (!isInteractive) return;
+    setIsHovered(false);
     mouseX.set(0);
     mouseY.set(0);
   };
@@ -78,9 +130,10 @@ export function CoderovoLogo({
   return (
     <div
       ref={containerRef}
+      onPointerEnter={handlePointerEnter}
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
-      className={`relative inline-flex items-center justify-center select-none ${className}`}
+      className={`relative inline-flex items-center justify-center select-none cursor-pointer ${className}`}
       style={{
         width: parsedSize,
         height: parsedSize,
@@ -122,7 +175,8 @@ export function CoderovoLogo({
 
           {/* Organic liquid turbulence & displacement filter:
               Broad, low-frequency turbulence (0.005-0.006) creates smooth, viscous fluid eddies
-              without high-frequency micro-spikes or jagged fringes */}
+              without high-frequency micro-spikes or jagged fringes.
+              Scale increases dynamically from 10 to 16 when hovered to simulate liquid stirring! */}
           <filter
             id={liquidFilterId}
             x="-10%"
@@ -141,7 +195,7 @@ export function CoderovoLogo({
               {isAnimated && (
                 <animate
                   attributeName="baseFrequency"
-                  dur="14s"
+                  dur={isHovered ? "8s" : "14s"}
                   values="0.004 0.005; 0.006 0.007; 0.005 0.006; 0.004 0.005"
                   repeatCount="indefinite"
                 />
@@ -150,7 +204,7 @@ export function CoderovoLogo({
             <feDisplacementMap
               in="SourceGraphic"
               in2="noise"
-              scale={isAnimated ? 10 : 0}
+              scale={isAnimated ? (isHovered ? 16 : 10) : 0}
               xChannelSelector="R"
               yChannelSelector="G"
               result="displaced"
@@ -278,99 +332,134 @@ export function CoderovoLogo({
               opacity={0.9}
             />
 
-            {/* Blurred liquid nodes container */}
+            {/* Blurred liquid nodes container with differential fluid stream parallax */}
             <g filter={`url(#${blurFilterId})`}>
               {/* NODE 1: Electric Cyan Stream (#00F0FF)
                   Physically journeys: Top-Left (240, 240) -> Central Hub (760, 780) -> Bottom-Left (240, 1280) */}
-              <motion.circle
-                r={360}
-                fill="#00F0FF"
-                opacity={0.95}
-                animate={isAnimated ? {
-                  cx: [240, 500, 760, 500, 240],
-                  cy: [240, 500, 780, 1050, 1280],
-                } : { cx: 450, cy: 500 }}
-                transition={{
-                  duration: 8.0,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut",
+              <motion.g
+                style={{
+                  x: isInteractive ? cyanX : 0,
+                  y: isInteractive ? cyanY : 0,
                 }}
-              />
+              >
+                <motion.circle
+                  r={360}
+                  fill="#00F0FF"
+                  opacity={0.95}
+                  animate={isAnimated ? {
+                    cx: [240, 500, 760, 500, 240],
+                    cy: [240, 500, 780, 1050, 1280],
+                  } : { cx: 450, cy: 500 }}
+                  transition={{
+                    duration: 8.0,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    ease: "easeInOut",
+                  }}
+                />
+              </motion.g>
 
               {/* NODE 2: Vivid Magenta / Pink Stream (#EC4899 / #F43F5E)
                   Physically journeys: Bottom-Right (1280, 1280) -> Middle-Right (1280, 780) -> Top-Center (750, 240) */}
-              <motion.circle
-                r={340}
-                fill="#EC4899"
-                opacity={0.92}
-                animate={isAnimated ? {
-                  cx: [1280, 1280, 1020, 750],
-                  cy: [1280, 780, 480, 240],
-                } : { cx: 1100, cy: 900 }}
-                transition={{
-                  duration: 9.2,
-                  delay: 0.5,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut",
+              <motion.g
+                style={{
+                  x: isInteractive ? magentaX : 0,
+                  y: isInteractive ? magentaY : 0,
                 }}
-              />
+              >
+                <motion.circle
+                  r={340}
+                  fill="#EC4899"
+                  opacity={0.92}
+                  animate={isAnimated ? {
+                    cx: [1280, 1280, 1020, 750],
+                    cy: [1280, 780, 480, 240],
+                  } : { cx: 1100, cy: 900 }}
+                  transition={{
+                    duration: 9.2,
+                    delay: 0.5,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    ease: "easeInOut",
+                  }}
+                />
+              </motion.g>
 
               {/* NODE 3: Royal Electric Blue Stream (#2563EB / #3B82F6)
                   Journeys through Central Hub (760, 780) <-> Top-Center (750, 240) <-> Top-Left (240, 240) */}
-              <motion.circle
-                r={320}
-                fill="#3B82F6"
-                opacity={0.95}
-                animate={isAnimated ? {
-                  cx: [760, 750, 450, 240, 550, 760],
-                  cy: [780, 240, 320, 780, 1000, 780],
-                } : { cx: 760, cy: 780 }}
-                transition={{
-                  duration: 10.5,
-                  delay: 1.2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
+              <motion.g
+                style={{
+                  x: isInteractive ? blueX : 0,
+                  y: isInteractive ? blueY : 0,
                 }}
-              />
+              >
+                <motion.circle
+                  r={320}
+                  fill="#3B82F6"
+                  opacity={0.95}
+                  animate={isAnimated ? {
+                    cx: [760, 750, 450, 240, 550, 760],
+                    cy: [780, 240, 320, 780, 1000, 780],
+                  } : { cx: 760, cy: 780 }}
+                  transition={{
+                    duration: 10.5,
+                    delay: 1.2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              </motion.g>
 
               {/* NODE 4: Rich Violet / Purple Stream (#8B5CF6 / #A855F7)
                   Surges across the lower lobes and into Central Hub */}
-              <motion.circle
-                r={330}
-                fill="#A855F7"
-                opacity={0.92}
-                animate={isAnimated ? {
-                  cx: [1280, 850, 760, 1050, 1280],
-                  cy: [780, 1150, 780, 600, 780],
-                } : { cx: 950, cy: 800 }}
-                transition={{
-                  duration: 8.6,
-                  delay: 2.0,
-                  repeat: Infinity,
-                  ease: "easeInOut",
+              <motion.g
+                style={{
+                  x: isInteractive ? violetX : 0,
+                  y: isInteractive ? violetY : 0,
                 }}
-              />
+              >
+                <motion.circle
+                  r={330}
+                  fill="#A855F7"
+                  opacity={0.92}
+                  animate={isAnimated ? {
+                    cx: [1280, 850, 760, 1050, 1280],
+                    cy: [780, 1150, 780, 600, 780],
+                  } : { cx: 950, cy: 800 }}
+                  transition={{
+                    duration: 8.6,
+                    delay: 2.0,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              </motion.g>
 
               {/* NODE 5: Aquamarine Accent Highlight (#00F5D4)
                   Pulses and weaves through the diagonal channel */}
-              <motion.ellipse
-                rx={280}
-                ry={160}
-                fill="#00F5D4"
-                opacity={0.85}
-                animate={isAnimated ? {
-                  cx: [350, 760, 1150, 760, 350],
-                  cy: [350, 780, 1150, 780, 350],
-                  rotate: [0, 45, 90, 45, 0],
-                } : { cx: 760, cy: 780, rotate: 45 }}
-                transition={{
-                  duration: 11.8,
-                  repeat: Infinity,
-                  ease: "easeInOut",
+              <motion.g
+                style={{
+                  x: isInteractive ? aquaX : 0,
+                  y: isInteractive ? aquaY : 0,
                 }}
-              />
+              >
+                <motion.ellipse
+                  rx={280}
+                  ry={160}
+                  fill="#00F5D4"
+                  opacity={0.85}
+                  animate={isAnimated ? {
+                    cx: [350, 760, 1150, 760, 350],
+                    cy: [350, 780, 1150, 780, 350],
+                    rotate: [0, 45, 90, 45, 0],
+                  } : { cx: 760, cy: 780, rotate: 45 }}
+                  transition={{
+                    duration: 11.8,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              </motion.g>
             </g>
           </motion.g>
         </g>
@@ -378,7 +467,7 @@ export function CoderovoLogo({
         {/* =========================================================================
             LAYER 4: Independent Liquid Motion for the 3 Isolated Dots
             Each dot has two distinct contrasting color pools moving across its interior,
-            giving each dot an independent, living fluid surface.
+            giving each dot an independent, living fluid surface responsive to cursor tilt.
             ========================================================================= */}
 
         {/* --- DOT 1: Top-Right Dot (cx: 1282, cy: 234, r: 215) --- */}
@@ -400,8 +489,14 @@ export function CoderovoLogo({
               height={500}
               fill="#4C1D95"
             />
-            {/* Filtered fluid orbs inside Top-Right Dot */}
-            <g filter={`url(#${blurFilterId})`}>
+            {/* Filtered fluid orbs inside Top-Right Dot with interactive tilt */}
+            <motion.g
+              filter={`url(#${blurFilterId})`}
+              style={{
+                x: isInteractive ? dotTopRightX : 0,
+                y: isInteractive ? dotTopRightY : 0,
+              }}
+            >
               {/* Orb A: Vivid Magenta sweeping diagonally */}
               <motion.circle
                 r={160}
@@ -424,7 +519,7 @@ export function CoderovoLogo({
                 } : { cx: LOGO_CENTERS.topRightDot.cx + 40, cy: LOGO_CENTERS.topRightDot.cy - 40 }}
                 transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut" }}
               />
-            </g>
+            </motion.g>
           </motion.g>
         </g>
 
@@ -447,7 +542,13 @@ export function CoderovoLogo({
               height={480}
               fill="#1E1B4B"
             />
-            <g filter={`url(#${blurFilterId})`}>
+            <motion.g
+              filter={`url(#${blurFilterId})`}
+              style={{
+                x: isInteractive ? dotBottomCenterX : 0,
+                y: isInteractive ? dotBottomCenterY : 0,
+              }}
+            >
               {/* Orb A: Cyan pool sweeping vertically */}
               <motion.circle
                 r={150}
@@ -470,7 +571,7 @@ export function CoderovoLogo({
                 } : { cx: LOGO_CENTERS.bottomCenterDot.cx + 30, cy: LOGO_CENTERS.bottomCenterDot.cy - 30 }}
                 transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut" }}
               />
-            </g>
+            </motion.g>
           </motion.g>
         </g>
 
@@ -493,7 +594,13 @@ export function CoderovoLogo({
               height={480}
               fill="#0F172A"
             />
-            <g filter={`url(#${blurFilterId})`}>
+            <motion.g
+              filter={`url(#${blurFilterId})`}
+              style={{
+                x: isInteractive ? dotMiddleLeftX : 0,
+                y: isInteractive ? dotMiddleLeftY : 0,
+              }}
+            >
               {/* Orb A: Electric Blue sweeping horizontally */}
               <motion.circle
                 r={150}
@@ -516,7 +623,7 @@ export function CoderovoLogo({
                 } : { cx: LOGO_CENTERS.middleLeftDot.cx + 40, cy: LOGO_CENTERS.middleLeftDot.cy }}
                 transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
               />
-            </g>
+            </motion.g>
           </motion.g>
         </g>
         </g>
@@ -542,18 +649,26 @@ export function CoderovoLogo({
             all specular reflections, glossy bevels, rim lighting, and glass textures
             from the original 1536x1536 artwork float crisp, sharp, and pristine
             OVER the living, surging liquid underneath!
+            Subtle counter-parallax simulates true refractive glass perspective.
             ========================================================================= */}
-        <image
-          href="/images/coderovo-logo-exact.png"
-          xlinkHref="/images/coderovo-logo-exact.png"
-          x={0}
-          y={0}
-          width={1536}
-          height={1536}
-          style={{ mixBlendMode: "screen" }}
-          opacity={0.72}
+        <motion.g
+          style={{
+            x: isInteractive ? specularX : 0,
+            y: isInteractive ? specularY : 0,
+          }}
           className="pointer-events-none"
-        />
+        >
+          <image
+            href="/images/coderovo-logo-exact.png"
+            xlinkHref="/images/coderovo-logo-exact.png"
+            x={0}
+            y={0}
+            width={1536}
+            height={1536}
+            style={{ mixBlendMode: "screen" }}
+            opacity={0.72}
+          />
+        </motion.g>
       </svg>
     </div>
   );
