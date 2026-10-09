@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { PagePreloader } from "@/components/ui/PagePreloader";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
 import { CompanyStats } from "@/components/CompanyStats";
@@ -27,6 +28,9 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-[#07090E] text-[#E2E8F0] selection:bg-cyan-500/25 selection:text-cyan-200">
+      {/* Intro Liquid Metaball Loading Animation & Seamless Reveal */}
+      <PagePreloader />
+
       {/* Floating Centered Dock Navbar */}
       <Navbar onOpenContact={handleOpenContact} />
 

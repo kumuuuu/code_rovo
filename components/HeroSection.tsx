@@ -20,9 +20,9 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
           {/* Left Column: Headline, subtext, dual CTAs */}
           <div className="lg:col-span-7 flex flex-col items-start text-left lg:pr-6">
             {/* Display Headline */}
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[4.75rem] font-bold text-white tracking-[-0.035em] leading-[1.08] max-w-2xl">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[4.75rem] font-bold text-white tracking-[-0.035em] leading-[1.12] max-w-2xl">
               Your Technology Team,{" "}
-              <span className="block mt-1 sm:mt-2 text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] via-[#3B82F6] to-[#A855F7] drop-shadow-[0_0_40px_rgba(59,130,246,0.35)]">
+              <span className="block mt-1 sm:mt-2 pb-3 -mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] via-[#3B82F6] to-[#A855F7] drop-shadow-[0_0_40px_rgba(59,130,246,0.35)]">
                 Beyond Borders.
               </span>
             </h1>
