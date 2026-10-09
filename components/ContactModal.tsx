@@ -19,9 +19,12 @@ export function ContactModal({ isOpen, onClose, defaultService = "Software Devel
   });
   const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
+  const [prevDefaultService, setPrevDefaultService] = useState(defaultService);
+
+  if (defaultService !== prevDefaultService) {
+    setPrevDefaultService(defaultService);
     setSelectedService(defaultService);
-  }, [defaultService]);
+  }
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
