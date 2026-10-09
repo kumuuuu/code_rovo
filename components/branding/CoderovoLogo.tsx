@@ -67,11 +67,11 @@ export function CoderovoLogo({
   const blurFilterId = `${idPrefix}-blur-filter`;
   const glowFilterId = `${idPrefix}-glow-filter`;
   const ambientGradId = `${idPrefix}-ambient-grad`;
+  const alphaToMatteId = `${idPrefix}-alpha-to-matte`;
+  const exactAlphaMaskId = `${idPrefix}-exact-alpha-mask`;
 
   // Unified compound path containing all 5 traced shapes (exact outer silhouette)
   const unifiedSilhouettePath = `${LOGO_PATHS.mainConnectedShape} ${LOGO_PATHS.topCenterShape} ${LOGO_PATHS.topRightDot} ${LOGO_PATHS.bottomCenterDot} ${LOGO_PATHS.middleLeftDot}`;
-  // Connected network shape only
-  const connectedSilhouettePath = `${LOGO_PATHS.mainConnectedShape} ${LOGO_PATHS.topCenterShape}`;
 
   const parsedSize = typeof size === "number" ? `${size}px` : size;
 
@@ -105,7 +105,8 @@ export function CoderovoLogo({
 
           {/* Connected shape clip path */}
           <clipPath id={clipConnectedId} clipPathUnits="userSpaceOnUse">
-            <path d={connectedSilhouettePath} />
+            <path d={LOGO_PATHS.mainConnectedShape} />
+            <path d={LOGO_PATHS.topCenterShape} />
           </clipPath>
 
           {/* Individual dot clip paths */}
@@ -120,28 +121,28 @@ export function CoderovoLogo({
           </clipPath>
 
           {/* Organic liquid turbulence & displacement filter:
-              Displacement scale 15 creates clear fluid eddies and viscous wave ripples
-              without losing definition or collapsing the shape */}
+              Broad, low-frequency turbulence (0.005-0.006) creates smooth, viscous fluid eddies
+              without high-frequency micro-spikes or jagged fringes */}
           <filter
             id={liquidFilterId}
-            x="-20%"
-            y="-20%"
-            width="140%"
-            height="140%"
+            x="-10%"
+            y="-10%"
+            width="120%"
+            height="120%"
             filterUnits="userSpaceOnUse"
           >
             <feTurbulence
-              type="fractalNoise"
-              baseFrequency="0.014 0.017"
-              numOctaves={3}
+              type="turbulence"
+              baseFrequency="0.005 0.006"
+              numOctaves={2}
               result="noise"
               seed={7}
             >
               {isAnimated && (
                 <animate
                   attributeName="baseFrequency"
-                  dur="12s"
-                  values="0.013 0.016; 0.017 0.020; 0.014 0.017; 0.013 0.016"
+                  dur="14s"
+                  values="0.004 0.005; 0.006 0.007; 0.005 0.006; 0.004 0.005"
                   repeatCount="indefinite"
                 />
               )}
@@ -149,7 +150,7 @@ export function CoderovoLogo({
             <feDisplacementMap
               in="SourceGraphic"
               in2="noise"
-              scale={isAnimated ? 15 : 0}
+              scale={isAnimated ? 10 : 0}
               xChannelSelector="R"
               yChannelSelector="G"
               result="displaced"
@@ -174,6 +175,29 @@ export function CoderovoLogo({
             <stop offset="82%" stopColor="#A855F7" stopOpacity="0.06" />
             <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0" />
           </radialGradient>
+          {/* Filter to turn PNG alpha into pure white luminance matte */}
+          <filter id={alphaToMatteId}>
+            <feColorMatrix
+              type="matrix"
+              values="0 0 0 0 1
+                      0 0 0 0 1
+                      0 0 0 0 1
+                      0 0 0 1 0"
+            />
+          </filter>
+
+          {/* Master smooth silhouette mask derived from 1536x1536 master artwork */}
+          <mask id={exactAlphaMaskId} maskUnits="userSpaceOnUse" x="0" y="0" width="1536" height="1536">
+            <image
+              href="/images/coderovo-logo-exact.png"
+              xlinkHref="/images/coderovo-logo-exact.png"
+              x={0}
+              y={0}
+              width={1536}
+              height={1536}
+              filter={`url(#${alphaToMatteId})`}
+            />
+          </mask>
         </defs>
 
         {/* =========================================================================
@@ -225,16 +249,18 @@ export function CoderovoLogo({
           y={0}
           width={1536}
           height={1536}
-          clipPath={`url(#${clipAllId})`}
           opacity={0.35}
+          className="pointer-events-none"
         />
 
         {/* =========================================================================
-            LAYER 3: Visibly Travelling Liquid Aurora Streams (Connected Symbol)
-            Multiple distinct, high-contrast color pools (Cyan, Blue, Violet, Magenta)
-            physically travelling along the channels of the connected network.
+            LAYER 3 & 4: Living Liquid Aurora Streams (Contained by Master Silhouette Mask)
+            Both the connected network and isolated dots are held strictly within
+            the master anti-aliased alpha boundary, ensuring ZERO spikes or edge bleed.
             ========================================================================= */}
-        <g clipPath={`url(#${clipConnectedId})`} className="pointer-events-none">
+        <g mask={`url(#${exactAlphaMaskId})`} className="pointer-events-none">
+          {/* LAYER 3: Travelling Liquid Aurora Streams (Connected Symbol) */}
+          <g clipPath={`url(#${clipConnectedId})`}>
           <motion.g
             filter={isAnimated ? `url(#${liquidFilterId})` : undefined}
             style={{
@@ -493,9 +519,25 @@ export function CoderovoLogo({
             </g>
           </motion.g>
         </g>
+        </g>
 
         {/* =========================================================================
-            LAYER 5: Glossy Specular 3D Glass Highlights & Surface Rim Light
+            LAYER 5: Clean Silhouette Boundary Overlay & 3D Shading
+            Restores buttery-smooth outer boundaries and subtle volume
+            ========================================================================= */}
+        <image
+          href="/images/coderovo-logo-exact.png"
+          xlinkHref="/images/coderovo-logo-exact.png"
+          x={0}
+          y={0}
+          width={1536}
+          height={1536}
+          opacity={0.20}
+          className="pointer-events-none"
+        />
+
+        {/* =========================================================================
+            LAYER 6: Glossy Specular 3D Glass Highlights & Surface Rim Light
             Composited over the liquid with mix-blend-mode: screen so that
             all specular reflections, glossy bevels, rim lighting, and glass textures
             from the original 1536x1536 artwork float crisp, sharp, and pristine
@@ -508,9 +550,8 @@ export function CoderovoLogo({
           y={0}
           width={1536}
           height={1536}
-          clipPath={`url(#${clipAllId})`}
           style={{ mixBlendMode: "screen" }}
-          opacity={0.65}
+          opacity={0.72}
           className="pointer-events-none"
         />
       </svg>
