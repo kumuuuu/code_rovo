@@ -83,52 +83,52 @@ export function ServicesSection({ onSelectService }: ServicesSectionProps) {
   ];
 
   return (
-    <section id="services" className="relative px-4 sm:px-6 py-24 max-w-7xl mx-auto scroll-mt-20">
+    <section id="services" className="relative px-4 sm:px-6 py-16 sm:py-24 max-w-7xl mx-auto scroll-mt-20">
       {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+      <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
         <span className="text-xs uppercase font-mono font-medium tracking-[0.2em] text-[#00F0FF]">
           WHAT WE DO
         </span>
-        <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
+        <h2 className="mt-3 sm:mt-4 text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
           Technology solutions<br className="hidden sm:inline" /> for your business.
         </h2>
-        <p className="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed">
+        <p className="mt-3 sm:mt-4 text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto">
           From software development to dedicated engineering teams, Coderovo provides the technical expertise businesses need to build and grow.
         </p>
       </div>
 
       {/* 6-Card Grid (3x2 on desktop) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
         {services.map((item) => (
           <div
             key={item.num}
-            className="group relative rounded-2xl bg-[#0E131F]/70 hover:bg-[#131A29]/90 border border-white/8 hover:border-cyan-500/40 p-7 sm:p-8 transition-all duration-500 flex flex-col justify-between hover:shadow-[0_20px_50px_-15px_rgba(0,240,255,0.15)] overflow-hidden"
+            className="group relative rounded-2xl bg-[#0E131F]/70 hover:bg-[#131A29]/90 border border-white/8 hover:border-cyan-500/40 p-5 sm:p-7 md:p-8 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_20px_50px_-15px_rgba(0,240,255,0.15)] overflow-hidden"
           >
             {/* Top Row: Numeric Badge + Line Icon */}
             <div>
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center justify-between mb-5 sm:mb-6">
                 <span className="font-mono text-xs font-semibold tracking-wider text-slate-400 group-hover:text-cyan-400 transition-colors">
                   {item.num}
                 </span>
-                <div className={`p-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-cyan-300 group-hover:scale-110 group-hover:text-white transition-all duration-300`}>
+                <div className={`p-2 sm:p-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-cyan-300 group-hover:scale-110 group-hover:text-white transition-all duration-300`}>
                   {item.icon}
                 </div>
               </div>
 
-              <h3 className="text-xl font-semibold text-white tracking-tight group-hover:text-cyan-200 transition-colors">
+              <h3 className="text-lg sm:text-xl font-semibold text-white tracking-tight group-hover:text-cyan-200 transition-colors">
                 {item.title}
               </h3>
 
-              <p className="mt-3 text-sm text-slate-300 leading-relaxed">
+              <p className="mt-2.5 sm:mt-3 text-sm text-slate-300 leading-relaxed">
                 {item.description}
               </p>
             </div>
 
             {/* Bottom Row: CTA link */}
-            <div className="pt-6 mt-6 border-t border-white/5 flex items-center justify-between">
+            <div className="pt-5 sm:pt-6 mt-5 sm:mt-6 border-t border-white/5 flex items-center justify-between">
               <button
                 onClick={() => onSelectService(item.title)}
-                className="text-xs font-medium text-slate-400 group-hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer"
+                className="py-1 text-xs font-medium text-slate-400 group-hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer"
               >
                 <span>Learn more</span>
                 <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -140,10 +140,10 @@ export function ServicesSection({ onSelectService }: ServicesSectionProps) {
       </div>
 
       {/* Footer link in section */}
-      <div className="mt-14 text-center">
+      <div className="mt-10 sm:mt-14 text-center">
         <button
           onClick={() => onSelectService("Software Development")}
-          className="inline-flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-cyan-300 transition-colors group cursor-pointer"
+          className="inline-flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-cyan-300 transition-colors group cursor-pointer px-4 py-2 rounded-full hover:bg-white/5"
         >
           <span>Explore All Engineering Capabilities</span>
           <span className="transition-transform group-hover:translate-x-1">→</span>

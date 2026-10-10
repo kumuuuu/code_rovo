@@ -33,29 +33,29 @@ export function WhyUs() {
   ];
 
   return (
-    <section id="about" className="relative px-4 sm:px-6 py-24 max-w-7xl mx-auto scroll-mt-20">
-      <div className="max-w-3xl mb-16 sm:mb-20">
+    <section id="about" className="relative px-4 sm:px-6 py-16 sm:py-24 max-w-7xl mx-auto scroll-mt-20">
+      <div className="max-w-3xl mb-10 sm:mb-16">
         <span className="text-xs uppercase font-mono font-medium tracking-[0.2em] text-[#00F0FF]">
           WHY CODEROVO
         </span>
-        <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
+        <h2 className="mt-3 sm:mt-4 text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
           Built around your success.
         </h2>
-        <p className="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed">
+        <p className="mt-3 sm:mt-4 text-sm sm:text-base text-slate-300 leading-relaxed">
           We believe great software comes from strong collaboration, clear communication, and a team that takes ownership of the work. Coderovo works closely with your business to deliver reliable technology that can grow with you.
         </p>
       </div>
 
       {/* 2x2 Architectural Grid with SVG Network Watermarks */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
         {cards.map((card, idx) => (
           <div
             key={idx}
-            className="relative rounded-2xl md:rounded-3xl bg-[#131824]/70 border border-white/8 hover:border-blue-500/30 p-8 sm:p-10 transition-all duration-500 overflow-hidden group hover:shadow-[0_20px_50px_-15px_rgba(59,130,246,0.15)] flex flex-col justify-between"
+            className="relative rounded-2xl md:rounded-3xl bg-[#131824]/70 border border-white/8 hover:border-blue-500/30 p-5 sm:p-8 md:p-10 transition-all duration-300 overflow-hidden group hover:shadow-[0_20px_50px_-15px_rgba(59,130,246,0.15)] flex flex-col justify-between"
           >
             {/* Subtle SVG Network Circuit Watermark */}
             <svg
-              className="absolute -right-6 -bottom-6 w-56 h-56 opacity-[0.035] group-hover:opacity-[0.07] transition-opacity pointer-events-none"
+              className="absolute -right-6 -bottom-6 w-44 sm:w-56 h-44 sm:h-56 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity pointer-events-none"
               viewBox="0 0 200 200"
               fill="none"
               stroke="white"
@@ -69,20 +69,20 @@ export function WhyUs() {
             </svg>
 
             <div>
-              <div className="text-xs font-mono uppercase tracking-wider text-cyan-400 mb-2">
+              <div className="text-[11px] font-mono uppercase tracking-wider text-cyan-400 mb-2">
                 {card.subtext}
               </div>
 
-              <h3 className="text-2xl font-bold text-white tracking-tight group-hover:text-cyan-200 transition-colors">
+              <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight group-hover:text-cyan-200 transition-colors">
                 {card.title}
               </h3>
 
-              <p className="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed">
+              <p className="mt-3 sm:mt-4 text-sm sm:text-base text-slate-300 leading-relaxed">
                 {card.description}
               </p>
             </div>
 
-            <div className="pt-6 mt-8 border-t border-white/5 flex items-center justify-between">
+            <div className="pt-5 sm:pt-6 mt-6 sm:mt-8 border-t border-white/5 flex items-center justify-between">
               <span className="text-xs font-mono text-slate-400 group-hover:text-slate-300">
                 {card.stat}
               </span>

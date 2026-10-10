@@ -72,25 +72,55 @@ export function ProcessFlow() {
   ];
 
   return (
-    <section id="how-we-work" className="relative px-4 sm:px-6 py-24 max-w-7xl mx-auto scroll-mt-20">
-      <div className="max-w-3xl mb-16 sm:mb-20">
+    <section id="how-we-work" className="relative px-4 sm:px-6 py-16 sm:py-24 max-w-7xl mx-auto scroll-mt-20">
+      <div className="max-w-3xl mb-10 sm:mb-16">
         <span className="text-xs uppercase font-mono font-medium tracking-[0.2em] text-[#00F0FF]">
           HOW WE WORK
         </span>
-        <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
+        <h2 className="mt-3 sm:mt-4 text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
           From idea to production.
         </h2>
-        <p className="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed">
+        <p className="mt-3 sm:mt-4 text-sm sm:text-base text-slate-300 leading-relaxed">
           A transparent 7-stage engineering lifecycle engineered for zero friction, predictable velocity, and reliable outcomes.
         </p>
       </div>
 
+      {/* Mobile-only Quick Stage Navigator Header */}
+      <div className="flex sm:hidden items-center justify-between mb-4 px-1">
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-mono font-semibold text-cyan-400">
+            Step {activeStage + 1} of {stages.length}:
+          </span>
+          <span className="text-xs font-semibold text-white">
+            {stages[activeStage].name}
+          </span>
+        </div>
+        <div className="flex items-center gap-1.5">
+          <button
+            onClick={() => setActiveStage((prev) => Math.max(0, prev - 1))}
+            disabled={activeStage === 0}
+            className="w-8 h-8 rounded-lg bg-[#131824] border border-white/10 flex items-center justify-center text-slate-300 disabled:opacity-30 disabled:pointer-events-none active:bg-white/10"
+            aria-label="Previous Stage"
+          >
+            ←
+          </button>
+          <button
+            onClick={() => setActiveStage((prev) => Math.min(stages.length - 1, prev + 1))}
+            disabled={activeStage === stages.length - 1}
+            className="w-8 h-8 rounded-lg bg-[#131824] border border-white/10 flex items-center justify-center text-slate-300 disabled:opacity-30 disabled:pointer-events-none active:bg-white/10"
+            aria-label="Next Stage"
+          >
+            →
+          </button>
+        </div>
+      </div>
+
       {/* Horizontal Stage Stepper Track */}
-      <div className="relative mb-12 overflow-x-auto pb-4 scrollbar-none">
+      <div className="relative mb-8 sm:mb-12 overflow-x-auto pb-4 scrollbar-none -mx-4 px-4 sm:mx-0">
         {/* Connecting hairline gradient track */}
         <div className="hidden lg:block absolute top-7 left-8 right-8 h-[2px] bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 opacity-25 z-0" />
 
-        <div className="flex items-center justify-between min-w-[760px] relative z-10 gap-3">
+        <div className="flex items-center justify-between min-w-[680px] sm:min-w-[760px] relative z-10 gap-2 sm:gap-3">
           {stages.map((stage, idx) => {
             const isActive = activeStage === idx;
             return (
@@ -101,7 +131,7 @@ export function ProcessFlow() {
               >
                 {/* Circle Indicator */}
                 <div
-                  className={`w-14 h-14 rounded-full flex items-center justify-center font-mono text-sm font-bold transition-all duration-300 border ${
+                  className={`w-11 h-11 sm:w-14 sm:h-14 rounded-full flex items-center justify-center font-mono text-xs sm:text-sm font-bold transition-all duration-300 border ${
                     isActive
                       ? "bg-white text-[#07090E] border-white shadow-[0_0_25px_rgba(0,240,255,0.6)] scale-110"
                       : "bg-[#0D111A] text-slate-400 border-white/10 group-hover:border-white/30 group-hover:text-white"
@@ -112,7 +142,7 @@ export function ProcessFlow() {
 
                 {/* Name */}
                 <span
-                  className={`mt-3 text-xs font-semibold tracking-wide transition-colors ${
+                  className={`mt-2 sm:mt-3 text-[11px] sm:text-xs font-semibold tracking-wide transition-colors ${
                     isActive ? "text-cyan-300" : "text-slate-400 group-hover:text-slate-200"
                   }`}
                 >
@@ -120,7 +150,7 @@ export function ProcessFlow() {
                 </span>
 
                 {/* Micro Duration Pill */}
-                <span className="mt-1 text-[10px] font-mono text-slate-500">
+                <span className="mt-0.5 sm:mt-1 text-[9px] sm:text-[10px] font-mono text-slate-500 whitespace-nowrap">
                   {stage.duration}
                 </span>
               </button>
@@ -130,13 +160,13 @@ export function ProcessFlow() {
       </div>
 
       {/* Active Stage Detailed Spotlight Box */}
-      <div className="relative rounded-2xl md:rounded-3xl bg-[#0D111A]/90 border border-white/10 p-8 sm:p-10 shadow-2xl overflow-hidden transition-all duration-300">
+      <div className="relative rounded-2xl md:rounded-3xl bg-[#0D111A]/90 border border-white/10 p-5 sm:p-8 md:p-10 shadow-2xl overflow-hidden transition-all duration-300">
         <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-[90px] pointer-events-none" />
 
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-8 space-y-4">
-            <div className="flex items-center gap-3">
-              <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-white/5 border border-white/10 text-cyan-400">
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
+          <div className="lg:col-span-8 space-y-3 sm:space-y-4">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <span className="px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-mono font-semibold bg-white/5 border border-white/10 text-cyan-400">
                 STAGE {stages[activeStage].num}
               </span>
               <span className="text-xs font-mono text-slate-400">
@@ -144,7 +174,7 @@ export function ProcessFlow() {
               </span>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+            <h3 className="text-xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
               {stages[activeStage].name} — {stages[activeStage].tagline}
             </h3>
 
@@ -153,11 +183,11 @@ export function ProcessFlow() {
             </p>
           </div>
 
-          <div className="lg:col-span-4 p-5 rounded-xl bg-[#131824] border border-white/8 space-y-2">
-            <div className="text-[11px] font-mono uppercase tracking-wider text-slate-400">
+          <div className="lg:col-span-4 p-4 sm:p-5 rounded-xl bg-[#131824] border border-white/8 space-y-2">
+            <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-slate-400">
               Primary Deliverable
             </div>
-            <div className="text-sm font-semibold text-white flex items-start gap-2">
+            <div className="text-xs sm:text-sm font-semibold text-white flex items-start gap-2">
               <span className="text-cyan-400 mt-0.5">✓</span>
               <span>{stages[activeStage].deliverable}</span>
             </div>
@@ -165,7 +195,7 @@ export function ProcessFlow() {
               <span>Next Milestone</span>
               <button
                 onClick={() => setActiveStage((prev) => (prev + 1) % stages.length)}
-                className="text-cyan-300 hover:text-white transition-colors cursor-pointer flex items-center gap-1"
+                className="text-cyan-300 hover:text-white transition-colors cursor-pointer flex items-center gap-1 py-1"
               >
                 Proceed →
               </button>

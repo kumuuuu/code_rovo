@@ -132,16 +132,16 @@ export function PagePreloader() {
           }}
           exit={{ opacity: 0, scale: 1.05, filter: "blur(12px)" }}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#07090E] select-none overflow-hidden"
+          className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#07090E] select-none overflow-hidden p-4"
           style={{ pointerEvents: stage === "exit" ? "none" : "auto" }}
           aria-live="polite"
           aria-busy={isLoading}
         >
           {/* Ambient background aura glow */}
-          <div className="absolute w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-cyan-500/15 via-blue-600/10 to-purple-600/15 blur-[100px] pointer-events-none" />
+          <div className="absolute w-[clamp(280px,70vmin,520px)] h-[clamp(280px,70vmin,520px)] rounded-full bg-gradient-to-tr from-cyan-500/15 via-blue-600/10 to-purple-600/15 blur-[80px] sm:blur-[100px] pointer-events-none" />
 
-          {/* Main Visual Centerpiece */}
-          <div className="relative flex flex-col items-center justify-center w-full max-w-[360px] aspect-square">
+          {/* Main Visual Centerpiece with fluid vmin clamp */}
+          <div className="relative flex flex-col items-center justify-center w-[clamp(180px,46vmin,280px)] h-[clamp(180px,46vmin,280px)] aspect-square">
             <AnimatePresence mode="wait">
               {stage === "metaballs" ? (
                 <motion.div
@@ -150,7 +150,7 @@ export function PagePreloader() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 1.15, filter: "blur(6px)" }}
                   transition={{ duration: 0.45, ease: "easeOut" }}
-                  className="relative w-64 h-64 flex items-center justify-center"
+                  className="relative w-full h-full flex items-center justify-center"
                 >
                   <svg
                     viewBox="0 0 400 400"
@@ -290,10 +290,10 @@ export function PagePreloader() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 1.1, filter: "blur(8px)" }}
                   transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                  className="relative w-64 h-64 flex items-center justify-center"
+                  className="relative w-full h-full flex items-center justify-center"
                 >
                   <CoderovoLogo
-                    size={220}
+                    size="clamp(160px, 40vmin, 240px)"
                     animated={true}
                     interactive={false}
                     glow={true}
@@ -309,9 +309,9 @@ export function PagePreloader() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.4 }}
-            className="mt-4 flex flex-col items-center"
+            className="mt-3 sm:mt-5 flex flex-col items-center text-center px-4"
           >
-            <span className="font-mono text-xs sm:text-sm tracking-[0.25em] text-slate-300 font-semibold uppercase flex items-center justify-center">
+            <span className="font-mono text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.25em] text-slate-300 font-semibold uppercase flex items-center justify-center">
               {isOffline ? (
                 <span className="text-amber-400">Waiting for connection...</span>
               ) : isSlow ? (

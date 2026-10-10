@@ -5,12 +5,12 @@ export function Footer() {
   const currentYear = 2026;
 
   return (
-    <footer className="relative border-t border-white/8 bg-[#07090E] pt-20 pb-12 text-slate-400">
+    <footer className="relative border-t border-white/8 bg-[#07090E] pt-14 sm:pt-20 pb-8 sm:pb-12 text-slate-400">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-white/6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-12 pb-10 sm:pb-16 border-b border-white/6">
           {/* Col 1: Brand & Social (lg:col-span-4) */}
-          <div className="lg:col-span-4 space-y-4">
-            <Logo className="h-8 w-auto" />
+          <div className="lg:col-span-4 space-y-3 sm:space-y-4">
+            <Logo className="h-7 sm:h-8 w-auto" />
             <div className="text-xs font-mono tracking-wider text-cyan-400 uppercase pt-1">
               Your Team Beyond Borders.
             </div>
@@ -62,36 +62,36 @@ export function Footer() {
           </div>
 
           {/* Col 2: Services (lg:col-span-3) */}
-          <div className="lg:col-span-3 space-y-3">
+          <div className="lg:col-span-3 space-y-2.5 sm:space-y-3">
             <h4 className="text-xs font-mono uppercase tracking-widest text-slate-200">
               Services
             </h4>
-            <ul className="space-y-2 text-sm">
-              <li><a href="#services" className="hover:text-cyan-300 transition-colors">Software Development</a></li>
-              <li><a href="#services" className="hover:text-cyan-300 transition-colors">Dedicated Teams</a></li>
-              <li><a href="#services" className="hover:text-cyan-300 transition-colors">Team Extension</a></li>
-              <li><a href="#services" className="hover:text-cyan-300 transition-colors">UI/UX Engineering</a></li>
-              <li><a href="#services" className="hover:text-cyan-300 transition-colors">Cloud & DevOps</a></li>
-              <li><a href="#services" className="hover:text-cyan-300 transition-colors">Maintenance & Support</a></li>
+            <ul className="space-y-1 sm:space-y-2 text-sm">
+              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">Software Development</a></li>
+              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">Dedicated Teams</a></li>
+              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">Team Extension</a></li>
+              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">UI/UX Engineering</a></li>
+              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">Cloud & DevOps</a></li>
+              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">Maintenance & Support</a></li>
             </ul>
           </div>
 
           {/* Col 3: Company (lg:col-span-2) */}
-          <div className="lg:col-span-2 space-y-3">
+          <div className="lg:col-span-2 space-y-2.5 sm:space-y-3">
             <h4 className="text-xs font-mono uppercase tracking-widest text-slate-200">
               Company
             </h4>
-            <ul className="space-y-2 text-sm">
-              <li><a href="#why-us" className="hover:text-white transition-colors">About Coderovo</a></li>
-              <li><a href="#work" className="hover:text-white transition-colors">Our Work</a></li>
-              <li><a href="#process" className="hover:text-white transition-colors">How We Work</a></li>
-              <li><a href="#team" className="hover:text-white transition-colors">Our Teams</a></li>
-              <li><a href="#tech-stack" className="hover:text-white transition-colors">Technology</a></li>
+            <ul className="space-y-1 sm:space-y-2 text-sm">
+              <li><a href="#about" className="py-1 inline-block hover:text-white transition-colors">About Coderovo</a></li>
+              <li><a href="#work" className="py-1 inline-block hover:text-white transition-colors">Our Work</a></li>
+              <li><a href="#how-we-work" className="py-1 inline-block hover:text-white transition-colors">How We Work</a></li>
+              <li><a href="#team" className="py-1 inline-block hover:text-white transition-colors">Our Teams</a></li>
+              <li><a href="#tech-stack" className="py-1 inline-block hover:text-white transition-colors">Technology</a></li>
             </ul>
           </div>
 
           {/* Col 4: Contact info (lg:col-span-3) */}
-          <div className="lg:col-span-3 space-y-3">
+          <div className="lg:col-span-3 space-y-2.5 sm:space-y-3">
             <h4 className="text-xs font-mono uppercase tracking-widest text-slate-200">
               Direct Contact
             </h4>
@@ -101,7 +101,7 @@ export function Footer() {
             <div className="pt-1">
               <a
                 href="mailto:hello@coderovo.com"
-                className="text-sm font-mono text-cyan-400 hover:text-cyan-300 transition-colors"
+                className="text-sm font-mono text-cyan-400 hover:text-cyan-300 transition-colors py-1 inline-block"
               >
                 hello@coderovo.com
               </a>
@@ -113,14 +113,14 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4 text-center sm:text-left">
           <div>
             © {currentYear} Coderovo. All rights reserved.
           </div>
-          <div className="flex items-center gap-6">
-            <a href="#" className="hover:text-slate-400 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-slate-400 transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-slate-400 transition-colors">Security Charter</a>
+          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
+            <a href="#" className="py-1 hover:text-slate-400 transition-colors">Privacy Policy</a>
+            <a href="#" className="py-1 hover:text-slate-400 transition-colors">Terms of Service</a>
+            <a href="#" className="py-1 hover:text-slate-400 transition-colors">Security Charter</a>
           </div>
         </div>
       </div>

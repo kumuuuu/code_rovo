@@ -58,30 +58,30 @@ export function CaseStudies({ onOpenContact }: CaseStudiesProps) {
   ];
 
   return (
-    <section id="work" className="relative px-4 sm:px-6 py-24 max-w-7xl mx-auto scroll-mt-20">
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 sm:mb-20 gap-6">
+    <section id="work" className="relative px-4 sm:px-6 py-16 sm:py-24 max-w-7xl mx-auto scroll-mt-20">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-16 lg:mb-20 gap-4 sm:gap-6">
         <div className="max-w-2xl">
           <span className="text-xs uppercase font-mono font-medium tracking-[0.2em] text-[#00F0FF]">
             FEATURED WORK
           </span>
-          <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
+          <h2 className="mt-3 sm:mt-4 text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
             Built for real-world challenges.
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed">
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-slate-300 leading-relaxed">
             Representative engineering solutions engineered for resilience, high concurrency, and measurable business impact.
           </p>
         </div>
-        <div className="text-xs font-mono text-slate-400 border border-white/10 px-4 py-2 rounded-full bg-white/[0.02]">
+        <div className="text-xs font-mono text-slate-400 border border-white/10 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/[0.02] self-start md:self-auto">
           Representative Client Solutions
         </div>
       </div>
 
       {/* 3 Large Editorial Case Study Cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
         {projects.map((item, idx) => (
           <div
             key={idx}
-            className="group relative rounded-2xl md:rounded-3xl bg-[#111624]/80 border border-white/8 hover:border-cyan-500/30 p-8 transition-all duration-500 flex flex-col justify-between overflow-hidden hover:shadow-[0_25px_60px_-15px_rgba(0,240,255,0.12)]"
+            className="group relative rounded-2xl md:rounded-3xl bg-[#111624]/80 border border-white/8 hover:border-cyan-500/30 p-5 sm:p-7 md:p-8 transition-all duration-300 flex flex-col justify-between overflow-hidden hover:shadow-[0_25px_60px_-15px_rgba(0,240,255,0.12)]"
           >
             {/* Top glowing ambient gradient */}
             <div className={`absolute top-0 inset-x-0 h-40 bg-gradient-to-b ${item.gradient} opacity-50 group-hover:opacity-100 transition-opacity pointer-events-none`} />
@@ -89,32 +89,32 @@ export function CaseStudies({ onOpenContact }: CaseStudiesProps) {
             <div className="relative z-10">
               {/* Industry Tag */}
               <div className="flex items-center justify-between mb-4">
-                <span className={`px-3 py-1 rounded-full text-[11px] font-mono tracking-wider border ${item.badgeColor}`}>
+                <span className={`px-2.5 sm:px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-mono tracking-wider border ${item.badgeColor}`}>
                   {item.industry}
                 </span>
                 <span className="text-xs font-mono text-slate-400">0{idx + 1}</span>
               </div>
 
-              <h3 className="text-2xl font-bold text-white tracking-tight mt-2 group-hover:text-cyan-200 transition-colors">
+              <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mt-1.5 sm:mt-2 group-hover:text-cyan-200 transition-colors">
                 {item.title}
               </h3>
 
-              <p className="mt-4 text-sm text-slate-300 leading-relaxed">
+              <p className="mt-3 sm:mt-4 text-sm text-slate-300 leading-relaxed">
                 {item.description}
               </p>
 
               {/* Impact Statement */}
-              <div className="mt-5 p-3.5 rounded-xl bg-[#0D111A]/90 border border-white/6 text-xs text-slate-300">
+              <div className="mt-4 sm:mt-5 p-3 sm:p-3.5 rounded-xl bg-[#0D111A]/90 border border-white/6 text-xs text-slate-300">
                 <span className="font-semibold text-white block mb-0.5">Key Metric</span>
                 {item.impact}
               </div>
 
               {/* Tech Pills */}
-              <div className="mt-6 flex flex-wrap gap-1.5">
+              <div className="mt-5 sm:mt-6 flex flex-wrap gap-1.5">
                 {item.tech.map((t) => (
                   <span
                     key={t}
-                    className="px-2.5 py-1 rounded-md text-[11px] font-mono text-slate-400 bg-white/[0.03] border border-white/8"
+                    className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md text-[10px] sm:text-[11px] font-mono text-slate-400 bg-white/[0.03] border border-white/8"
                   >
                     {t}
                   </span>
@@ -123,10 +123,10 @@ export function CaseStudies({ onOpenContact }: CaseStudiesProps) {
             </div>
 
             {/* Bottom Action */}
-            <div className="relative z-10 pt-6 mt-8 border-t border-white/6">
+            <div className="relative z-10 pt-5 sm:pt-6 mt-6 sm:mt-8 border-t border-white/6">
               <button
                 onClick={() => setActiveModalStudy(idx)}
-                className="w-full py-2.5 rounded-xl text-xs font-semibold text-slate-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 transition-all flex items-center justify-center gap-2 group-hover:border-cyan-500/40 cursor-pointer"
+                className="w-full py-3 rounded-xl text-xs font-semibold text-slate-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] active:bg-white/[0.12] border border-white/10 transition-all flex items-center justify-center gap-2 group-hover:border-cyan-500/40 cursor-pointer"
               >
                 <span>View Architecture Specs</span>
                 <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -138,47 +138,48 @@ export function CaseStudies({ onOpenContact }: CaseStudiesProps) {
 
       {/* Case Study Details Modal */}
       {activeModalStudy !== null && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
           <div
             className="fixed inset-0 bg-[#07090E]/85 backdrop-blur-xl"
             onClick={() => setActiveModalStudy(null)}
           />
-          <div className="relative w-full max-w-2xl bg-[#0D111A] border border-white/10 rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-10 z-10 overflow-hidden shadow-2xl">
+          <div className="relative w-full max-w-2xl bg-[#0D111A] border border-white/10 rounded-2xl md:rounded-3xl p-5 sm:p-8 md:p-10 z-10 shadow-2xl max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setActiveModalStudy(null)}
-              className="absolute top-6 right-6 w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white transition-colors"
+              aria-label="Close dialog"
             >
               ✕
             </button>
 
-            <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">
+            <span className="text-[11px] sm:text-xs font-mono text-cyan-400 uppercase tracking-widest">
               {projects[activeModalStudy].industry}
             </span>
-            <h3 className="text-2xl sm:text-3xl font-bold text-white mt-2">
+            <h3 className="text-xl sm:text-3xl font-bold text-white mt-1.5 sm:mt-2 pr-8">
               {projects[activeModalStudy].title}
             </h3>
-            <p className="text-slate-300 text-sm mt-3 leading-relaxed">
+            <p className="text-slate-300 text-sm mt-2.5 sm:mt-3 leading-relaxed">
               {projects[activeModalStudy].description}
             </p>
 
-            <div className="mt-6 space-y-3">
-              <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400">
+            <div className="mt-5 sm:mt-6 space-y-2.5 sm:space-y-3">
+              <h4 className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-slate-400">
                 Architectural Highlights
               </h4>
               <ul className="space-y-2">
                 {projects[activeModalStudy].architectureHighlights.map((hl, i) => (
-                  <li key={i} className="text-sm text-slate-300 flex items-start gap-2.5">
-                    <span className="text-cyan-400 mt-1">▸</span>
+                  <li key={i} className="text-xs sm:text-sm text-slate-300 flex items-start gap-2.5">
+                    <span className="text-cyan-400 mt-0.5">▸</span>
                     <span>{hl}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
+            <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
               <div className="flex flex-wrap gap-1.5">
                 {projects[activeModalStudy].tech.map((t) => (
-                  <span key={t} className="px-2 py-0.5 rounded text-[11px] font-mono text-slate-400 bg-white/5 border border-white/10">
+                  <span key={t} className="px-2 py-0.5 rounded text-[10px] sm:text-[11px] font-mono text-slate-400 bg-white/5 border border-white/10">
                     {t}
                   </span>
                 ))}
@@ -189,7 +190,7 @@ export function CaseStudies({ onOpenContact }: CaseStudiesProps) {
                   setActiveModalStudy(null);
                   onOpenContact(subject);
                 }}
-                className="px-5 py-2 rounded-full text-xs font-semibold text-[#07090E] bg-white hover:bg-slate-100 transition-all cursor-pointer"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-full text-xs font-semibold text-[#07090E] bg-white hover:bg-slate-100 active:scale-95 transition-all cursor-pointer text-center"
               >
                 Inquire Similar Solution →
               </button>

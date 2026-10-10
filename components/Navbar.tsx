@@ -12,9 +12,21 @@ export function Navbar({ onOpenContact }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("Home");
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
+      setScrolled(window.scrollY > 25);
 
       // Detect active section on scroll
       const sections = [
@@ -24,7 +36,7 @@ export function Navbar({ onOpenContact }: NavbarProps) {
         { id: "about", name: "About" },
       ];
 
-      const scrollPosition = window.scrollY + 220;
+      const scrollPosition = window.scrollY + 180;
       for (const section of sections) {
         const el = document.getElementById(section.id);
         if (el) {
@@ -49,124 +61,148 @@ export function Navbar({ onOpenContact }: NavbarProps) {
     { name: "About", href: "#about" },
   ];
 
+  const handleNavClick = (name: string) => {
+    setActiveSection(name);
+    setMobileMenuOpen(false);
+  };
+
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 pointer-events-none flex justify-center transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        scrolled ? "px-4 sm:px-6" : "px-0"
-      }`}
-    >
-      {/* 
-        Single continuous morphing nav bar:
-        - Full-width edge-to-edge with bottom border when at the top.
-        - Smoothly animates into a centered floating frosted island dock when scrolling down.
-        - No disconnected wrapper borders to prevent any white line artifacts.
-      */}
-      <nav
-        className={`pointer-events-auto w-full flex items-center justify-between border border-solid transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-          scrolled
-            ? "max-w-4xl lg:max-w-5xl mt-3 sm:mt-4 rounded-full px-5 sm:px-7 py-2.5 bg-[#0D111A]/85 backdrop-blur-2xl border-white/12 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.85),0_0_35px_-5px_rgba(59,130,246,0.22)]"
-            : "max-w-full mt-0 rounded-none px-6 sm:px-10 lg:px-16 py-4 sm:py-4.5 bg-[#07090E]/85 backdrop-blur-xl border-t-transparent border-x-transparent border-b-white/[0.08] shadow-none"
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 pointer-events-none flex justify-center transition-all duration-300 ease-out ${
+          scrolled ? "md:px-6" : "px-0"
         }`}
       >
-        {/* Left: Brand / Logo */}
-        <a
-          href="#home"
-          className="flex items-center gap-3 group focus:outline-none cursor-pointer select-none"
+        <nav
+          className={`pointer-events-auto w-full flex items-center justify-between border-solid transition-all duration-300 ease-out ${
+            scrolled
+              ? "h-16 md:h-auto md:max-w-4xl lg:max-w-5xl md:mt-3.5 rounded-none md:rounded-full px-4 sm:px-6 md:px-7 py-0 md:py-2.5 bg-[#07090E]/95 md:bg-[#0D111A]/90 backdrop-blur-2xl border-b md:border border-white/10 md:border-white/12 shadow-[0_10px_30px_rgba(0,0,0,0.8)] md:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.85),0_0_35px_-5px_rgba(59,130,246,0.22)]"
+              : "h-16 md:h-auto max-w-full mt-0 rounded-none px-4 sm:px-8 lg:px-16 py-0 md:py-4.5 bg-[#07090E]/90 md:bg-[#07090E]/85 backdrop-blur-xl border-b border-white/[0.08] md:border-t-transparent md:border-x-transparent md:border-b-white/[0.08] shadow-none"
+          }`}
         >
-          <Logo className="h-7.5 w-auto" />
-        </a>
-
-        {/* Center: Desktop Navigation Links */}
-        <div className="hidden md:flex items-center gap-8 lg:gap-10">
-          {navLinks.map((link) => {
-            const isActive = activeSection === link.name;
-            return (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setActiveSection(link.name)}
-                className={`text-sm font-medium transition-colors duration-200 cursor-pointer ${
-                  isActive
-                    ? "text-white font-semibold drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]"
-                    : "text-slate-400 hover:text-white"
-                }`}
-              >
-                {link.name}
-              </a>
-            );
-          })}
-        </div>
-
-        {/* Right Action Cluster */}
-        <div className="hidden sm:flex items-center">
-          <button
-            onClick={() => onOpenContact()}
-            className="px-5 py-2 rounded-full text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] active:scale-[0.98] transition-all duration-200 shadow-[0_0_20px_-3px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.7)] cursor-pointer"
+          {/* Left: Brand / Logo */}
+          <a
+            href="#home"
+            onClick={() => handleNavClick("Home")}
+            className="flex items-center gap-2.5 group focus:outline-none cursor-pointer select-none"
+            aria-label="Coderovo Home"
           >
-            Let&apos;s Talk
-          </button>
-        </div>
+            <Logo className="h-7 md:h-7.5 w-auto" />
+          </a>
 
-        {/* Mobile Navigation Controls */}
-        <div className="flex md:hidden items-center gap-2">
-          <button
-            onClick={() => onOpenContact()}
-            className="px-3.5 py-1.5 rounded-full text-xs font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB]"
-          >
-            Let&apos;s Talk
-          </button>
-
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 focus:outline-none"
-            aria-label="Toggle Navigation"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {mobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile Menu Dropdown Drawer */}
-      {mobileMenuOpen && (
-        <div className="md:hidden pointer-events-auto fixed top-20 inset-x-4 max-w-md mx-auto bg-[#07090E]/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-5 shadow-2xl space-y-4 animate-in fade-in slide-in-from-top-4 duration-200">
-          <div className="flex flex-col space-y-2.5">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => {
-                  setActiveSection(link.name);
-                  setMobileMenuOpen(false);
-                }}
-                className={`px-3 py-2 rounded-lg text-sm transition-colors ${
-                  activeSection === link.name
-                    ? "text-white font-semibold bg-white/10"
-                    : "text-slate-300 hover:text-white hover:bg-white/5"
-                }`}
-              >
-                {link.name}
-              </a>
-            ))}
+          {/* Center: Desktop Navigation Links */}
+          <div className="hidden md:flex items-center gap-7 lg:gap-10">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.name;
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => handleNavClick(link.name)}
+                  className={`text-sm font-medium transition-colors duration-200 cursor-pointer ${
+                    isActive
+                      ? "text-white font-semibold drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  {link.name}
+                </a>
+              );
+            })}
           </div>
-          <div className="pt-2 border-t border-white/10">
+
+          {/* Right: Desktop Action Cluster */}
+          <div className="hidden md:flex items-center">
             <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenContact();
-              }}
-              className="w-full py-2.5 rounded-full text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] text-center"
+              onClick={() => onOpenContact()}
+              className="px-5 py-2 rounded-full text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] active:scale-[0.98] transition-all duration-200 shadow-[0_0_20px_-3px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.7)] cursor-pointer"
             >
               Let&apos;s Talk
             </button>
           </div>
+
+          {/* Mobile Right Controls: Clean Hamburger Button */}
+          <div className="flex md:hidden items-center gap-2">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="w-10 h-10 rounded-xl flex items-center justify-center text-slate-200 hover:text-white active:bg-white/10 border border-white/10 transition-colors focus:outline-none cursor-pointer"
+              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={mobileMenuOpen}
+            >
+              {mobileMenuOpen ? (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      {/* Mobile Drawer Dropdown Sheet */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-40 md:hidden flex flex-col">
+          {/* Backdrop below the header */}
+          <div
+            className="fixed inset-0 bg-[#07090E]/80 backdrop-blur-md transition-opacity"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
+
+          {/* Integrated Header Dropdown Panel */}
+          <div className="relative z-50 w-full mt-16 bg-[#07090E]/98 backdrop-blur-2xl border-b border-white/10 px-5 pt-4 pb-6 shadow-[0_25px_50px_rgba(0,0,0,0.95)] animate-in fade-in slide-in-from-top-2 duration-200">
+            <div className="flex flex-col space-y-1">
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.name;
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => handleNavClick(link.name)}
+                    className={`flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-medium transition-all ${
+                      isActive
+                        ? "text-white font-semibold bg-white/10 text-cyan-200 border border-cyan-500/20 shadow-[0_0_15px_rgba(0,240,255,0.1)]"
+                        : "text-slate-300 hover:text-white hover:bg-white/5 active:bg-white/10"
+                    }`}
+                  >
+                    <span>{link.name}</span>
+                    {isActive ? (
+                      <span className="w-2 h-2 rounded-full bg-[#00F0FF] shadow-[0_0_8px_#00F0FF]" />
+                    ) : (
+                      <span className="text-slate-500 text-sm">→</span>
+                    )}
+                  </a>
+                );
+              })}
+            </div>
+
+            <div className="mt-5 pt-4 border-t border-white/8 space-y-3">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenContact();
+                }}
+                className="w-full py-3.5 rounded-xl text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] active:scale-[0.99] text-center shadow-[0_0_20px_rgba(59,130,246,0.4)] cursor-pointer"
+              >
+                Let&apos;s Talk
+              </button>
+              <div className="text-center text-xs text-slate-400">
+                Direct inquiry:{" "}
+                <a
+                  href="mailto:hello@coderovo.com"
+                  className="font-mono text-cyan-400 hover:underline"
+                >
+                  hello@coderovo.com
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       )}
-    </header>
+    </>
   );
 }
