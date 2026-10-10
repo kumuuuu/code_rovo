@@ -84,10 +84,10 @@ export function Navbar({ onOpenContact }: NavbarProps) {
           <a
             href="#home"
             onClick={() => handleNavClick("Home")}
-            className="flex items-center gap-2.5 group focus:outline-none cursor-pointer select-none"
+            className="flex items-center group focus:outline-none cursor-pointer select-none"
             aria-label="Coderovo Home"
           >
-            <Logo className="h-7 md:h-7.5 w-auto" />
+            <Logo className="h-10 sm:h-11 md:h-12 w-auto" />
           </a>
 
           {/* Center: Desktop Navigation Links */}

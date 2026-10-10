@@ -10,7 +10,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-12 pb-10 sm:pb-16 border-b border-white/6">
           {/* Col 1: Brand & Social (lg:col-span-4) */}
           <div className="lg:col-span-4 space-y-3 sm:space-y-4">
-            <Logo className="h-7 sm:h-8 w-auto" />
+            <Logo variant="footer" className="h-10 sm:h-11 md:h-12 w-auto" />
             <div className="text-xs font-mono tracking-wider text-cyan-400 uppercase pt-1">
               Your Team Beyond Borders.
             </div>
