@@ -55,31 +55,42 @@ function formatLogoName(fileName: string): string {
 
 export async function GET() {
   try {
-    const logosDir = path.join(process.cwd(), "public", "Logos");
+    const publicLogosDir = path.join(process.cwd(), "public", "Logos");
+    const pmDir = path.join(publicLogosDir, "PM");
+    const seDir = path.join(publicLogosDir, "SE");
 
-    if (!fs.existsSync(logosDir)) {
-      return NextResponse.json({ logos: [] });
-    }
-
-    const files = await fs.promises.readdir(logosDir);
     const validExtensions = new Set([".png", ".jpg", ".jpeg", ".svg", ".webp", ".gif", ".avif"]);
 
-    const logos: LogoItem[] = files
-      .filter((file) => validExtensions.has(path.extname(file).toLowerCase()))
-      .map((file) => ({
-        id: path.parse(file).name,
-        name: formatLogoName(file),
-        src: `/Logos/${file}`,
-        fileName: file,
-      }));
+    const readFolder = async (dirPath: string, urlPrefix: string): Promise<LogoItem[]> => {
+      if (!fs.existsSync(dirPath)) return [];
+      const files = await fs.promises.readdir(dirPath);
+      return files
+        .filter((file) => validExtensions.has(path.extname(file).toLowerCase()))
+        .map((file) => ({
+          id: path.parse(file).name,
+          name: formatLogoName(file),
+          src: `${urlPrefix}/${file}`,
+          fileName: file,
+        }));
+    };
 
-    return NextResponse.json({ logos }, {
+    const [pmLogos, seLogos, rootLogos] = await Promise.all([
+      readFolder(pmDir, "/Logos/PM"),
+      readFolder(seDir, "/Logos/SE"),
+      readFolder(publicLogosDir, "/Logos"),
+    ]);
+
+    return NextResponse.json({
+      pm: pmLogos,
+      se: seLogos,
+      logos: seLogos.length > 0 ? seLogos : rootLogos,
+    }, {
       headers: {
         "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300",
       },
     });
   } catch (error) {
     console.error("Failed to read logos directory:", error);
-    return NextResponse.json({ error: "Failed to read logos", logos: [] }, { status: 500 });
+    return NextResponse.json({ error: "Failed to read logos", pm: [], se: [], logos: [] }, { status: 500 });
   }
 }
