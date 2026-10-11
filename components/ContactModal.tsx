@@ -14,7 +14,6 @@ export function ContactModal({ isOpen, onClose, defaultService = "Software Devel
     name: "",
     email: "",
     company: "",
-    budget: "$10k - $25k",
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
@@ -51,13 +50,6 @@ export function ContactModal({ isOpen, onClose, defaultService = "Software Devel
     "API Development & Integration",
     "AI & Process Automation",
     "IT Support & Maintenance",
-  ];
-
-  const budgetTiers = [
-    "< $10k",
-    "$10k - $25k",
-    "$25k - $50k",
-    "$50k+",
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -109,11 +101,7 @@ export function ContactModal({ isOpen, onClose, defaultService = "Software Devel
         ) : (
           <div>
             <div className="mb-5 sm:mb-6 pr-8">
-              <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-mono tracking-wider text-cyan-300 bg-cyan-950/40 border border-cyan-800/40 uppercase">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
-                INITIATE ENGAGEMENT
-              </span>
-              <h2 className="text-xl sm:text-3xl font-bold text-white tracking-tight mt-2.5 sm:mt-3">
+              <h2 className="text-xl sm:text-3xl font-bold text-white tracking-tight">
                 Start a Conversation
               </h2>
               <p className="text-slate-400 text-xs sm:text-sm mt-1">
@@ -175,35 +163,17 @@ export function ContactModal({ isOpen, onClose, defaultService = "Software Devel
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                <div>
-                  <label className="block text-[11px] sm:text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">
-                    Company / Organization
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Acme Corp"
-                    value={formData.company}
-                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    className="w-full bg-[#131824] border border-white/10 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-lg px-3.5 py-2.5 text-base sm:text-sm text-white placeholder-slate-600 focus:outline-none transition-all"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[11px] sm:text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">
-                    Target Budget
-                  </label>
-                  <select
-                    value={formData.budget}
-                    onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                    className="w-full bg-[#131824] border border-white/10 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-lg px-3.5 py-2.5 text-base sm:text-sm text-white placeholder-slate-600 focus:outline-none transition-all"
-                  >
-                    {budgetTiers.map((tier) => (
-                      <option key={tier} value={tier} className="bg-[#0D111A] text-white">
-                        {tier}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+              <div>
+                <label className="block text-[11px] sm:text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">
+                  Company / Organization
+                </label>
+                <input
+                  type="text"
+                  placeholder="Acme Corp (optional)"
+                  value={formData.company}
+                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                  className="w-full bg-[#131824] border border-white/10 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-lg px-3.5 py-2.5 text-base sm:text-sm text-white placeholder-slate-600 focus:outline-none transition-all"
+                />
               </div>
 
               {/* Message */}

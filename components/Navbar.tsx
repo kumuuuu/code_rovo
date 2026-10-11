@@ -33,7 +33,7 @@ export function Navbar({ onOpenContact }: NavbarProps) {
         { id: "home", name: "Home" },
         { id: "services", name: "Services" },
         { id: "tech", name: "Expertise" },
-        { id: "systems", name: "Systems We Know" },
+        // { id: "systems", name: "Systems We Know" },
         { id: "about", name: "About Us" },
         { id: "contact", name: "Contact" },
       ];
@@ -60,7 +60,7 @@ export function Navbar({ onOpenContact }: NavbarProps) {
     { name: "Home", href: "#home" },
     { name: "Services", href: "#services" },
     { name: "Expertise", href: "#tech" },
-    { name: "Systems We Know", href: "#systems" },
+    // { name: "Systems We Know", href: "#systems" },
     { name: "About Us", href: "#about" },
     { name: "Contact", href: "#contact", isContact: true },
   ];

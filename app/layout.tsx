@@ -43,6 +43,14 @@ export const metadata: Metadata = {
     description:
       "Coderovo helps businesses build, scale, and maintain digital solutions through flexible software engineering teams and reliable IT expertise.",
   },
+  icons: {
+    icon: [
+      { url: "/images/coderovo-logo-animation-ready-exact.svg", type: "image/svg+xml" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/images/coderovo-logo-animation-ready-exact.svg",
+    apple: "/images/coderovo-logo-animation-ready-exact.svg",
+  },
 };
 
 export const viewport: Viewport = {

@@ -10,6 +10,7 @@ import { SystemsExperience } from "@/components/SystemsExperience";
 import { WhyUs } from "@/components/WhyUs";
 import { ProcessFlow } from "@/components/ProcessFlow";
 import { EngagementModels } from "@/components/EngagementModels";
+import { AboutCodeRovo } from "@/components/AboutCodeRovo";
 import { SecurityTrust } from "@/components/SecurityTrust";
 import { CallToAction } from "@/components/CallToAction";
 import { Footer } from "@/components/Footer";
@@ -45,8 +46,8 @@ export default function Home() {
         {/* 03. Technical Capabilities & Concave 3D Logo Carousel */}
         <ConcaveLogoCarousel />
 
-        {/* 04. Systems and Platforms Experience (Differentiator Logo Wall) */}
-        <SystemsExperience onOpenContact={handleOpenContact} />
+        {/* 04. Systems and Platforms Experience (Differentiator Logo Wall) - HIDDEN / COMMENTED OUT */}
+        {/* <SystemsExperience onOpenContact={handleOpenContact} /> */}
 
         {/* 05. Why CodeRovo (Partnership & Alignment) */}
         <WhyUs />
@@ -57,7 +58,10 @@ export default function Home() {
         {/* 07. Engagement Models (Project-Based vs Monthly Outsourcing) */}
         <EngagementModels onOpenContact={handleOpenContact} />
 
-        {/* 08. Trust, Security & Confidentiality */}
+        {/* 08. About CodeRovo (Technology Expertise & Practical Support) */}
+        <AboutCodeRovo onOpenContact={handleOpenContact} />
+
+        {/* 09. Trust, Security & Confidentiality */}
         <SecurityTrust />
 
         {/* 09. Final Call to Action */}

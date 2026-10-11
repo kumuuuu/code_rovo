@@ -140,7 +140,7 @@ export function ConcaveLogoCarousel() {
         />
       </div>
 
-      {/* Categorized Compact Technology Grid */}
+      {/* Categorized Compact Technology Grid - HIDDEN / COMMENTED OUT
       <div className="relative z-10 rounded-2xl sm:rounded-3xl bg-[#0B0F19]/90 border border-white/10 p-6 sm:p-10 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.85)]">
         <div className="border-b border-white/8 pb-4 mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
@@ -156,7 +156,6 @@ export function ConcaveLogoCarousel() {
           </span>
         </div>
 
-        {/* 5-Column Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6">
           {TECH_CATEGORIES.map((cat, idx) => (
             <div
@@ -187,7 +186,6 @@ export function ConcaveLogoCarousel() {
           ))}
         </div>
 
-        {/* Authenticity Footnote */}
         <div className="mt-8 pt-6 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left text-xs font-mono text-slate-500">
           <span>
             We only display technologies our team can genuinely support in production environments.
@@ -197,6 +195,7 @@ export function ConcaveLogoCarousel() {
           </span>
         </div>
       </div>
+      */}
     </section>
   );
 }
