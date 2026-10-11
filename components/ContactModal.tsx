@@ -45,12 +45,12 @@ export function ContactModal({ isOpen, onClose, defaultService = "Software Devel
   if (!isOpen) return null;
 
   const services = [
-    "Software Development",
-    "Dedicated Teams",
-    "Team Extension",
-    "UI/UX Engineering",
-    "Cloud & DevOps",
-    "Maintenance & SLA",
+    "Custom Software Development",
+    "Dedicated Remote Teams",
+    "Business Systems & Back-Office Support",
+    "API Development & Integration",
+    "AI & Process Automation",
+    "IT Support & Maintenance",
   ];
 
   const budgetTiers = [

@@ -20,34 +20,32 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
           {/* Left Column: Headline, subtext, dual CTAs */}
           <div className="lg:col-span-7 flex flex-col items-start text-left lg:pr-6">
             {/* Display Headline */}
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[4.75rem] font-bold text-white tracking-[-0.03em] sm:tracking-[-0.035em] leading-[1.14] sm:leading-[1.12] max-w-2xl">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-bold text-white tracking-[-0.03em] sm:tracking-[-0.035em] leading-[1.14] sm:leading-[1.12] max-w-2xl">
               Your Technology Team,{" "}
               <span className="block mt-1 sm:mt-2 pb-2 sm:pb-3 -mb-2 sm:-mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] via-[#3B82F6] to-[#A855F7] drop-shadow-[0_0_35px_rgba(59,130,246,0.35)]">
                 Beyond Borders.
               </span>
             </h1>
 
+            {/* Core Value Proposition */}
+            <p className="mt-4 sm:mt-5 text-base sm:text-xl font-medium text-slate-200 max-w-xl leading-snug">
+              Flexible technology services and reliable outsourcing support to help your business build, operate, and grow.
+            </p>
+
             {/* Crisp supporting text */}
-            <p className="mt-4 sm:mt-7 text-sm sm:text-lg md:text-xl text-slate-300 max-w-xl font-normal leading-relaxed">
-              Coderovo helps businesses build, scale, and maintain digital solutions through flexible software engineering teams and reliable IT expertise.
+            <p className="mt-2.5 sm:mt-3.5 text-sm sm:text-base text-slate-400 max-w-xl font-normal leading-relaxed">
+              From custom software development and dedicated remote teams to business system support and back-office operations, CodeRovo brings technology expertise and practical business support together.
             </p>
 
             {/* Dual CTA Actions */}
-            <div className="mt-7 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 w-full sm:w-auto">
+            <div className="mt-7 sm:mt-9 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 w-full sm:w-auto">
               {/* Primary CTA */}
               <button
                 onClick={() => onOpenContact()}
-                className="w-full sm:w-auto px-7 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm sm:text-base font-semibold text-[#07090E] bg-white hover:bg-slate-100 active:scale-[0.98] transition-all duration-300 shadow-[0_0_30px_-5px_rgba(0,240,255,0.45)] hover:shadow-[0_0_40px_rgba(59,130,246,0.6)] flex items-center justify-center gap-2.5 group cursor-pointer"
+                className="w-full sm:w-auto px-7 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm sm:text-base font-semibold text-[#07090E] bg-white hover:bg-slate-100 active:scale-[0.98] transition-all duration-300 shadow-[0_0_30px_-5px_rgba(0,240,255,0.45)] hover:shadow-[0_0_40px_rgba(59,130,246,0.6)] flex items-center justify-center gap-2 group cursor-pointer"
               >
-                Start a Project
-                <svg
-                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
+                <span>Discuss Your Project</span>
+                <span className="font-bold text-base transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
               </button>
 
               {/* Secondary CTA */}
@@ -55,8 +53,17 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
                 href="#services"
                 className="w-full sm:w-auto px-7 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm sm:text-base font-medium text-slate-200 bg-[#131824]/80 hover:bg-[#1A2234] active:scale-[0.98] border border-white/12 hover:border-cyan-400/40 backdrop-blur-md transition-all duration-300 flex items-center justify-center gap-2 text-center"
               >
-                Explore Services
+                Explore Our Services
               </a>
+            </div>
+
+            {/* Subtitle Badges */}
+            <div className="mt-6 pt-5 border-t border-white/8 flex flex-wrap items-center gap-2 text-[10px] sm:text-xs font-mono tracking-wider text-slate-400 uppercase">
+              <span className="text-cyan-400">SOFTWARE DEVELOPMENT</span>
+              <span className="text-slate-600">·</span>
+              <span className="text-blue-400">IT OUTSOURCING</span>
+              <span className="text-slate-600">·</span>
+              <span className="text-purple-400">BUSINESS SYSTEMS SUPPORT</span>
             </div>
           </div>
 

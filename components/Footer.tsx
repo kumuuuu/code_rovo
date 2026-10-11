@@ -11,11 +11,11 @@ export function Footer() {
           {/* Col 1: Brand & Social (lg:col-span-4) */}
           <div className="lg:col-span-4 space-y-3 sm:space-y-4">
             <Logo variant="footer" className="h-10 sm:h-11 md:h-12 w-auto" />
-            <div className="text-xs font-mono tracking-wider text-cyan-400 uppercase pt-1">
+            <div className="text-xs font-mono tracking-wider text-cyan-400 uppercase pt-1 font-semibold">
               Your Team Beyond Borders.
             </div>
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-              Coderovo delivers high-order engineering excellence, dedicated development squads, and tailored technology solutions for enterprise innovators and scaling tech companies worldwide.
+              CodeRovo delivers international technology outsourcing, dedicated remote development squads, and practical business systems support for scaling companies worldwide.
             </p>
 
             {/* Social Icons */}
@@ -67,26 +67,26 @@ export function Footer() {
               Services
             </h4>
             <ul className="space-y-1 sm:space-y-2 text-sm">
-              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">Software Development</a></li>
-              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">Dedicated Teams</a></li>
-              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">Team Extension</a></li>
-              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">UI/UX Engineering</a></li>
-              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">Cloud & DevOps</a></li>
-              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">Maintenance & Support</a></li>
+              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">Custom Software Development</a></li>
+              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">Dedicated Remote Teams</a></li>
+              <li><a href="#systems" className="py-1 inline-block hover:text-cyan-300 transition-colors">Business Systems & Operations</a></li>
+              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">API & System Integration</a></li>
+              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">Process Automation & AI</a></li>
+              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">IT Support & Maintenance</a></li>
             </ul>
           </div>
 
-          {/* Col 3: Company (lg:col-span-2) */}
+          {/* Col 3: Company & Approach (lg:col-span-2) */}
           <div className="lg:col-span-2 space-y-2.5 sm:space-y-3">
             <h4 className="text-xs font-mono uppercase tracking-widest text-slate-200">
               Company
             </h4>
             <ul className="space-y-1 sm:space-y-2 text-sm">
-              <li><a href="#about" className="py-1 inline-block hover:text-white transition-colors">About Coderovo</a></li>
-              <li><a href="#work" className="py-1 inline-block hover:text-white transition-colors">Our Work</a></li>
+              <li><a href="#home" className="py-1 inline-block hover:text-white transition-colors">Overview</a></li>
+              <li><a href="#about" className="py-1 inline-block hover:text-white transition-colors">About CodeRovo</a></li>
               <li><a href="#how-we-work" className="py-1 inline-block hover:text-white transition-colors">How We Work</a></li>
-              <li><a href="#team" className="py-1 inline-block hover:text-white transition-colors">Our Teams</a></li>
-              <li><a href="#tech-stack" className="py-1 inline-block hover:text-white transition-colors">Technology</a></li>
+              <li><a href="#systems" className="py-1 inline-block hover:text-white transition-colors">Systems We Know</a></li>
+              <li><a href="#security" className="py-1 inline-block hover:text-white transition-colors">Trust & Security</a></li>
             </ul>
           </div>
 
@@ -96,34 +96,50 @@ export function Footer() {
               Direct Contact
             </h4>
             <p className="text-sm text-slate-300">
-              Ready to accelerate your product roadmap? Connect with our senior engineering team.
+              Ready to explore software development or back-office operational outsourcing? Connect with our team.
             </p>
-            <div className="pt-1">
-              <a
-                href="mailto:hello@coderovo.com"
-                className="text-sm font-mono text-cyan-400 hover:text-cyan-300 transition-colors py-1 inline-block"
-              >
-                hello@coderovo.com
-              </a>
-              <div className="text-xs text-slate-500 mt-1">
-                Serving clients worldwide across NA, EMEA & APAC.
+            <div className="pt-1 space-y-1">
+              <div>
+                <a
+                  href="mailto:hello@coderovo.com"
+                  className="text-sm font-mono text-cyan-400 hover:text-cyan-300 transition-colors py-0.5 inline-block"
+                >
+                  hello@coderovo.com
+                </a>
+              </div>
+              <div>
+                <a
+                  href="tel:+9477227686"
+                  className="text-sm font-mono text-slate-300 hover:text-white transition-colors py-0.5 inline-block"
+                >
+                  +94 77227686
+                </a>
+              </div>
+              <div className="text-xs text-slate-500 pt-1 font-mono">
+                Website: www.coderovo.com
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
+        {/* Bottom bar with Trademark Notice */}
         <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4 text-center sm:text-left">
           <div>
-            © {currentYear} Coderovo. All rights reserved.
+            © {currentYear} CodeRovo. All rights reserved.
           </div>
           <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
             <a href="#" className="py-1 hover:text-slate-400 transition-colors">Privacy Policy</a>
             <a href="#" className="py-1 hover:text-slate-400 transition-colors">Terms of Service</a>
-            <a href="#" className="py-1 hover:text-slate-400 transition-colors">Security Charter</a>
+            <a href="#security" className="py-1 hover:text-slate-400 transition-colors">Security Charter</a>
           </div>
+        </div>
+
+        <div className="pt-4 text-center text-[11px] font-mono text-slate-600">
+          All trademarks and logos belong to their respective owners. Their inclusion indicates relevant team experience only and does not imply endorsement or partnership.
         </div>
       </div>
     </footer>
   );
 }
+
+export default Footer;

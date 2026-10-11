@@ -32,8 +32,10 @@ export function Navbar({ onOpenContact }: NavbarProps) {
       const sections = [
         { id: "home", name: "Home" },
         { id: "services", name: "Services" },
-        { id: "how-we-work", name: "How We Work" },
-        { id: "about", name: "About" },
+        { id: "tech", name: "Expertise" },
+        { id: "systems", name: "Systems We Know" },
+        { id: "about", name: "About Us" },
+        { id: "contact", name: "Contact" },
       ];
 
       const scrollPosition = window.scrollY + 180;
@@ -57,13 +59,18 @@ export function Navbar({ onOpenContact }: NavbarProps) {
   const navLinks = [
     { name: "Home", href: "#home" },
     { name: "Services", href: "#services" },
-    { name: "How We Work", href: "#how-we-work" },
-    { name: "About", href: "#about" },
+    { name: "Expertise", href: "#tech" },
+    { name: "Systems We Know", href: "#systems" },
+    { name: "About Us", href: "#about" },
+    { name: "Contact", href: "#contact", isContact: true },
   ];
 
-  const handleNavClick = (name: string) => {
+  const handleNavClick = (name: string, isContact?: boolean) => {
     setActiveSection(name);
     setMobileMenuOpen(false);
+    if (isContact) {
+      onOpenContact();
+    }
   };
 
   return (
@@ -76,8 +83,8 @@ export function Navbar({ onOpenContact }: NavbarProps) {
         <nav
           className={`pointer-events-auto w-full flex items-center justify-between border-solid transition-all duration-300 ease-out ${
             scrolled
-              ? "h-16 md:h-auto md:max-w-4xl lg:max-w-5xl md:mt-3.5 rounded-none md:rounded-full px-4 sm:px-6 md:px-7 py-0 md:py-2.5 bg-[#07090E]/95 md:bg-[#0D111A]/90 backdrop-blur-2xl border-b md:border border-white/10 md:border-white/12 shadow-[0_10px_30px_rgba(0,0,0,0.8)] md:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.85),0_0_35px_-5px_rgba(59,130,246,0.22)]"
-              : "h-16 md:h-auto max-w-full mt-0 rounded-none px-4 sm:px-8 lg:px-16 py-0 md:py-4.5 bg-[#07090E]/90 md:bg-[#07090E]/85 backdrop-blur-xl border-b border-white/[0.08] md:border-t-transparent md:border-x-transparent md:border-b-white/[0.08] shadow-none"
+              ? "h-16 md:h-auto md:max-w-4xl lg:max-w-5xl md:mt-3.5 rounded-none md:rounded-full px-4 sm:px-6 md:px-7 py-0 md:py-2.5 bg-[#07090E]/50 md:bg-[#0D111A]/50 backdrop-blur-2xl border-b md:border border-white/10 md:border-white/12 shadow-[0_10px_30px_rgba(0,0,0,0.8)] md:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.85),0_0_35px_-5px_rgba(59,130,246,0.22)]"
+              : "h-16 md:h-auto max-w-full mt-0 rounded-none px-4 sm:px-8 lg:px-16 py-0 md:py-4.5 bg-[#07090E]/50 md:bg-[#07090E]/50 backdrop-blur-xl border-b border-white/[0.08] md:border-t-transparent md:border-x-transparent md:border-b-white/[0.08] shadow-none"
           }`}
         >
           {/* Left: Brand / Logo */}
@@ -91,14 +98,20 @@ export function Navbar({ onOpenContact }: NavbarProps) {
           </a>
 
           {/* Center: Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-7 lg:gap-10">
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {navLinks.map((link) => {
               const isActive = activeSection === link.name;
               return (
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => handleNavClick(link.name)}
+                  onClick={(e) => {
+                    if (link.isContact) {
+                      e.preventDefault();
+                      onOpenContact();
+                    }
+                    handleNavClick(link.name, link.isContact);
+                  }}
                   className={`text-sm font-medium transition-colors duration-200 cursor-pointer ${
                     isActive
                       ? "text-white font-semibold drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]"
@@ -115,9 +128,10 @@ export function Navbar({ onOpenContact }: NavbarProps) {
           <div className="hidden md:flex items-center">
             <button
               onClick={() => onOpenContact()}
-              className="px-5 py-2 rounded-full text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] active:scale-[0.98] transition-all duration-200 shadow-[0_0_20px_-3px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.7)] cursor-pointer"
+              className="px-5 py-2 rounded-full text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] active:scale-[0.98] transition-all duration-200 shadow-[0_0_20px_-3px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.7)] cursor-pointer flex items-center gap-1.5"
             >
-              Let&apos;s Talk
+              <span>Discuss a Project</span>
+              <span className="text-cyan-200">↗</span>
             </button>
           </div>
 
@@ -154,7 +168,7 @@ export function Navbar({ onOpenContact }: NavbarProps) {
           />
 
           {/* Integrated Header Dropdown Panel */}
-          <div className="relative z-50 w-full mt-16 bg-[#07090E]/98 backdrop-blur-2xl border-b border-white/10 px-5 pt-4 pb-6 shadow-[0_25px_50px_rgba(0,0,0,0.95)] animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="relative z-50 w-full mt-16 bg-[#07090E]/50 backdrop-blur-2xl border-b border-white/10 px-5 pt-4 pb-6 shadow-[0_25px_50px_rgba(0,0,0,0.95)] animate-in fade-in slide-in-from-top-2 duration-200">
             <div className="flex flex-col space-y-1">
               {navLinks.map((link) => {
                 const isActive = activeSection === link.name;
@@ -162,7 +176,12 @@ export function Navbar({ onOpenContact }: NavbarProps) {
                   <a
                     key={link.name}
                     href={link.href}
-                    onClick={() => handleNavClick(link.name)}
+                    onClick={(e) => {
+                      if (link.isContact) {
+                        e.preventDefault();
+                      }
+                      handleNavClick(link.name, link.isContact);
+                    }}
                     className={`flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-medium transition-all ${
                       isActive
                         ? "text-white font-semibold bg-white/10 text-cyan-200 border border-cyan-500/20 shadow-[0_0_15px_rgba(0,240,255,0.1)]"
@@ -186,9 +205,10 @@ export function Navbar({ onOpenContact }: NavbarProps) {
                   setMobileMenuOpen(false);
                   onOpenContact();
                 }}
-                className="w-full py-3.5 rounded-xl text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] active:scale-[0.99] text-center shadow-[0_0_20px_rgba(59,130,246,0.4)] cursor-pointer"
+                className="w-full py-3.5 rounded-xl text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] active:scale-[0.99] text-center shadow-[0_0_20px_rgba(59,130,246,0.4)] cursor-pointer flex items-center justify-center gap-1.5"
               >
-                Let&apos;s Talk
+                <span>Discuss a Project</span>
+                <span className="text-cyan-200">↗</span>
               </button>
               <div className="text-center text-xs text-slate-400">
                 Direct inquiry:{" "}

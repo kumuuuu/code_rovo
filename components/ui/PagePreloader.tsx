@@ -9,9 +9,14 @@ export function PagePreloader() {
   const [stage, setStage] = useState<"metaballs" | "logo" | "exit">("metaballs");
   const [dotCount, setDotCount] = useState(1);
   const [isSlow, setIsSlow] = useState(false);
-  const [isOffline, setIsOffline] = useState(() => (typeof navigator !== "undefined" ? !navigator.onLine : false));
+  const [isOffline, setIsOffline] = useState(false);
 
   useEffect(() => {
+    // Check initial client connectivity post-hydration to avoid SSR mismatch
+    if (typeof navigator !== "undefined" && !navigator.onLine) {
+      setIsOffline(true);
+    }
+
     // Cycle loading dots text
     const dotInterval = setInterval(() => {
       setDotCount((prev) => (prev % 3) + 1);

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 interface ServicesSectionProps {
   onSelectService: (service: string) => void;
@@ -10,10 +11,17 @@ export function ServicesSection({ onSelectService }: ServicesSectionProps) {
   const services = [
     {
       num: "01",
-      title: "Software Development",
+      title: "Custom Software Development",
+      href: "/services/software-development",
       description:
-        "Custom enterprise web & cloud applications built for scale, resilience, and speed. Architected with clean code principles and future-proof design.",
-      gradient: "from-cyan-400 to-blue-500",
+        "Build and improve digital solutions tailored to your business requirements, workflows, and customers.",
+      tags: [
+        "Custom web applications",
+        "Admin dashboards",
+        "Booking and management systems",
+        "API development",
+        "Third-party integrations",
+      ],
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -22,10 +30,15 @@ export function ServicesSection({ onSelectService }: ServicesSectionProps) {
     },
     {
       num: "02",
-      title: "Dedicated Development Teams",
+      title: "Dedicated Remote Teams & Team Extension",
       description:
-        "Autonomous squads aligned with your engineering culture, ready to accelerate roadmaps. Full ownership, senior leads, and daily standup integration.",
-      gradient: "from-blue-400 to-indigo-500",
+        "Add skilled team members to your existing operations or engage a dedicated team to support a defined project or ongoing development roadmap.",
+      tags: [
+        "Developer support",
+        "Remote team extension",
+        "Ongoing development",
+        "Flexible engagement models",
+      ],
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -34,10 +47,53 @@ export function ServicesSection({ onSelectService }: ServicesSectionProps) {
     },
     {
       num: "03",
-      title: "Team Extension",
+      title: "Business Systems & Back-Office Support",
+      href: "/services/business-systems-support",
       description:
-        "On-demand senior talent seamlessly embedded into your existing sprints and ceremonies. Rapid onboarding with immediate velocity impact.",
-      gradient: "from-indigo-400 to-purple-500",
+        "Support day-to-day business processes using accounting, hospitality, booking, CRM, and other operational systems. Services can be tailored to the client's processes and access requirements.",
+      tags: [
+        "Data entry & validation",
+        "System checks",
+        "Invoice & transaction checks",
+        "Reconciliation assistance",
+        "Operational administration",
+      ],
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+        </svg>
+      ),
+    },
+    {
+      num: "04",
+      title: "API Development & System Integration",
+      description:
+        "Connect business applications, automate data flows, and help systems exchange information more efficiently.",
+      tags: [
+        "REST APIs",
+        "Platform integrations",
+        "Webhooks",
+        "Authentication",
+        "Notifications",
+        "Data exchange",
+      ],
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+      ),
+    },
+    {
+      num: "05",
+      title: "AI & Business Process Automation",
+      description:
+        "Identify repetitive tasks and explore practical automation opportunities that can reduce manual effort and improve workflow consistency.",
+      tags: [
+        "Workflow automation",
+        "AI-enabled features",
+        "Process improvement",
+        "Automated notifications & data handling",
+      ],
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -45,38 +101,21 @@ export function ServicesSection({ onSelectService }: ServicesSectionProps) {
       ),
     },
     {
-      num: "04",
-      title: "UI/UX Engineering",
-      description:
-        "High-precision digital product design, design systems, and frontend architectural craft. Pixel-perfect implementations adhering to Apple design rigor.",
-      gradient: "from-purple-400 to-pink-500",
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-        </svg>
-      ),
-    },
-    {
-      num: "05",
-      title: "Cloud & DevOps",
-      description:
-        "Containerized infrastructure, automated CI/CD pipelines, and high-availability cloud deployments across AWS and Google Cloud Platform.",
-      gradient: "from-cyan-400 to-teal-500",
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z" />
-        </svg>
-      ),
-    },
-    {
       num: "06",
-      title: "Maintenance & Support",
+      title: "IT Support, Maintenance & Deployment",
       description:
-        "Proactive monitoring, performance optimization, and SLA-backed ongoing tech maintenance to ensure 99.99% system availability.",
-      gradient: "from-blue-400 to-cyan-500",
+        "Help keep existing applications and digital systems maintained, updated, tested, and deployed according to agreed requirements.",
+      tags: [
+        "Bug fixing & troubleshooting",
+        "Application updates",
+        "Server & domain configuration",
+        "Docker & deployment",
+        "QA & testing",
+      ],
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
       ),
     },
@@ -86,14 +125,11 @@ export function ServicesSection({ onSelectService }: ServicesSectionProps) {
     <section id="services" className="relative px-4 sm:px-6 py-16 sm:py-24 max-w-7xl mx-auto scroll-mt-20">
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
-        <span className="text-xs uppercase font-mono font-medium tracking-[0.2em] text-[#00F0FF]">
-          WHAT WE DO
-        </span>
-        <h2 className="mt-3 sm:mt-4 text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
-          Technology solutions<br className="hidden sm:inline" /> for your business.
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
+          Technology and outsourcing solutions built around your business.
         </h2>
-        <p className="mt-3 sm:mt-4 text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto">
-          From software development to dedicated engineering teams, Coderovo provides the technical expertise businesses need to build and grow.
+        <p className="mt-3.5 sm:mt-4 text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto">
+          Every business has different technology needs. CodeRovo offers flexible services that help companies develop digital products, extend their teams, maintain existing systems, and manage essential technology and operational tasks.
         </p>
       </div>
 
@@ -102,15 +138,15 @@ export function ServicesSection({ onSelectService }: ServicesSectionProps) {
         {services.map((item) => (
           <div
             key={item.num}
-            className="group relative rounded-2xl bg-[#0E131F]/70 hover:bg-[#131A29]/90 border border-white/8 hover:border-cyan-500/40 p-5 sm:p-7 md:p-8 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_20px_50px_-15px_rgba(0,240,255,0.15)] overflow-hidden"
+            className="group relative rounded-2xl bg-[#0E131F]/80 hover:bg-[#131A29]/95 border border-white/8 hover:border-cyan-500/40 p-5 sm:p-7 md:p-8 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_20px_50px_-15px_rgba(0,240,255,0.15)] overflow-hidden"
           >
             {/* Top Row: Numeric Badge + Line Icon */}
             <div>
-              <div className="flex items-center justify-between mb-5 sm:mb-6">
+              <div className="flex items-center justify-between mb-4 sm:mb-5">
                 <span className="font-mono text-xs font-semibold tracking-wider text-slate-400 group-hover:text-cyan-400 transition-colors">
                   {item.num}
                 </span>
-                <div className={`p-2 sm:p-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-cyan-300 group-hover:scale-110 group-hover:text-white transition-all duration-300`}>
+                <div className="p-2 sm:p-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-cyan-300 group-hover:scale-110 group-hover:text-white transition-all duration-300">
                   {item.icon}
                 </div>
               </div>
@@ -122,33 +158,57 @@ export function ServicesSection({ onSelectService }: ServicesSectionProps) {
               <p className="mt-2.5 sm:mt-3 text-sm text-slate-300 leading-relaxed">
                 {item.description}
               </p>
+
+              {/* Tags bullet points */}
+              <div className="mt-4 pt-4 border-t border-white/5 flex flex-wrap gap-1.5">
+                {item.tags.map((tag, tIdx) => (
+                  <span
+                    key={tIdx}
+                    className="text-[11px] font-mono text-slate-400 bg-white/5 px-2 py-0.5 rounded-md border border-white/5"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/* Bottom Row: CTA link */}
-            <div className="pt-5 sm:pt-6 mt-5 sm:mt-6 border-t border-white/5 flex items-center justify-between">
-              <button
-                onClick={() => onSelectService(item.title)}
-                className="py-1 text-xs font-medium text-slate-400 group-hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer"
-              >
-                <span>Learn more</span>
-                <span className="transition-transform group-hover:translate-x-1">→</span>
-              </button>
+            <div className="pt-5 mt-5 border-t border-white/5 flex items-center justify-between">
+              {item.href ? (
+                <Link
+                  href={item.href}
+                  className="py-1 text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1.5 transition-colors"
+                >
+                  <span>Explore service details</span>
+                  <span className="transition-transform group-hover:translate-x-1">→</span>
+                </Link>
+              ) : (
+                <button
+                  onClick={() => onSelectService(item.title)}
+                  className="py-1 text-xs font-medium text-slate-400 group-hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer"
+                >
+                  <span>Discuss this service</span>
+                  <span className="transition-transform group-hover:translate-x-1">↗</span>
+                </button>
+              )}
               <div className="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-cyan-400 transition-colors" />
             </div>
           </div>
         ))}
       </div>
 
-      {/* Footer link in section */}
+      {/* Footer CTA Banner in section */}
       <div className="mt-10 sm:mt-14 text-center">
         <button
-          onClick={() => onSelectService("Software Development")}
-          className="inline-flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-cyan-300 transition-colors group cursor-pointer px-4 py-2 rounded-full hover:bg-white/5"
+          onClick={() => onSelectService("Custom Software Development")}
+          className="inline-flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-cyan-300 transition-colors group cursor-pointer px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10"
         >
-          <span>Explore All Engineering Capabilities</span>
-          <span className="transition-transform group-hover:translate-x-1">→</span>
+          <span>Have specific service requirements? Let&apos;s talk</span>
+          <span className="transition-transform group-hover:translate-x-1">↗</span>
         </button>
       </div>
     </section>
   );
 }
+
+export default ServicesSection;

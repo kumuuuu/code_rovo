@@ -4,20 +4,20 @@ import React, { useState } from "react";
 import { PagePreloader } from "@/components/ui/PagePreloader";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
-import { CompanyStats } from "@/components/CompanyStats";
 import { ServicesSection } from "@/components/ServicesSection";
-import { TeamModel } from "@/components/TeamModel";
+import { ConcaveLogoCarousel } from "@/components/ConcaveLogoCarousel";
+import { SystemsExperience } from "@/components/SystemsExperience";
 import { WhyUs } from "@/components/WhyUs";
-import { TechStack } from "@/components/TechStack";
 import { ProcessFlow } from "@/components/ProcessFlow";
-import { CaseStudies } from "@/components/CaseStudies";
+import { EngagementModels } from "@/components/EngagementModels";
+import { SecurityTrust } from "@/components/SecurityTrust";
 import { CallToAction } from "@/components/CallToAction";
 import { Footer } from "@/components/Footer";
 import { ContactModal } from "@/components/ContactModal";
 
 export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState<string>("Software Development");
+  const [selectedService, setSelectedService] = useState<string>("Custom Software Development");
 
   const handleOpenContact = (service?: string) => {
     if (service) {
@@ -36,35 +36,35 @@ export default function Home() {
 
       {/* Main Content Flow */}
       <main className="relative flex flex-col">
-        {/* 02. Hero Section */}
+        {/* 01. Hero Section */}
         <HeroSection onOpenContact={handleOpenContact} />
 
-        {/* 03. Company Stats & Credibility Bento */}
-        <CompanyStats />
-
-        {/* 04. Core Services Matrix */}
+        {/* 02. What We Do / Services Matrix */}
         <ServicesSection onSelectService={handleOpenContact} />
 
-        {/* 05. Outsourcing / Team Capability Model */}
-        <TeamModel />
+        {/* 03. Technical Capabilities & Concave 3D Logo Carousel */}
+        <ConcaveLogoCarousel />
 
-        {/* 06. Why Coderovo (Trust & Craft) */}
+        {/* 04. Systems and Platforms Experience (Differentiator Logo Wall) */}
+        <SystemsExperience onOpenContact={handleOpenContact} />
+
+        {/* 05. Why CodeRovo (Partnership & Alignment) */}
         <WhyUs />
 
-        {/* 07. Technology Stack */}
-        <TechStack />
-
-        {/* 08. How We Work (7-Stage Lifecycle) */}
+        {/* 06. How We Work (5-Stage Structured Process) */}
         <ProcessFlow />
 
-        {/* 09. Featured Work / Projects */}
-        <CaseStudies onOpenContact={handleOpenContact} />
+        {/* 07. Engagement Models (Project-Based vs Monthly Outsourcing) */}
+        <EngagementModels onOpenContact={handleOpenContact} />
 
-        {/* 10. Final Call to Action */}
+        {/* 08. Trust, Security & Confidentiality */}
+        <SecurityTrust />
+
+        {/* 09. Final Call to Action */}
         <CallToAction onOpenContact={() => handleOpenContact()} />
       </main>
 
-      {/* 11. Comprehensive Footer */}
+      {/* 10. Comprehensive Footer */}
       <Footer />
 
       {/* Interactive Contact & Inquiry Modal */}

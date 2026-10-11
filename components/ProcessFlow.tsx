@@ -1,208 +1,98 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 
 export function ProcessFlow() {
-  const [activeStage, setActiveStage] = useState<number>(0);
-
-  const stages = [
+  const steps = [
     {
       num: "01",
-      name: "Discover",
-      duration: "Days 1 - 3",
-      tagline: "Scope & Objectives Alignment",
+      title: "Understand",
+      tagline: "Scope & Discovery",
       description:
-        "Comprehensive technical discovery, architecture audits, bottleneck identification, and defining success criteria with your key stakeholders.",
-      deliverable: "Product Requirements Document (PRD) & Tech Architecture Brief",
+        "We discuss your business goals, project scope, existing systems, challenges, and expected outcomes.",
     },
     {
       num: "02",
-      name: "Plan",
-      duration: "Days 3 - 5",
-      tagline: "Sprint Roadmapping & Team Assembly",
+      title: "Plan",
+      tagline: "Alignment & Architecture",
       description:
-        "Sprint cadence establishment, backlog grooming, matching senior engineer profiles to your domain, and setting up communication channels.",
-      deliverable: "Milestone Schedule, Jira Board, & Team Alignment Charter",
+        "We agree on deliverables, responsibilities, required skills, access arrangements, timelines, and the engagement model.",
     },
     {
       num: "03",
-      name: "Design",
-      duration: "Sprints 1 - 2",
-      tagline: "UX/UI Architecture & Systems",
+      title: "Onboard",
+      tagline: "Tooling & Integration",
       description:
-        "High-fidelity user journeys, component libraries, responsive prototypes, and validation in accordance with Apple design principles.",
-      deliverable: "Interactive Design System, Screen Specs, & User Flows",
+        "We establish the necessary communication channels, documentation, system access, workflows, and training.",
     },
     {
       num: "04",
-      name: "Develop",
-      duration: "Bi-Weekly Sprints",
-      tagline: "Clean, Scalable Implementation",
+      title: "Deliver",
+      tagline: "Execution & Oversight",
       description:
-        "Disciplined full-stack engineering, test-driven development (TDD), daily pull requests, and peer reviews adhering to strict linters and standards.",
-      deliverable: "Production-Grade Code, Unit Tests, & Bi-Weekly Demos",
+        "Our team carries out the agreed development or operational work and provides progress updates at the agreed intervals.",
     },
     {
       num: "05",
-      name: "Test",
-      duration: "Continuous CI",
-      tagline: "Rigorous QA & Security Validation",
+      title: "Review & Improve",
+      tagline: "Continuous Optimization",
       description:
-        "Automated regression suites, load testing, cross-browser/device validation, vulnerability scans, and end-to-end integration verification.",
-      deliverable: "Automated QA Reports & Security Audit Sign-off",
-    },
-    {
-      num: "06",
-      name: "Deploy",
-      duration: "Release Day",
-      tagline: "Zero-Downtime Production Cutover",
-      description:
-        "Containerized cloud orchestration, blue/green or canary rollout, DNS routing, and automated rollback safety nets.",
-      deliverable: "Live Production Release & Deployment Verification",
-    },
-    {
-      num: "07",
-      name: "Support",
-      duration: "Ongoing SLA",
-      tagline: "Continuous Stewardship & Scale",
-      description:
-        "24/7 telemetry monitoring, performance optimization, security patch cadence, and proactive feature enhancements as user volume grows.",
-      deliverable: "Uptime SLA Monitoring, Monthly Reports & Roadmap Sprints",
+        "We review the work, address feedback, document relevant changes, and identify opportunities for ongoing improvement.",
     },
   ];
 
   return (
     <section id="how-we-work" className="relative px-4 sm:px-6 py-16 sm:py-24 max-w-7xl mx-auto scroll-mt-20">
-      <div className="max-w-3xl mb-10 sm:mb-16">
-        <span className="text-xs uppercase font-mono font-medium tracking-[0.2em] text-[#00F0FF]">
-          HOW WE WORK
-        </span>
-        <h2 className="mt-3 sm:mt-4 text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
-          From idea to production.
+      {/* Section Header */}
+      <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
+          A straightforward process from day one.
         </h2>
-        <p className="mt-3 sm:mt-4 text-sm sm:text-base text-slate-300 leading-relaxed">
-          A transparent 7-stage engineering lifecycle engineered for zero friction, predictable velocity, and reliable outcomes.
+        <p className="mt-3.5 text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto">
+          Our structured methodology ensures clarity, accountability, and predictable execution across both software engineering and back-office outsourcing engagements.
         </p>
       </div>
 
-      {/* Mobile-only Quick Stage Navigator Header */}
-      <div className="flex sm:hidden items-center justify-between mb-4 px-1">
-        <div className="flex items-center gap-2">
-          <span className="text-xs font-mono font-semibold text-cyan-400">
-            Step {activeStage + 1} of {stages.length}:
-          </span>
-          <span className="text-xs font-semibold text-white">
-            {stages[activeStage].name}
-          </span>
-        </div>
-        <div className="flex items-center gap-1.5">
-          <button
-            onClick={() => setActiveStage((prev) => Math.max(0, prev - 1))}
-            disabled={activeStage === 0}
-            className="w-8 h-8 rounded-lg bg-[#131824] border border-white/10 flex items-center justify-center text-slate-300 disabled:opacity-30 disabled:pointer-events-none active:bg-white/10"
-            aria-label="Previous Stage"
+      {/* 5-Step Progressive Horizontal/Vertical Timeline */}
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4 lg:gap-6">
+        {steps.map((step, idx) => (
+          <div
+            key={idx}
+            className="group relative rounded-2xl bg-[#0E131F]/80 hover:bg-[#131A29]/95 border border-white/8 hover:border-cyan-400/40 p-5 sm:p-6 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_15px_35px_-10px_rgba(0,240,255,0.15)]"
           >
-            ←
-          </button>
-          <button
-            onClick={() => setActiveStage((prev) => Math.min(stages.length - 1, prev + 1))}
-            disabled={activeStage === stages.length - 1}
-            className="w-8 h-8 rounded-lg bg-[#131824] border border-white/10 flex items-center justify-center text-slate-300 disabled:opacity-30 disabled:pointer-events-none active:bg-white/10"
-            aria-label="Next Stage"
-          >
-            →
-          </button>
-        </div>
-      </div>
-
-      {/* Horizontal Stage Stepper Track */}
-      <div className="relative mb-8 sm:mb-12 overflow-x-auto pb-4 scrollbar-none -mx-4 px-4 sm:mx-0">
-        {/* Connecting hairline gradient track */}
-        <div className="hidden lg:block absolute top-7 left-8 right-8 h-[2px] bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 opacity-25 z-0" />
-
-        <div className="flex items-center justify-between min-w-[680px] sm:min-w-[760px] relative z-10 gap-2 sm:gap-3">
-          {stages.map((stage, idx) => {
-            const isActive = activeStage === idx;
-            return (
-              <button
-                key={stage.num}
-                onClick={() => setActiveStage(idx)}
-                className="flex flex-col items-center group cursor-pointer focus:outline-none flex-1"
-              >
-                {/* Circle Indicator */}
-                <div
-                  className={`w-11 h-11 sm:w-14 sm:h-14 rounded-full flex items-center justify-center font-mono text-xs sm:text-sm font-bold transition-all duration-300 border ${
-                    isActive
-                      ? "bg-white text-[#07090E] border-white shadow-[0_0_25px_rgba(0,240,255,0.6)] scale-110"
-                      : "bg-[#0D111A] text-slate-400 border-white/10 group-hover:border-white/30 group-hover:text-white"
-                  }`}
-                >
-                  {stage.num}
-                </div>
-
-                {/* Name */}
-                <span
-                  className={`mt-2 sm:mt-3 text-[11px] sm:text-xs font-semibold tracking-wide transition-colors ${
-                    isActive ? "text-cyan-300" : "text-slate-400 group-hover:text-slate-200"
-                  }`}
-                >
-                  {stage.name}
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <span className="font-mono text-xs font-bold text-cyan-400 px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20">
+                  {step.num}
                 </span>
-
-                {/* Micro Duration Pill */}
-                <span className="mt-0.5 sm:mt-1 text-[9px] sm:text-[10px] font-mono text-slate-500 whitespace-nowrap">
-                  {stage.duration}
+                <span className="text-xs font-mono text-slate-500">
+                  Phase {idx + 1}
                 </span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
+              </div>
 
-      {/* Active Stage Detailed Spotlight Box */}
-      <div className="relative rounded-2xl md:rounded-3xl bg-[#0D111A]/90 border border-white/10 p-5 sm:p-8 md:p-10 shadow-2xl overflow-hidden transition-all duration-300">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-[90px] pointer-events-none" />
+              <h3 className="text-lg font-bold text-white tracking-tight group-hover:text-cyan-200 transition-colors">
+                {step.title}
+              </h3>
 
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
-          <div className="lg:col-span-8 space-y-3 sm:space-y-4">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <span className="px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-mono font-semibold bg-white/5 border border-white/10 text-cyan-400">
-                STAGE {stages[activeStage].num}
-              </span>
-              <span className="text-xs font-mono text-slate-400">
-                {stages[activeStage].duration}
+              <div className="text-[11px] font-mono text-slate-400 mt-1 uppercase tracking-wider">
+                {step.tagline}
+              </div>
+
+              <p className="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                {step.description}
+              </p>
+            </div>
+
+            <div className="mt-5 pt-4 border-t border-white/5 flex items-center justify-end">
+              <span className="text-xs text-slate-500 group-hover:text-cyan-300 transition-colors">
+                {idx < 4 ? "→ Next step" : "✓ Ongoing"}
               </span>
             </div>
-
-            <h3 className="text-xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
-              {stages[activeStage].name} — {stages[activeStage].tagline}
-            </h3>
-
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              {stages[activeStage].description}
-            </p>
           </div>
-
-          <div className="lg:col-span-4 p-4 sm:p-5 rounded-xl bg-[#131824] border border-white/8 space-y-2">
-            <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-slate-400">
-              Primary Deliverable
-            </div>
-            <div className="text-xs sm:text-sm font-semibold text-white flex items-start gap-2">
-              <span className="text-cyan-400 mt-0.5">✓</span>
-              <span>{stages[activeStage].deliverable}</span>
-            </div>
-            <div className="pt-3 border-t border-white/5 flex items-center justify-between text-xs text-slate-400 font-mono">
-              <span>Next Milestone</span>
-              <button
-                onClick={() => setActiveStage((prev) => (prev + 1) % stages.length)}
-                className="text-cyan-300 hover:text-white transition-colors cursor-pointer flex items-center gap-1 py-1"
-              >
-                Proceed →
-              </button>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );
 }
+
+export default ProcessFlow;
