@@ -76,16 +76,14 @@ export function Navbar({ onOpenContact }: NavbarProps) {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 pointer-events-none flex justify-center transition-all duration-300 ease-out ${
-          scrolled ? "md:px-6" : "px-0"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 pointer-events-none flex justify-center transition-all duration-300 ease-out ${scrolled ? "md:px-6" : "px-0"
+          }`}
       >
         <nav
-          className={`pointer-events-auto w-full flex items-center justify-between border-solid transition-all duration-300 ease-out ${
-            scrolled
-              ? "h-16 md:h-auto md:max-w-4xl lg:max-w-5xl md:mt-3.5 rounded-none md:rounded-full px-4 sm:px-6 md:px-7 py-0 md:py-2.5 bg-[#07090E]/50 md:bg-[#0D111A]/50 backdrop-blur-2xl border-b md:border border-white/10 md:border-white/12 shadow-[0_10px_30px_rgba(0,0,0,0.8)] md:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.85),0_0_35px_-5px_rgba(59,130,246,0.22)]"
-              : "h-16 md:h-auto max-w-full mt-0 rounded-none px-4 sm:px-8 lg:px-16 py-0 md:py-4.5 bg-[#07090E]/50 md:bg-[#07090E]/50 backdrop-blur-xl border-b border-white/[0.08] md:border-t-transparent md:border-x-transparent md:border-b-white/[0.08] shadow-none"
-          }`}
+          className={`pointer-events-auto w-full flex items-center justify-between border-solid transition-all duration-300 ease-out ${scrolled
+            ? "h-16 md:h-auto md:max-w-4xl lg:max-w-5xl md:mt-3.5 rounded-none md:rounded-full px-4 sm:px-6 md:px-7 py-0 md:py-2.5 bg-transparent backdrop-blur-md border-b md:border border-white/10 shadow-none md:shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+            : "h-16 md:h-auto max-w-full mt-0 rounded-none px-4 sm:px-8 lg:px-16 py-0 md:py-4.5 bg-transparent border-b border-transparent shadow-none"
+            }`}
         >
           {/* Left: Brand / Logo */}
           <a
@@ -112,11 +110,10 @@ export function Navbar({ onOpenContact }: NavbarProps) {
                     }
                     handleNavClick(link.name, link.isContact);
                   }}
-                  className={`text-sm font-medium transition-colors duration-200 cursor-pointer ${
-                    isActive
-                      ? "text-white font-semibold drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]"
-                      : "text-slate-400 hover:text-white"
-                  }`}
+                  className={`text-sm font-medium transition-colors duration-200 cursor-pointer ${isActive
+                    ? "text-white font-semibold drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]"
+                    : "text-slate-400 hover:text-white"
+                    }`}
                 >
                   {link.name}
                 </a>
@@ -182,11 +179,10 @@ export function Navbar({ onOpenContact }: NavbarProps) {
                       }
                       handleNavClick(link.name, link.isContact);
                     }}
-                    className={`flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-medium transition-all ${
-                      isActive
-                        ? "text-white font-semibold bg-white/10 text-cyan-200 border border-cyan-500/20 shadow-[0_0_15px_rgba(0,240,255,0.1)]"
-                        : "text-slate-300 hover:text-white hover:bg-white/5 active:bg-white/10"
-                    }`}
+                    className={`flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-medium transition-all ${isActive
+                      ? "text-white font-semibold bg-white/10 text-cyan-200 border border-cyan-500/20 shadow-[0_0_15px_rgba(0,240,255,0.1)]"
+                      : "text-slate-300 hover:text-white hover:bg-white/5 active:bg-white/10"
+                      }`}
                   >
                     <span>{link.name}</span>
                     {isActive ? (
