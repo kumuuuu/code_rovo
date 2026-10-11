@@ -85,7 +85,7 @@ export function ProcessFlow() {
 
             <div className="mt-5 pt-4 border-t border-white/5 flex items-center justify-end">
               <span className="text-xs text-slate-500 group-hover:text-cyan-300 transition-colors">
-                {idx < 4 ? "→ Next step" : "✓ Ongoing"}
+                {idx < 4 ? "Next Step" : "Ongoing Support"}
               </span>
             </div>
           </div>

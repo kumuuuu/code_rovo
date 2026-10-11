@@ -46,7 +46,9 @@ export function EngagementModels({ onOpenContact }: EngagementModelsProps) {
                 "Structured review and handover process",
               ].map((item, idx) => (
                 <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
-                  <span className="text-cyan-400 font-bold mt-0.5">✓</span>
+                  <svg className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
                   <span>{item}</span>
                 </li>
               ))}
@@ -56,10 +58,9 @@ export function EngagementModels({ onOpenContact }: EngagementModelsProps) {
           <div className="mt-8 pt-6 border-t border-white/8">
             <button
               onClick={() => onOpenContact("Project-Based Services")}
-              className="w-full py-3 rounded-xl text-sm font-semibold text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/40 transition-all flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-3 rounded-xl text-sm font-semibold text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/40 transition-all flex items-center justify-center cursor-pointer"
             >
-              <span>Discuss a Project Scope</span>
-              <span>→</span>
+              Discuss a Project Scope
             </button>
           </div>
         </div>
@@ -90,7 +91,9 @@ export function EngagementModels({ onOpenContact }: EngagementModelsProps) {
                 "Capacity tailored and scaled to requirements",
               ].map((item, idx) => (
                 <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
-                  <span className="text-cyan-400 font-bold mt-0.5">✓</span>
+                  <svg className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
                   <span>{item}</span>
                 </li>
               ))}
@@ -100,10 +103,9 @@ export function EngagementModels({ onOpenContact }: EngagementModelsProps) {
           <div className="mt-8 pt-6 border-t border-white/8">
             <button
               onClick={() => onOpenContact("Monthly Outsourcing")}
-              className="w-full py-3 rounded-xl text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] active:scale-[0.99] transition-all shadow-[0_0_20px_rgba(59,130,246,0.4)] flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-3 rounded-xl text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] active:scale-[0.99] transition-all shadow-[0_0_20px_rgba(59,130,246,0.4)] flex items-center justify-center cursor-pointer"
             >
-              <span>Explore Monthly Retainers</span>
-              <span>→</span>
+              Explore Monthly Retainers
             </button>
           </div>
         </div>

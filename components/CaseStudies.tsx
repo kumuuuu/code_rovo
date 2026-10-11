@@ -126,10 +126,9 @@ export function CaseStudies({ onOpenContact }: CaseStudiesProps) {
             <div className="relative z-10 pt-5 sm:pt-6 mt-6 sm:mt-8 border-t border-white/6">
               <button
                 onClick={() => setActiveModalStudy(idx)}
-                className="w-full py-3 rounded-xl text-xs font-semibold text-slate-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] active:bg-white/[0.12] border border-white/10 transition-all flex items-center justify-center gap-2 group-hover:border-cyan-500/40 cursor-pointer"
+                className="w-full py-3 rounded-xl text-xs font-semibold text-slate-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] active:bg-white/[0.12] border border-white/10 transition-all flex items-center justify-center group-hover:border-cyan-500/40 cursor-pointer"
               >
-                <span>View Architecture Specs</span>
-                <span className="transition-transform group-hover:translate-x-1">→</span>
+                View Architecture Specs
               </button>
             </div>
           </div>
@@ -149,7 +148,9 @@ export function CaseStudies({ onOpenContact }: CaseStudiesProps) {
               className="absolute top-4 right-4 sm:top-6 sm:right-6 w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white transition-colors"
               aria-label="Close dialog"
             >
-              ✕
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
             </button>
 
             <span className="text-[11px] sm:text-xs font-mono text-cyan-400 uppercase tracking-widest">
@@ -192,7 +193,7 @@ export function CaseStudies({ onOpenContact }: CaseStudiesProps) {
                 }}
                 className="w-full sm:w-auto px-5 py-2.5 rounded-full text-xs font-semibold text-[#07090E] bg-white hover:bg-slate-100 active:scale-95 transition-all cursor-pointer text-center"
               >
-                Inquire Similar Solution →
+                Inquire Similar Solution
               </button>
             </div>
           </div>

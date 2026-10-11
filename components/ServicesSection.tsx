@@ -177,18 +177,16 @@ export function ServicesSection({ onSelectService }: ServicesSectionProps) {
               {item.href ? (
                 <Link
                   href={item.href}
-                  className="py-1 text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1.5 transition-colors"
+                  className="py-1 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors"
                 >
-                  <span>Explore service details</span>
-                  <span className="transition-transform group-hover:translate-x-1">→</span>
+                  Explore service details
                 </Link>
               ) : (
                 <button
                   onClick={() => onSelectService(item.title)}
-                  className="py-1 text-xs font-medium text-slate-400 group-hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer"
+                  className="py-1 text-xs font-medium text-slate-400 group-hover:text-white transition-colors cursor-pointer"
                 >
-                  <span>Discuss this service</span>
-                  <span className="transition-transform group-hover:translate-x-1">↗</span>
+                  Discuss this service
                 </button>
               )}
               <div className="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-cyan-400 transition-colors" />
@@ -201,10 +199,9 @@ export function ServicesSection({ onSelectService }: ServicesSectionProps) {
       <div className="mt-10 sm:mt-14 text-center">
         <button
           onClick={() => onSelectService("Custom Software Development")}
-          className="inline-flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-cyan-300 transition-colors group cursor-pointer px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10"
+          className="inline-flex items-center text-sm font-medium text-slate-300 hover:text-cyan-300 transition-colors group cursor-pointer px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10"
         >
-          <span>Have specific service requirements? Let&apos;s talk</span>
-          <span className="transition-transform group-hover:translate-x-1">↗</span>
+          Have specific service requirements? Let&apos;s talk
         </button>
       </div>
     </section>

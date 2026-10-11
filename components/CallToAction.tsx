@@ -26,10 +26,9 @@ export function CallToAction({ onOpenContact }: CallToActionProps) {
           <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4">
             <button
               onClick={onOpenContact}
-              className="w-full sm:w-auto px-8 sm:px-9 py-3.5 sm:py-4 rounded-full text-sm sm:text-base font-semibold text-[#07090E] bg-white hover:bg-slate-100 active:scale-[0.98] transition-all duration-300 shadow-[0_0_30px_-5px_rgba(0,240,255,0.45)] hover:shadow-[0_0_45px_rgba(59,130,246,0.65)] flex items-center justify-center gap-2 group cursor-pointer"
+              className="w-full sm:w-auto px-8 sm:px-9 py-3.5 sm:py-4 rounded-full text-sm sm:text-base font-semibold text-[#07090E] bg-white hover:bg-slate-100 active:scale-[0.98] transition-all duration-300 shadow-[0_0_30px_-5px_rgba(0,240,255,0.45)] hover:shadow-[0_0_45px_rgba(59,130,246,0.65)] flex items-center justify-center cursor-pointer"
             >
-              <span>Start a Conversation</span>
-              <span className="font-bold text-base transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+              Start a Conversation
             </button>
           </div>
 

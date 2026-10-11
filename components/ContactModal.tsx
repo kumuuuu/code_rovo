@@ -227,10 +227,9 @@ export function ContactModal({ isOpen, onClose, defaultService = "Software Devel
                 </span>
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-6 py-3 rounded-full font-medium text-sm text-[#07090E] bg-white hover:bg-slate-100 active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(0,240,255,0.4)] flex items-center justify-center gap-2 group cursor-pointer"
+                  className="w-full sm:w-auto px-6 py-3 rounded-full font-medium text-sm text-[#07090E] bg-white hover:bg-slate-100 active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(0,240,255,0.4)] flex items-center justify-center cursor-pointer"
                 >
                   Send Inquiry
-                  <span className="transition-transform group-hover:translate-x-0.5">→</span>
                 </button>
               </div>
             </form>

@@ -141,10 +141,9 @@ export function SystemsExperience({ onOpenContact }: SystemsExperienceProps) {
 
         <button
           onClick={() => onOpenContact("Business Systems & Operational Support")}
-          className="shrink-0 px-6 sm:px-8 py-3.5 rounded-full text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] active:scale-[0.98] transition-all shadow-[0_0_20px_-3px_rgba(59,130,246,0.5)] cursor-pointer flex items-center gap-2"
+          className="shrink-0 px-6 sm:px-8 py-3.5 rounded-full text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] active:scale-[0.98] transition-all shadow-[0_0_20px_-3px_rgba(59,130,246,0.5)] cursor-pointer"
         >
-          <span>Discuss Your Systems & Support Needs</span>
-          <span className="text-cyan-200">↗</span>
+          Discuss Your Systems & Support Needs
         </button>
       </div>
 

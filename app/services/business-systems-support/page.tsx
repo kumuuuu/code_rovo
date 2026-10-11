@@ -46,10 +46,9 @@ export default function BusinessSystemsSupportPage() {
             <div className="mt-8 flex flex-wrap gap-4">
               <button
                 onClick={() => setIsContactOpen(true)}
-                className="px-7 py-3.5 rounded-full text-sm font-semibold text-[#07090E] bg-white hover:bg-slate-100 transition-all shadow-[0_0_30px_-5px_rgba(0,240,255,0.45)] cursor-pointer flex items-center gap-2"
+                className="px-7 py-3.5 rounded-full text-sm font-semibold text-[#07090E] bg-white hover:bg-slate-100 transition-all shadow-[0_0_30px_-5px_rgba(0,240,255,0.45)] cursor-pointer"
               >
-                <span>Discuss Operational Support</span>
-                <span>↗</span>
+                Discuss Operational Support
               </button>
 
               <Link
@@ -118,7 +117,9 @@ export default function BusinessSystemsSupportPage() {
                 <ul className="mt-5 pt-4 border-t border-white/5 space-y-1.5">
                   {card.items.map((it, iIdx) => (
                     <li key={iIdx} className="text-xs text-slate-400 flex items-center gap-2">
-                      <span className="text-cyan-400">✓</span>
+                      <svg className="w-3.5 h-3.5 text-cyan-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
                       <span>{it}</span>
                     </li>
                   ))}
@@ -168,7 +169,7 @@ export default function BusinessSystemsSupportPage() {
                 onClick={() => setIsContactOpen(true)}
                 className="px-8 py-3.5 rounded-full text-sm font-semibold text-[#07090E] bg-white hover:bg-slate-100 transition-all shadow-[0_0_25px_rgba(0,240,255,0.4)] cursor-pointer"
               >
-                Discuss Systems & Support Needs ↗
+                Discuss Systems & Support Needs
               </button>
             </div>
           </div>

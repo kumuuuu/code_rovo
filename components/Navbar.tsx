@@ -125,10 +125,9 @@ export function Navbar({ onOpenContact }: NavbarProps) {
           <div className="hidden md:flex items-center">
             <button
               onClick={() => onOpenContact()}
-              className="px-5 py-2 rounded-full text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] active:scale-[0.98] transition-all duration-200 shadow-[0_0_20px_-3px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.7)] cursor-pointer flex items-center gap-1.5"
+              className="px-5 py-2 rounded-full text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] active:scale-[0.98] transition-all duration-200 shadow-[0_0_20px_-3px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.7)] cursor-pointer"
             >
-              <span>Discuss a Project</span>
-              <span className="text-cyan-200">↗</span>
+              Discuss a Project
             </button>
           </div>
 
@@ -185,10 +184,8 @@ export function Navbar({ onOpenContact }: NavbarProps) {
                       }`}
                   >
                     <span>{link.name}</span>
-                    {isActive ? (
+                    {isActive && (
                       <span className="w-2 h-2 rounded-full bg-[#00F0FF] shadow-[0_0_8px_#00F0FF]" />
-                    ) : (
-                      <span className="text-slate-500 text-sm">→</span>
                     )}
                   </a>
                 );
@@ -201,10 +198,9 @@ export function Navbar({ onOpenContact }: NavbarProps) {
                   setMobileMenuOpen(false);
                   onOpenContact();
                 }}
-                className="w-full py-3.5 rounded-xl text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] active:scale-[0.99] text-center shadow-[0_0_20px_rgba(59,130,246,0.4)] cursor-pointer flex items-center justify-center gap-1.5"
+                className="w-full py-3.5 rounded-xl text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] active:scale-[0.99] text-center shadow-[0_0_20px_rgba(59,130,246,0.4)] cursor-pointer"
               >
-                <span>Discuss a Project</span>
-                <span className="text-cyan-200">↗</span>
+                Discuss a Project
               </button>
               <div className="text-center text-xs text-slate-400">
                 Direct inquiry:{" "}

@@ -85,9 +85,6 @@ export function WhyUs() {
               <span className="text-slate-400 font-mono">
                 {card.stat}
               </span>
-              <span className="text-cyan-400 group-hover:translate-x-1 transition-transform">
-                →
-              </span>
             </div>
           </div>
         ))}

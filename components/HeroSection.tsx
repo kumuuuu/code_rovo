@@ -42,10 +42,9 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
               {/* Primary CTA */}
               <button
                 onClick={() => onOpenContact()}
-                className="w-full sm:w-auto px-7 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm sm:text-base font-semibold text-[#07090E] bg-white hover:bg-slate-100 active:scale-[0.98] transition-all duration-300 shadow-[0_0_30px_-5px_rgba(0,240,255,0.45)] hover:shadow-[0_0_40px_rgba(59,130,246,0.6)] flex items-center justify-center gap-2 group cursor-pointer"
+                className="w-full sm:w-auto px-7 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm sm:text-base font-semibold text-[#07090E] bg-white hover:bg-slate-100 active:scale-[0.98] transition-all duration-300 shadow-[0_0_30px_-5px_rgba(0,240,255,0.45)] hover:shadow-[0_0_40px_rgba(59,130,246,0.6)] flex items-center justify-center cursor-pointer"
               >
-                <span>Discuss Your Project</span>
-                <span className="font-bold text-base transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+                Discuss Your Project
               </button>
 
               {/* Secondary CTA */}
@@ -58,12 +57,12 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
             </div>
 
             {/* Subtitle Badges */}
-            <div className="mt-6 pt-5 border-t border-white/8 flex flex-wrap items-center gap-2 text-[10px] sm:text-xs font-mono tracking-wider text-slate-400 uppercase">
-              <span className="text-cyan-400">SOFTWARE DEVELOPMENT</span>
-              <span className="text-slate-600">·</span>
-              <span className="text-blue-400">IT OUTSOURCING</span>
-              <span className="text-slate-600">·</span>
-              <span className="text-purple-400">BUSINESS SYSTEMS SUPPORT</span>
+            <div className="mt-6 pt-5 border-t border-white/8 flex flex-wrap items-center gap-2 text-[10px] sm:text-xs font-mono tracking-wider uppercase">
+              <span className="text-white font-medium">SOFTWARE DEVELOPMENT</span>
+              <span className="text-slate-500">·</span>
+              <span className="text-white font-medium">IT OUTSOURCING</span>
+              <span className="text-slate-500">·</span>
+              <span className="text-white font-medium">BUSINESS SYSTEMS SUPPORT</span>
             </div>
           </div>
 
