@@ -287,6 +287,8 @@ export interface CurvedWaveCarouselProps {
   draggable?: boolean;
   /** Container className */
   className?: string;
+  /** Straight horizontal linear flow without sine curve or tilt skew (default: false) */
+  straight?: boolean;
 }
 
 export function CurvedWaveCarousel({
@@ -302,6 +304,7 @@ export function CurvedWaveCarousel({
   pauseOnHover = true,
   draggable = true,
   className = "",
+  straight = false,
 }: CurvedWaveCarouselProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerWidth, setContainerWidth] = useState(1200);
@@ -371,6 +374,14 @@ export function CurvedWaveCarousel({
           continue;
         }
 
+        if (straight || amplitude === 0) {
+          el.style.transform = `translate3d(${rawX.toFixed(1)}px, -50%, 0px)`;
+          el.style.opacity = "1";
+          el.style.filter = "none";
+          el.style.visibility = "visible";
+          continue;
+        }
+
         // Sine wave kinematics
         const angle = (2 * Math.PI * rawX) / wavelength;
         const y = amplitude * Math.sin(angle);
@@ -401,6 +412,7 @@ export function CurvedWaveCarousel({
       wavelength,
       amplitude,
       focusRadius,
+      straight,
     ]
   );
 

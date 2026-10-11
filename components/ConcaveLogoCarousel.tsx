@@ -114,34 +114,32 @@ export function ConcaveLogoCarousel() {
         </p>
       </div>
 
-      {/* Dual Row Frameless Ultra-Sized Curved Wave Carousels */}
-      <div className="relative z-10 w-full space-y-4 sm:space-y-6">
-        {/* Row 1: PM Logos (Enlarged, Traveling Counter-Clockwise Top: Right-to-Left) */}
+      {/* Dual Row Frameless Straight Linear Flow Carousels */}
+      <div className="relative z-10 w-full space-y-6 sm:space-y-8">
+        {/* Row 1: PM Logos (Straight Horizontal Conveyor Flow: Right-to-Left) */}
         <CurvedWaveCarousel
           items={pmLogos}
           speed={52}
-          height={195}
+          height={116}
           logoHeight={96}
           logoMaxWidth={240}
-          amplitude={24}
-          wavelength={1150}
+          amplitude={0}
+          straight={true}
           itemSpacing={260}
-          focusRadius={380}
           pauseOnHover={false}
           draggable={true}
         />
 
-        {/* Row 2: SE Logos (Traveling Counter-Clockwise Bottom: Left-to-Right) */}
+        {/* Row 2: SE Logos (Straight Horizontal Conveyor Flow: Left-to-Right) */}
         <CurvedWaveCarousel
           items={seLogos}
           speed={-52}
-          height={165}
+          height={96}
           logoHeight={76}
           logoMaxWidth={200}
-          amplitude={20}
-          wavelength={1100}
+          amplitude={0}
+          straight={true}
           itemSpacing={220}
-          focusRadius={350}
           pauseOnHover={false}
           draggable={true}
         />
