@@ -116,8 +116,7 @@ export default function ProjectBasedServicesPage() {
                 className="p-6 sm:p-8 rounded-2xl bg-[#0E131F]/80 border border-white/8 hover:border-cyan-400/30 transition-all flex flex-col justify-between"
               >
                 <div>
-                  <span className="text-xs font-mono font-bold text-cyan-400">0{idx + 1}</span>
-                  <h3 className="text-lg sm:text-xl font-bold text-white mt-2">{pillar.title}</h3>
+                  <h3 className="text-lg sm:text-xl font-bold text-white">{pillar.title}</h3>
                   <p className="text-xs sm:text-sm text-slate-300 mt-2.5 leading-relaxed">{pillar.description}</p>
                 </div>
                 <ul className="mt-6 pt-5 border-t border-white/5 space-y-2">

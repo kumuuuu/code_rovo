@@ -24,13 +24,6 @@ export function EngagementModels({ onOpenContact }: EngagementModelsProps) {
         {/* Model 1: Project-Based Services */}
         <div className="rounded-2xl sm:rounded-3xl bg-[#0E131F]/80 hover:bg-[#131A29]/95 border border-white/8 hover:border-cyan-400/40 p-6 sm:p-8 md:p-10 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_20px_50px_-15px_rgba(0,240,255,0.15)]">
           <div>
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
-                Defined Scope
-              </span>
-              <span className="text-xs font-mono text-slate-500">Model 01</span>
-            </div>
-
             <h3 className="text-2xl font-bold text-white tracking-tight">
               Project-Based Services
             </h3>
@@ -75,13 +68,6 @@ export function EngagementModels({ onOpenContact }: EngagementModelsProps) {
         {/* Model 2: Monthly Outsourcing */}
         <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#131B2E]/90 to-[#0C101A]/95 border border-cyan-400/30 hover:border-cyan-400/60 p-6 sm:p-8 md:p-10 transition-all duration-300 flex flex-col justify-between shadow-[0_15px_40px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_50px_-15px_rgba(59,130,246,0.3)]">
           <div>
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-purple-300 bg-purple-500/15 px-3 py-1 rounded-full border border-purple-500/25">
-                Ongoing Capacity
-              </span>
-              <span className="text-xs font-mono text-cyan-400">Popular</span>
-            </div>
-
             <h3 className="text-2xl font-bold text-white tracking-tight">
               Monthly Outsourcing
             </h3>

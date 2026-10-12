@@ -20,6 +20,7 @@ export interface CurvedWaveLogoItem {
   scale?: number;
   invert?: boolean;
   spacing?: number;
+  offsetX?: number;
 }
 
 // Built-in exact 8 SVG vector brand logos from the user's snippet
@@ -377,10 +378,12 @@ export function CurvedWaveCarousel({
     for (let i = 0; i < totalLinks; i++) {
       const cycleIndex = Math.floor(i / totalItemCount);
       const itemIndex = i % totalItemCount;
-      positions.push(cycleIndex * cycleMetrics.singleWidth + cycleMetrics.offsets[itemIndex]);
+      const basePos = cycleIndex * cycleMetrics.singleWidth + cycleMetrics.offsets[itemIndex];
+      const shift = items[itemIndex]?.offsetX || 0;
+      positions.push(basePos + shift);
     }
     return positions;
-  }, [totalLinks, totalItemCount, cycleMetrics]);
+  }, [totalLinks, totalItemCount, cycleMetrics, items]);
 
   // Direct 60fps DOM updater function for true conveyor chain
   const updateSlotPositions = useCallback(

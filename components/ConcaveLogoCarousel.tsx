@@ -55,10 +55,12 @@ function getSeLogoConfig(src: string, defaultName: string) {
 
   let width = 76;
   let scale = 1;
+  let offsetX = 0;
 
   if (isJwt) {
     width = 200;
     scale = 1.05;
+    offsetX = -80;
   } else if (isKeycloak) {
     width = 200;
     scale = 1.15;
@@ -68,13 +70,14 @@ function getSeLogoConfig(src: string, defaultName: string) {
   } else if (isMysql) {
     width = 76;
     scale = 1.2;
+    offsetX = 60;
   } else if (isNext) {
     width = 126;
   }
 
   const name = isJwt ? "JWT" : isKeycloak ? "Keycloak" : isMongo ? "MongoDB" : defaultName;
 
-  return { width, scale, invert: isNext, name };
+  return { width, scale, invert: isNext, name, offsetX };
 }
 
 // Calculate normalized center-to-center spacing so every edge-to-edge gap is perfectly uniform
@@ -124,9 +127,9 @@ const RAW_SE_FALLBACK_ITEMS: CurvedWaveLogoItem[] = [
   { name: "Spring Boot", src: "/Logos/SE/spring-boot-icon.png", alt: "Spring Boot", width: 76 },
   { name: "Docker", src: "/Logos/SE/docker-icon.png", alt: "Docker", width: 76 },
   { name: "MongoDB", src: "/Logos/SE/mongodb-seeklogo.png", alt: "MongoDB", scale: 1.15, width: 200 },
-  { name: "MySQL", src: "/Logos/SE/mysql-icon.png", alt: "MySQL", scale: 1.2, width: 76 },
+  { name: "MySQL", src: "/Logos/SE/mysql-icon.png", alt: "MySQL", scale: 1.2, width: 76, offsetX: 60 },
   { name: "Keycloak", src: "/Logos/SE/keycloak-seeklogo.png", alt: "Keycloak", scale: 1.15, width: 200 },
-  { name: "JWT", src: "/Logos/SE/Colorful Starburst JWT Logo-Photoroom.png", alt: "JWT", scale: 1.05, width: 200 },
+  { name: "JWT", src: "/Logos/SE/Colorful Starburst JWT Logo-Photoroom.png", alt: "JWT", scale: 1.05, width: 200, offsetX: -80 },
 ];
 
 const SE_FALLBACK_ITEMS: CurvedWaveLogoItem[] = applyNormalizedSpacings(RAW_SE_FALLBACK_ITEMS, 135);
@@ -167,6 +170,7 @@ export function ConcaveLogoCarousel() {
                   scale: config.scale,
                   width: config.width,
                   invert: config.invert,
+                  offsetX: config.offsetX,
                 };
               });
               setSeLogos(applyNormalizedSpacings(configured, 135));

@@ -5,37 +5,37 @@ import React from "react";
 export function ProcessFlow() {
   const steps = [
     {
-      num: "01",
       title: "Understand",
       tagline: "Scope & Discovery",
+      phase: "Phase 01",
       description:
         "We discuss your business goals, project scope, existing systems, challenges, and expected outcomes.",
     },
     {
-      num: "02",
       title: "Plan",
       tagline: "Alignment & Architecture",
+      phase: "Phase 02",
       description:
         "We agree on deliverables, responsibilities, required skills, access arrangements, timelines, and the engagement model.",
     },
     {
-      num: "03",
       title: "Onboard",
       tagline: "Tooling & Integration",
+      phase: "Phase 03",
       description:
         "We establish the necessary communication channels, documentation, system access, workflows, and training.",
     },
     {
-      num: "04",
       title: "Deliver",
       tagline: "Execution & Oversight",
+      phase: "Phase 04",
       description:
         "Our team carries out the agreed development or operational work and provides progress updates at the agreed intervals.",
     },
     {
-      num: "05",
       title: "Review & Improve",
       tagline: "Continuous Optimization",
+      phase: "Phase 05",
       description:
         "We review the work, address feedback, document relevant changes, and identify opportunities for ongoing improvement.",
     },
@@ -61,32 +61,35 @@ export function ProcessFlow() {
             className="group relative rounded-2xl bg-[#0E131F]/80 hover:bg-[#131A29]/95 border border-white/8 hover:border-cyan-400/40 p-5 sm:p-6 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_15px_35px_-10px_rgba(0,240,255,0.15)]"
           >
             <div>
-              <div className="flex items-center justify-between mb-4">
-                <span className="font-mono text-xs font-bold text-cyan-400 px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20">
-                  {step.num}
-                </span>
-                <span className="text-xs font-mono text-slate-500">
-                  Phase {idx + 1}
-                </span>
-              </div>
-
               <h3 className="text-lg font-bold text-white tracking-tight group-hover:text-cyan-200 transition-colors">
                 {step.title}
               </h3>
 
-              <div className="text-[11px] font-mono text-slate-400 mt-1 uppercase tracking-wider">
-                {step.tagline}
+              {/* Tag with distinct font and accent color */}
+              <div className="mt-2.5 mb-3.5">
+                <span className="inline-flex items-center text-[11px] font-mono font-medium tracking-wide text-cyan-300 bg-cyan-500/10 border border-cyan-500/25 px-2.5 py-1 rounded-md">
+                  {step.tagline}
+                </span>
               </div>
 
-              <p className="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                 {step.description}
               </p>
             </div>
 
-            <div className="mt-5 pt-4 border-t border-white/5 flex items-center justify-end">
-              <span className="text-xs text-slate-500 group-hover:text-cyan-300 transition-colors">
-                {idx < 4 ? "Next Step" : "Ongoing Support"}
+            {/* Bottom Row: Phase Name */}
+            <div className="mt-5 pt-4 border-t border-white/5 flex items-center justify-between">
+              <span className="text-xs font-mono font-medium text-slate-400 group-hover:text-cyan-300 transition-colors">
+                {step.phase}
               </span>
+              <svg
+                className="w-3.5 h-3.5 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M9 5l7 7-7 7" />
+              </svg>
             </div>
           </div>
         ))}
