@@ -30,14 +30,6 @@ const START_TIMELINES = [
   "Flexible",
 ] as const;
 
-const BUDGET_RANGES = [
-  "< $10k",
-  "$10k – $25k",
-  "$25k – $50k",
-  "$50k+",
-  "Flexible / TBD",
-] as const;
-
 export function ContactModal({
   isOpen,
   onClose,
@@ -63,7 +55,6 @@ export function ContactModal({
     requirements: "",
     engagementType: "",
     expectedStart: "",
-    budget: "",
     systemUrl: "",
   });
 
@@ -411,36 +402,6 @@ export function ContactModal({
                                 }`}
                             >
                               {timeline}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </div>
-
-                    {/* Estimated Budget */}
-                    <div>
-                      <label className="block text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-1.5">
-                        Estimated Budget
-                      </label>
-                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
-                        {BUDGET_RANGES.map((budget) => {
-                          const isSelected = formData.budget === budget;
-                          return (
-                            <button
-                              type="button"
-                              key={budget}
-                              onClick={() =>
-                                setFormData({
-                                  ...formData,
-                                  budget: isSelected ? "" : budget,
-                                })
-                              }
-                              className={`px-2 py-1.5 rounded-lg text-xs text-center border transition-all cursor-pointer ${isSelected
-                                  ? "bg-cyan-500/15 border-cyan-400 text-cyan-200 font-medium"
-                                  : "bg-[#0D111A] border-white/10 text-slate-400 hover:text-white hover:border-white/20"
-                                }`}
-                            >
-                              {budget}
                             </button>
                           );
                         })}
