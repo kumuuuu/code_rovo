@@ -16,9 +16,9 @@ function getPmLogoConfig(src: string, defaultName: string) {
   if (src.includes("2.15.51 AM (1)-Photoroom") || defaultName.toLowerCase().includes("expedia")) {
     return { scale: 1.7, name: "Expedia" };
   }
-  // Hotelbeds: Increase size
+  // Hotelbeds: Balanced sizing
   if (src.includes("2.15.50 AM (1)-Photoroom") || defaultName.toLowerCase().includes("hotelbeds")) {
-    return { scale: 1.85, name: "Hotelbeds" };
+    return { scale: 1.28, name: "Hotelbeds" };
   }
   // Zhara HS: Increase size significantly to compensate for square canvas padding
   if (src.includes("2.15.50 AM (5)-Photoroom") || defaultName.toLowerCase().includes("zhara")) {
@@ -95,7 +95,7 @@ function applyNormalizedSpacings(items: CurvedWaveLogoItem[], targetGap = 135): 
 
 // Fallback lists from public/Logos/PM
 const PM_FALLBACK_ITEMS: CurvedWaveLogoItem[] = [
-  { name: "Hotelbeds", src: "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (1)-Photoroom.png", alt: "Hotelbeds", scale: 1.85 },
+  { name: "Hotelbeds", src: "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (1)-Photoroom.png", alt: "Hotelbeds", scale: 1.28 },
   { name: "Platform 2", src: "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (2)-Photoroom.png", alt: "Business Platform 2" },
   { name: "Platform 3", src: "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (3)-Photoroom.png", alt: "Business Platform 3" },
   { name: "Platform 4", src: "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (4)-Photoroom.png", alt: "Business Platform 4" },
