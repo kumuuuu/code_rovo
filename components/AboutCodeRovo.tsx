@@ -14,7 +14,7 @@ export function AboutCodeRovo({ onOpenContact }: AboutCodeRovoProps) {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-r from-blue-600/10 via-cyan-500/10 to-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative z-10 max-w-4xl mx-auto">
-        <div className="rounded-2xl sm:rounded-3xl bg-[#0E131F]/90 border border-white/10 p-6 sm:p-12 md:p-16 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] space-y-8">
+        <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] backdrop-blur-2xl border border-white/20 p-6 sm:p-12 md:p-16 shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.28),0_25px_60px_-15px_rgba(0,0,0,0.7)] space-y-8">
           {/* Main Headline */}
           <div>
             <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">

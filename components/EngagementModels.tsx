@@ -22,7 +22,7 @@ export function EngagementModels({ onOpenContact }: EngagementModelsProps) {
       {/* Dual Model Comparison Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
         {/* Model 1: Project-Based Services */}
-        <div className="rounded-2xl sm:rounded-3xl bg-[#0E131F]/80 hover:bg-[#131A29]/95 border border-white/8 hover:border-cyan-400/40 p-6 sm:p-8 md:p-10 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_20px_50px_-15px_rgba(0,240,255,0.15)]">
+        <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.04] backdrop-blur-2xl border border-white/20 hover:border-white/35 p-6 sm:p-8 md:p-10 transition-all duration-300 flex flex-col justify-between shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.28),0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.38),0_25px_60px_rgba(0,0,0,0.6),0_0_30px_rgba(0,240,255,0.12)]">
           <div>
             <h3 className="text-2xl font-bold text-white tracking-tight">
               Project-Based Services
@@ -66,7 +66,7 @@ export function EngagementModels({ onOpenContact }: EngagementModelsProps) {
         </div>
 
         {/* Model 2: Monthly Outsourcing */}
-        <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#131B2E]/90 to-[#0C101A]/95 border border-cyan-400/30 hover:border-cyan-400/60 p-6 sm:p-8 md:p-10 transition-all duration-300 flex flex-col justify-between shadow-[0_15px_40px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_50px_-15px_rgba(59,130,246,0.3)]">
+        <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.04] backdrop-blur-2xl border border-cyan-400/35 hover:border-cyan-400/65 p-6 sm:p-8 md:p-10 transition-all duration-300 flex flex-col justify-between shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.28),0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.38),0_25px_60px_rgba(0,0,0,0.6),0_0_30px_rgba(0,240,255,0.2)]">
           <div>
             <h3 className="text-2xl font-bold text-white tracking-tight">
               Monthly Outsourcing

@@ -56,7 +56,7 @@ export function SecurityTrust() {
           {practices.map((item, idx) => (
             <div
               key={idx}
-              className="p-5 sm:p-6 rounded-xl sm:rounded-2xl bg-[#121828]/70 border border-white/8 hover:border-cyan-400/30 transition-all flex flex-col justify-start group"
+              className="p-5 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.04] backdrop-blur-2xl border border-white/20 hover:border-white/35 transition-all duration-300 flex flex-col justify-start group shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.28),0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.38),0_25px_60px_rgba(0,0,0,0.6),0_0_30px_rgba(0,240,255,0.12)]"
             >
               <div className="mb-2.5 sm:mb-3">
                 <span className={`${plusJakarta.className} text-xs sm:text-[13px] font-bold text-cyan-300 uppercase tracking-wider`}>

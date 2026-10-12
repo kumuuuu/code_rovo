@@ -113,7 +113,7 @@ export default function ProjectBasedServicesPage() {
             {pillars.map((pillar, idx) => (
               <div
                 key={idx}
-                className="p-6 sm:p-8 rounded-2xl bg-[#0E131F]/80 border border-white/8 hover:border-cyan-400/30 transition-all flex flex-col justify-between"
+                className="p-6 sm:p-8 rounded-2xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] backdrop-blur-2xl border border-white/20 hover:border-white/35 transition-all duration-300 hover:-translate-y-1 shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.28),0_20px_50px_-10px_rgba(0,0,0,0.5)] flex flex-col justify-between"
               >
                 <div>
                   <h3 className="text-lg sm:text-xl font-bold text-white">{pillar.title}</h3>
@@ -136,15 +136,18 @@ export default function ProjectBasedServicesPage() {
 
         {/* When to Choose This Model */}
         <section className="relative px-4 sm:px-6 max-w-7xl mx-auto mb-20 sm:mb-28">
-          <div className="rounded-2xl sm:rounded-3xl bg-[#0B0F19]/90 border border-white/10 p-6 sm:p-10 md:p-12">
+          <div className="relative rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] backdrop-blur-2xl border border-white/20 p-6 sm:p-10 md:p-12 shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.28),0_20px_50px_-10px_rgba(0,0,0,0.5)]">
             <h2 className="text-xl sm:text-2xl font-bold text-white mb-6">
               When to Choose Project-Based Engagement
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               {suitableCases.map((c, idx) => (
-                <div key={idx} className="p-4 rounded-xl bg-white/[0.02] border border-white/5 space-y-1.5">
-                  <div className="text-sm font-semibold text-white">{c.label}</div>
-                  <div className="text-xs text-slate-400 leading-relaxed">{c.detail}</div>
+                <div
+                  key={idx}
+                  className="p-5 sm:p-6 rounded-xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] backdrop-blur-xl border border-white/20 hover:border-white/35 transition-all duration-300 hover:-translate-y-0.5 shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.28),0_15px_35px_-10px_rgba(0,0,0,0.5)] space-y-2"
+                >
+                  <div className="text-sm sm:text-base font-semibold text-white">{c.label}</div>
+                  <div className="text-xs sm:text-sm text-slate-300 leading-relaxed">{c.detail}</div>
                 </div>
               ))}
             </div>
@@ -153,7 +156,7 @@ export default function ProjectBasedServicesPage() {
 
         {/* Bottom CTA Banner */}
         <section className="relative px-4 sm:px-6 max-w-7xl mx-auto">
-          <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-r from-blue-950/40 via-cyan-950/30 to-[#0B0F19] border border-cyan-500/20 p-8 sm:p-14 text-center">
+          <div className="relative rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] backdrop-blur-2xl border border-white/20 p-8 sm:p-14 text-center overflow-hidden shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.28),0_30px_100px_-20px_rgba(0,0,0,0.7)]">
             <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
               Ready to define your project scope?
             </h2>

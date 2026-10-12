@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { GlobalBackground } from "@/components/ui/GlobalBackground";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -68,9 +69,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} dark antialiased`} suppressHydrationWarning>
       <body
-        className="min-h-screen bg-[#07090E] text-[#E2E8F0] font-sans flex flex-col selection:bg-cyan-500/20 selection:text-cyan-300"
+        className="min-h-screen bg-[#07090E] text-[#E2E8F0] font-sans flex flex-col selection:bg-cyan-500/20 selection:text-cyan-300 relative"
         suppressHydrationWarning
       >
+        {/* <GlobalBackground /> */}
         {children}
       </body>
     </html>

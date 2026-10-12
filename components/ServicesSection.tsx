@@ -88,7 +88,7 @@ export function ServicesSection({ onSelectService }: ServicesSectionProps) {
         {services.map((item) => (
           <div
             key={item.title}
-            className="group relative rounded-2xl bg-[#0E131F]/80 hover:bg-[#131A29]/95 border border-white/8 hover:border-cyan-500/40 p-5 sm:p-7 md:p-8 transition-all duration-300 flex flex-col hover:shadow-[0_20px_50px_-15px_rgba(0,240,255,0.15)] overflow-hidden"
+            className="group relative rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.04] backdrop-blur-2xl border border-white/20 hover:border-white/35 p-5 sm:p-7 md:p-8 transition-all duration-300 flex flex-col shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.28),0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.38),0_25px_60px_rgba(0,0,0,0.6),0_0_30px_rgba(0,240,255,0.12)] overflow-hidden"
           >
             {/* Top Row: Line Icon */}
             <div className="mb-4 sm:mb-5">
