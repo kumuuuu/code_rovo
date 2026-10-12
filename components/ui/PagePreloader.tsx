@@ -20,15 +20,21 @@ export function PagePreloader() {
     setTimeout(() => {
       setIsLoading(false);
       if (typeof document !== "undefined") {
+        document.documentElement.style.overflow = "";
+        document.documentElement.style.overscrollBehavior = "";
         document.body.style.overflow = "";
+        document.body.style.overscrollBehavior = "";
       }
     }, 900);
   }, []);
 
   useEffect(() => {
-    // Lock scroll during video loading screen
+    // Lock scroll and completely remove scrollbar on both html and body during video screen
     if (typeof document !== "undefined") {
+      document.documentElement.style.overflow = "hidden";
+      document.documentElement.style.overscrollBehavior = "none";
       document.body.style.overflow = "hidden";
+      document.body.style.overscrollBehavior = "none";
     }
 
     // Safety fallback timer: Ensure transition triggers after ~6.2s even if video stalls
@@ -39,7 +45,10 @@ export function PagePreloader() {
     return () => {
       clearTimeout(safetyTimer);
       if (typeof document !== "undefined") {
+        document.documentElement.style.overflow = "";
+        document.documentElement.style.overscrollBehavior = "";
         document.body.style.overflow = "";
+        document.body.style.overscrollBehavior = "";
       }
     };
   }, [triggerTransition]);
@@ -69,7 +78,7 @@ export function PagePreloader() {
         animate={{ opacity: isExiting ? 0 : 1, scale: isExiting ? 1.03 : 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed inset-0 z-[100] flex items-center justify-center bg-[#07090E] overflow-hidden pointer-events-auto"
+        className="fixed inset-0 z-[100] flex items-center justify-center bg-[#07090E] overflow-hidden pointer-events-auto touch-none select-none overscroll-none"
       >
         {/* Full-screen Background Video */}
         <div className="relative w-full h-full flex items-center justify-center bg-[#07090E]">

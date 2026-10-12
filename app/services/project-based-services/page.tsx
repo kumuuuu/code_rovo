@@ -52,7 +52,7 @@ export default function ProjectBasedServicesPage() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#07090E] text-[#E2E8F0] selection:bg-cyan-500/25 selection:text-cyan-200">
+    <div className="relative min-h-screen bg-transparent text-[#E2E8F0] selection:bg-cyan-500/25 selection:text-cyan-200">
       <Navbar onOpenContact={() => setIsContactOpen(true)} />
 
       <main className="pt-28 sm:pt-36 pb-20">

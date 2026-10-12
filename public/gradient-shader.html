@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flowing Coderovo Logo Gradient Shader</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #000000;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .hud {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 9999px;
+      padding: 8px 16px;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      transition: opacity 0.3s ease;
+      z-index: 10;
+      user-select: none;
+    }
+    .hud:hover {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    .hud-btn {
+      background: transparent;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hud-btn:hover {
+      color: #38bdf8;
+    }
+    .fps-badge {
+      font-variant-numeric: tabular-nums;
+      color: #38bdf8;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="glcanvas"></canvas>
+
+  <div class="hud" id="hud">
+    <span class="fps-badge" id="fpsCounter">60 FPS</span>
+    <span>•</span>
+    <button class="hud-btn" id="playPauseBtn">⏸ Pause</button>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('glcanvas');
+    const gl = canvas.getContext('webgl', { powerPreference: 'high-performance', alpha: false });
+
+    if (!gl) {
+      document.body.innerHTML = '<p style="color:white;padding:20px;">WebGL not supported.</p>';
+      throw new Error('WebGL not supported');
+    }
+
+    const vsSource = `
+      attribute vec2 a_position;
+      void main() {
+        gl_Position = vec4(a_position, 0.0, 1.0);
+      }
+    `;
+
+    // Multi-blob shader using dynamic Coderovo logo colors with continuous color morphing
+    const fsSource = `
+      precision highp float;
+
+      uniform vec2 u_resolution;
+      uniform float u_time;
+
+      // Soft spatial dither to eliminate 8-bit banding in dark fades
+      float dither(vec2 coord) {
+        return fract(sin(dot(coord, vec2(12.9898, 78.233))) * 43758.5453) - 0.5;
+      }
+
+      // Smooth Gaussian radial falloff with aspect ratio correction
+      float softBlob(vec2 uv, vec2 center, float radius, float aspect) {
+        vec2 d = uv - center;
+        d.x *= aspect;
+        float distSq = dot(d, d);
+        return exp(-distSq / (2.0 * radius * radius));
+      }
+
+      // EXACT CODEROVO LOGO SPECTRUM
+      // Samples:
+      // 0: Cyan / Aqua      #00e5ff -> vec3(0.00, 0.90, 1.00)
+      // 1: Azure Sky Blue   #0088ff -> vec3(0.00, 0.53, 1.00)
+      // 2: Royal Cobalt     #0044ff -> vec3(0.00, 0.27, 1.00)
+      // 3: Electric Indigo  #4524f5 -> vec3(0.27, 0.14, 0.96)
+      // 4: Neon Violet      #8f22f7 -> vec3(0.56, 0.13, 0.97)
+      // 5: Vivid Magenta    #d72bf0 -> vec3(0.84, 0.17, 0.94)
+
+      vec3 getLogoColor(float phase) {
+        float p = mod(phase, 6.0);
+        int idx = int(floor(p));
+        float f = fract(p);
+
+        // Cosine smoothing between color stops
+        f = smoothstep(0.0, 1.0, f);
+
+        vec3 c0 = vec3(0.00, 0.90, 1.00); // 0: Cyan
+        vec3 c1 = vec3(0.00, 0.53, 1.00); // 1: Azure
+        vec3 c2 = vec3(0.00, 0.27, 1.00); // 2: Royal Cobalt
+        vec3 c3 = vec3(0.27, 0.14, 0.96); // 3: Electric Indigo
+        vec3 c4 = vec3(0.56, 0.13, 0.97); // 4: Neon Violet
+        vec3 c5 = vec3(0.84, 0.17, 0.94); // 5: Vivid Magenta
+
+        if (idx == 0) return mix(c0, c1, f);
+        if (idx == 1) return mix(c1, c2, f);
+        if (idx == 2) return mix(c2, c3, f);
+        if (idx == 3) return mix(c3, c4, f);
+        if (idx == 4) return mix(c4, c5, f);
+        return mix(c5, c0, f);
+      }
+
+      void main() {
+        vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+        float aspect = u_resolution.x / u_resolution.y;
+
+        // Base time for movement and color morphing
+        float t = u_time * 0.42;
+
+        // Color time: independent speeds so colors shift continuously on every blob
+        float ct = u_time * 0.25;
+
+        // 6 DISTINCT BLOBS TRAVELING AROUND THE FRAME:
+        // Each has its own trajectory AND its own continuous color cycle.
+
+        // Blob 1: Top-Left & Top Edge
+        vec2 pos1 = vec2(
+          0.25 + cos(t * 0.55) * 0.18,
+          0.75 + sin(t * 0.42) * 0.15
+        );
+        float b1 = softBlob(uv, pos1, 0.22, aspect);
+        vec3 col1 = getLogoColor(ct * 1.10 + 0.0);
+
+        // Blob 2: Top-Right & Right Edge
+        vec2 pos2 = vec2(
+          0.78 + sin(t * 0.48 + 1.2) * 0.16,
+          0.70 + cos(t * 0.60 + 0.5) * 0.18
+        );
+        float b2 = softBlob(uv, pos2, 0.24, aspect);
+        vec3 col2 = getLogoColor(ct * 0.85 + 2.1);
+
+        // Blob 3: Bottom-Right Corner
+        vec2 pos3 = vec2(
+          0.75 + cos(t * 0.50 + 2.4) * 0.17,
+          0.25 + sin(t * 0.38 + 1.8) * 0.16
+        );
+        float b3 = softBlob(uv, pos3, 0.23, aspect);
+        vec3 col3 = getLogoColor(ct * 1.25 + 4.2);
+
+        // Blob 4: Bottom-Left Corner
+        vec2 pos4 = vec2(
+          0.22 + sin(t * 0.44 + 3.1) * 0.16,
+          0.28 + cos(t * 0.52 + 2.0) * 0.17
+        );
+        float b4 = softBlob(uv, pos4, 0.22, aspect);
+        vec3 col4 = getLogoColor(ct * 0.95 + 1.3);
+
+        // Blob 5: Perimeter Runner (Full frame circuit)
+        vec2 pos5 = vec2(
+          0.50 + cos(t * 0.35 + 4.0) * 0.40,
+          0.50 + sin(t * 0.35 + 4.0) * 0.36
+        );
+        float b5 = softBlob(uv, pos5, 0.20, aspect);
+        vec3 col5 = getLogoColor(ct * 1.40 + 3.5);
+
+        // Blob 6: Diagonal wanderer
+        vec2 pos6 = vec2(
+          0.50 + sin(t * 0.30) * 0.35,
+          0.50 + cos(t * 0.60) * 0.32
+        );
+        float b6 = softBlob(uv, pos6, 0.19, aspect);
+        vec3 col6 = getLogoColor(ct * 0.70 + 5.1);
+
+        // Combine colored light emissions additively with soft tone response
+        vec3 accumulatedColor = col1 * b1
+                              + col2 * b2
+                              + col3 * b3
+                              + col4 * b4
+                              + col5 * b5
+                              + col6 * b6;
+
+        // Calculate total light intensity for contrast & deep black cutoff
+        float totalIntensity = b1 + b2 + b3 + b4 + b5 + b6;
+
+        // Smooth roll-off curve: preserves deep velvet black in negative space
+        float toneCurve = smoothstep(0.04, 0.85, totalIntensity);
+        accumulatedColor *= toneCurve;
+
+        // Add 1-bit subtle spatial dither to eliminate banding
+        accumulatedColor += (dither(gl_FragCoord.xy) / 255.0);
+
+        gl_FragColor = vec4(max(accumulatedColor, vec3(0.0)), 1.0);
+      }
+    `;
+
+    function createShader(gl, type, source) {
+      const shader = gl.createShader(type);
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+        const info = gl.getShaderInfoLog(shader);
+        gl.deleteShader(shader);
+        throw new Error('Shader compile error: ' + info);
+      }
+      return shader;
+    }
+
+    const vertexShader = createShader(gl, gl.VERTEX_SHADER, vsSource);
+    const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fsSource);
+
+    const program = gl.createProgram();
+    gl.attachShader(program, vertexShader);
+    gl.attachShader(program, fragmentShader);
+    gl.linkProgram(program);
+
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+      throw new Error('Program link error: ' + gl.getProgramInfoLog(program));
+    }
+
+    gl.useProgram(program);
+
+    const positionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+    gl.bufferData(
+      gl.ARRAY_BUFFER,
+      new Float32Array([
+        -1, -1,
+         1, -1,
+        -1,  1,
+        -1,  1,
+         1, -1,
+         1,  1,
+      ]),
+      gl.STATIC_DRAW
+    );
+
+    const aPosition = gl.getAttribLocation(program, 'a_position');
+    gl.enableVertexAttribArray(aPosition);
+    gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
+
+    const uResolution = gl.getUniformLocation(program, 'u_resolution');
+    const uTime = gl.getUniformLocation(program, 'u_time');
+
+    let isPlaying = true;
+    let accumulatedTime = 0.0;
+    let lastTimestamp = performance.now();
+
+    function resize() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const width = Math.floor(window.innerWidth * dpr);
+      const height = Math.floor(window.innerHeight * dpr);
+
+      if (canvas.width !== width || canvas.height !== height) {
+        canvas.width = width;
+        canvas.height = height;
+        gl.viewport(0, 0, width, height);
+      }
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+
+    let frameCount = 0;
+    let lastFpsUpdate = performance.now();
+    const fpsElement = document.getElementById('fpsCounter');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+
+    playPauseBtn.addEventListener('click', () => {
+      isPlaying = !isPlaying;
+      playPauseBtn.textContent = isPlaying ? '⏸ Pause' : '▶ Play';
+    });
+
+    function render(currentTimestamp) {
+      const delta = (currentTimestamp - lastTimestamp) * 0.001;
+      lastTimestamp = currentTimestamp;
+
+      if (isPlaying) {
+        accumulatedTime += delta;
+      }
+
+      frameCount++;
+      if (currentTimestamp - lastFpsUpdate >= 500) {
+        const fps = Math.round((frameCount * 1000) / (currentTimestamp - lastFpsUpdate));
+        fpsElement.textContent = fps + ' FPS';
+        frameCount = 0;
+        lastFpsUpdate = currentTimestamp;
+      }
+
+      gl.uniform2f(uResolution, canvas.width, canvas.height);
+      gl.uniform1f(uTime, accumulatedTime);
+
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+      requestAnimationFrame(render);
+    }
+
+    requestAnimationFrame((ts) => {
+      lastTimestamp = ts;
+      render(ts);
+    });
+  </script>
+</body>
+</html>

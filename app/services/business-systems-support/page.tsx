@@ -10,7 +10,7 @@ export default function BusinessSystemsSupportPage() {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen bg-[#07090E] text-[#E2E8F0] selection:bg-cyan-500/25 selection:text-cyan-200">
+    <div className="relative min-h-screen bg-transparent text-[#E2E8F0] selection:bg-cyan-500/25 selection:text-cyan-200">
       {/* Navigation */}
       <Navbar onOpenContact={() => setIsContactOpen(true)} />
 

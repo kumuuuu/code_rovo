@@ -11,216 +11,214 @@ export function GlobalBackground() {
 
     let animationFrameId: number;
 
-    function syncSize() {
-      if (!canvas) return;
-      const w = window.innerWidth || 1280;
-      const h = window.innerHeight || 720;
-      if (canvas.width !== w || canvas.height !== h) {
-        canvas.width = w;
-        canvas.height = h;
-      }
-    }
-
-    syncSize();
-
     const gl =
-      (canvas.getContext("webgl") as WebGLRenderingContext | null) ||
-      (canvas.getContext("experimental-webgl") as WebGLRenderingContext | null);
+      (canvas.getContext("webgl", { powerPreference: "high-performance", alpha: false }) as WebGLRenderingContext | null) ||
+      (canvas.getContext("experimental-webgl", { powerPreference: "high-performance", alpha: false }) as WebGLRenderingContext | null);
 
     if (!gl) return;
     const glCtx: WebGLRenderingContext = gl;
 
-    const vs = `attribute vec2 a_position;
-varying vec2 v_texCoord;
-void main() {
-  v_texCoord = a_position * 0.5 + 0.5;
-  gl_Position = vec4(a_position, 0.0, 1.0);
-}`;
+    const vsSource = `
+      attribute vec2 a_position;
+      void main() {
+        gl_Position = vec4(a_position, 0.0, 1.0);
+      }
+    `;
 
-    const fs = `precision highp float;
-uniform float u_time;
-uniform vec2 u_resolution;
-uniform vec2 u_mouse;
+    // Multi-blob shader using dynamic Coderovo logo colors with continuous color morphing
+    const fsSource = `
+      precision highp float;
 
-// Smooth minimum for organic metaball blending
-float smin(float a, float b, float k) {
-  float h = clamp(0.5 + 0.5 * (b - a) / k, 0.0, 1.0);
-  return mix(b, a, h) - k * h * (1.0 - h);
-}
+      uniform vec2 u_resolution;
+      uniform float u_time;
 
-// Simplex-style noise for organic surface ripple & iridescence
-vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
-vec2 mod289(vec2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
-vec3 permute(vec3 x) { return mod289(((x*34.0)+1.0)*x); }
+      // Soft spatial dither to eliminate 8-bit banding in deep dark transitions
+      float dither(vec2 coord) {
+        return fract(sin(dot(coord, vec2(12.9898, 78.233))) * 43758.5453) - 0.5;
+      }
 
-float snoise(vec2 v) {
-  const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
-  vec2 i  = floor(v + dot(v, C.yy));
-  vec2 x0 = v -   i + dot(i, C.xx);
-  vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
-  vec4 x12 = x0.xyxy + C.xxzz;
-  x12.xy -= i1;
-  i = mod289(i);
-  vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0));
-  vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
-  m = m*m;
-  m = m*m;
-  vec3 x = 2.0 * fract(p * C.www) - 1.0;
-  vec3 h = abs(x) - 0.5;
-  vec3 ox = floor(x + 0.5);
-  vec3 a0 = x - ox;
-  m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);
-  vec3 g;
-  g.x  = a0.x  * x0.x  + h.x  * x0.y;
-  g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-  return 130.0 * dot(m, g);
-}
+      // Smooth Gaussian radial falloff with aspect ratio correction
+      float softBlob(vec2 uv, vec2 center, float radius, float aspect) {
+        vec2 d = uv - center;
+        d.x *= aspect;
+        float distSq = dot(d, d);
+        return exp(-distSq / (2.0 * radius * radius));
+      }
 
-void main() {
-  vec2 uv = gl_FragCoord.xy / u_resolution.xy;
-  vec2 p = (gl_FragCoord.xy - 0.5 * u_resolution.xy) / min(u_resolution.y, u_resolution.x);
+      // EXACT CODEROVO LOGO SPECTRUM:
+      // 0: Cyan / Aqua      #00e5ff
+      // 1: Azure Sky Blue   #0088ff
+      // 2: Royal Cobalt     #0044ff
+      // 3: Electric Indigo  #4524f5
+      // 4: Neon Violet      #8f22f7
+      // 5: Vivid Magenta    #d72bf0
+      vec3 getLogoColor(float phase) {
+        float p = mod(phase, 6.0);
+        int idx = int(floor(p));
+        float f = fract(p);
 
-  float t = u_time * 0.28;
+        // Cosine smoothing between color stops
+        f = smoothstep(0.0, 1.0, f);
 
-  // Normalized mouse position with gentle parallax pull
-  vec2 mouseNorm = (u_mouse - 0.5 * u_resolution.xy) / min(u_resolution.y, u_resolution.x);
-  vec2 mouseOffset = mouseNorm * 0.15;
+        vec3 c0 = vec3(0.00, 0.90, 1.00); // 0: Cyan
+        vec3 c1 = vec3(0.00, 0.53, 1.00); // 1: Azure
+        vec3 c2 = vec3(0.00, 0.27, 1.00); // 2: Royal Cobalt
+        vec3 c3 = vec3(0.27, 0.14, 0.96); // 3: Electric Indigo
+        vec3 c4 = vec3(0.56, 0.13, 0.97); // 4: Neon Violet
+        vec3 c5 = vec3(0.84, 0.17, 0.94); // 5: Vivid Magenta
 
-  // Procedural drifting metaball liquid orbs (6 organic floating spheres)
-  // Orb 1: Cyan primary orb
-  vec2 c1 = vec2(sin(t * 0.8) * 0.45, cos(t * 0.6) * 0.35) + mouseOffset * 0.6;
-  float d1 = length(p - c1) - (0.34 + 0.04 * sin(t * 1.4));
+        if (idx == 0) return mix(c0, c1, f);
+        if (idx == 1) return mix(c1, c2, f);
+        if (idx == 2) return mix(c2, c3, f);
+        if (idx == 3) return mix(c3, c4, f);
+        if (idx == 4) return mix(c4, c5, f);
+        return mix(c5, c0, f);
+      }
 
-  // Orb 2: Electric Blue companion
-  vec2 c2 = vec2(cos(t * 0.7 + 1.8) * 0.52, sin(t * 0.9 + 0.8) * 0.38) + mouseOffset * 0.4;
-  float d2 = length(p - c2) - (0.38 + 0.05 * cos(t * 1.1));
+      void main() {
+        vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+        float aspect = u_resolution.x / u_resolution.y;
 
-  // Orb 3: Violet / Purple deep floater
-  vec2 c3 = vec2(sin(t * 0.6 + 3.2) * 0.58, cos(t * 0.75 + 2.1) * 0.42) - mouseOffset * 0.5;
-  float d3 = length(p - c3) - (0.42 + 0.04 * sin(t * 0.9));
+        // Base time for movement and color morphing
+        float t = u_time * 0.38;
 
-  // Orb 4: Magenta / Pink radiant orb
-  vec2 c4 = vec2(cos(t * 0.85 + 4.5) * 0.48, sin(t * 0.65 + 3.9) * 0.34) + mouseOffset * 0.7;
-  float d4 = length(p - c4) - (0.32 + 0.05 * cos(t * 1.3));
+        // Color time: independent speeds so colors shift continuously on every blob
+        float ct = u_time * 0.22;
 
-  // Orb 5: Ambient floating micro-bubble (Cyan/Blue)
-  vec2 c5 = vec2(sin(t * 1.1 + 0.5) * 0.65, cos(t * 1.0 + 4.8) * 0.46);
-  float d5 = length(p - c5) - 0.20;
+        // 6 DISTINCT BLOBS TRAVELING AROUND THE FRAME:
+        // Blob 1: Top-Left & Top Edge
+        vec2 pos1 = vec2(
+          0.25 + cos(t * 0.55) * 0.18,
+          0.75 + sin(t * 0.42) * 0.15
+        );
+        float b1 = softBlob(uv, pos1, 0.22, aspect);
+        vec3 col1 = getLogoColor(ct * 1.10 + 0.0);
 
-  // Orb 6: Soft magenta micro-bubble
-  vec2 c6 = vec2(cos(t * 1.0 + 2.4) * 0.62, sin(t * 1.2 + 1.5) * 0.44);
-  float d6 = length(p - c6) - 0.22;
+        // Blob 2: Top-Right & Right Edge
+        vec2 pos2 = vec2(
+          0.78 + sin(t * 0.48 + 1.2) * 0.16,
+          0.70 + cos(t * 0.60 + 0.5) * 0.18
+        );
+        float b2 = softBlob(uv, pos2, 0.24, aspect);
+        vec3 col2 = getLogoColor(ct * 0.85 + 2.1);
 
-  // Smoothly blend liquid fields together (organic metaballs)
-  float blendK = 0.32;
-  float d = smin(d1, d2, blendK);
-  d = smin(d, d3, blendK);
-  d = smin(d, d4, blendK);
-  d = smin(d, d5, blendK);
-  d = smin(d, d6, blendK);
+        // Blob 3: Bottom-Right Corner
+        vec2 pos3 = vec2(
+          0.75 + cos(t * 0.50 + 2.4) * 0.17,
+          0.25 + sin(t * 0.38 + 1.8) * 0.16
+        );
+        float b3 = softBlob(uv, pos3, 0.23, aspect);
+        vec3 col3 = getLogoColor(ct * 1.25 + 4.2);
 
-  // Subtle organic fluid surface ripple
-  float ripple = snoise(p * 2.8 + vec2(t * 0.3, -t * 0.2)) * 0.07;
-  d += ripple;
+        // Blob 4: Bottom-Left Corner
+        vec2 pos4 = vec2(
+          0.22 + sin(t * 0.44 + 3.1) * 0.16,
+          0.28 + cos(t * 0.52 + 2.0) * 0.17
+        );
+        float b4 = softBlob(uv, pos4, 0.22, aspect);
+        vec3 col4 = getLogoColor(ct * 0.95 + 1.3);
 
-  // Soft field falloff: perfect for glassmorphism refraction & frosted backdrops
-  float coreGlow = 1.0 - smoothstep(-0.25, 0.45, d);
-  float outerAura = 1.0 - smoothstep(-0.1, 0.9, d);
+        // Blob 5: Perimeter Runner (Full frame circuit)
+        vec2 pos5 = vec2(
+          0.50 + cos(t * 0.35 + 4.0) * 0.40,
+          0.50 + sin(t * 0.35 + 4.0) * 0.36
+        );
+        float b5 = softBlob(uv, pos5, 0.20, aspect);
+        vec3 col5 = getLogoColor(ct * 1.40 + 3.5);
 
-  // CodeRovo Brand Gradient Palette:
-  // Cyan (#00F0FF) -> Electric Blue (#3B82F6) -> Violet (#8B5CF6) -> Magenta (#EC4899)
-  vec3 cCyan    = vec3(0.00, 0.94, 1.00);
-  vec3 cBlue    = vec3(0.23, 0.51, 0.96);
-  vec3 cViolet  = vec3(0.55, 0.36, 0.96);
-  vec3 cMagenta = vec3(0.92, 0.28, 0.60);
+        // Blob 6: Diagonal wanderer
+        vec2 pos6 = vec2(
+          0.50 + sin(t * 0.30) * 0.35,
+          0.50 + cos(t * 0.60) * 0.32
+        );
+        float b6 = softBlob(uv, pos6, 0.19, aspect);
+        vec3 col6 = getLogoColor(ct * 0.70 + 5.1);
 
-  // Color distribution influenced by position & orb dominance
-  float colPhase1 = clamp((p.x + 0.6) * 0.8 + sin(t * 0.5) * 0.2, 0.0, 1.0);
-  float colPhase2 = clamp((p.y + 0.5) * 0.9 + cos(t * 0.4) * 0.2, 0.0, 1.0);
+        // Combine colored light emissions additively with soft tone response
+        vec3 accumulatedColor = col1 * b1
+                              + col2 * b2
+                              + col3 * b3
+                              + col4 * b4
+                              + col5 * b5
+                              + col6 * b6;
 
-  vec3 orbColor = mix(cCyan, cBlue, colPhase1);
-  orbColor = mix(orbColor, cViolet, colPhase2);
-  orbColor = mix(orbColor, cMagenta, clamp(sin(d * 3.0 + t) * 0.5 + 0.5, 0.0, 1.0) * 0.5);
+        // Base background: Deep Obsidian Navy #07090E
+        vec3 bgObsidian = vec3(0.027, 0.035, 0.055);
 
-  // Iridescent specular highlight on the bubble crest (subtle glassy sheen)
-  float sheen = pow(max(0.0, 1.0 - abs(d + 0.05) * 3.2), 3.0) * 0.45;
-  sheen *= (0.7 + 0.3 * snoise(p * 4.5 + t));
+        // Calculate total light intensity for contrast & deep black cutoff
+        float totalIntensity = b1 + b2 + b3 + b4 + b5 + b6;
 
-  // Deep Obsidian Navy Background: #05070B to #080C14 (Deep & Moody)
-  vec3 bgNavy = mix(vec3(0.020, 0.027, 0.043), vec3(0.031, 0.045, 0.078), uv.y);
+        // Smooth roll-off curve: preserves deep velvet obsidian in negative space
+        float toneCurve = smoothstep(0.06, 0.92, totalIntensity);
+        vec3 finalColor = bgObsidian + accumulatedColor * toneCurve * 0.35;
 
-  // Compose liquid orb lighting with ambient soft aura
-  vec3 fluidLight = orbColor * (coreGlow * 0.70 + outerAura * 0.35) + vec3(sheen * 0.8);
+        // Add 1-bit subtle spatial dither to eliminate banding
+        finalColor += (dither(gl_FragCoord.xy) / 255.0);
 
-  // Gentle radial vignette toward the viewport edges to dissolve into deep background
-  float vignette = 1.0 - smoothstep(0.40, 1.30, length(p));
-  fluidLight *= vignette;
+        gl_FragColor = vec4(max(finalColor, vec3(0.0)), 1.0);
+      }
+    `;
 
-  // VISIBILITY INTENSITY CONTROL:
-  // Change 0.42 to adjust shader brightness (e.g. 0.25 = very dark/subtle, 0.42 = moody balanced, 0.85 = bright)
-  vec3 finalColor = bgNavy + fluidLight * 0.42;
-
-  gl_FragColor = vec4(finalColor, 1.0);
-}`;
-
-    function cs(type: number, src: string) {
-      const s = glCtx.createShader(type);
+    function createShader(glContext: WebGLRenderingContext, type: number, src: string) {
+      const s = glContext.createShader(type);
       if (!s) return null;
-      glCtx.shaderSource(s, src);
-      glCtx.compileShader(s);
+      glContext.shaderSource(s, src);
+      glContext.compileShader(s);
       return s;
     }
 
-    const vertShader = cs(glCtx.VERTEX_SHADER, vs);
-    const fragShader = cs(glCtx.FRAGMENT_SHADER, fs);
+    const vertShader = createShader(glCtx, glCtx.VERTEX_SHADER, vsSource);
+    const fragShader = createShader(glCtx, glCtx.FRAGMENT_SHADER, fsSource);
     if (!vertShader || !fragShader) return;
 
-    const prog = glCtx.createProgram();
-    if (!prog) return;
+    const program = glCtx.createProgram();
+    if (!program) return;
 
-    glCtx.attachShader(prog, vertShader);
-    glCtx.attachShader(prog, fragShader);
-    glCtx.linkProgram(prog);
-    glCtx.useProgram(prog);
+    glCtx.attachShader(program, vertShader);
+    glCtx.attachShader(program, fragShader);
+    glCtx.linkProgram(program);
+    glCtx.useProgram(program);
 
-    const buf = glCtx.createBuffer();
-    glCtx.bindBuffer(glCtx.ARRAY_BUFFER, buf);
+    const buffer = glCtx.createBuffer();
+    glCtx.bindBuffer(glCtx.ARRAY_BUFFER, buffer);
     glCtx.bufferData(
       glCtx.ARRAY_BUFFER,
       new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]),
       glCtx.STATIC_DRAW
     );
 
-    const pos = glCtx.getAttribLocation(prog, "a_position");
-    glCtx.enableVertexAttribArray(pos);
-    glCtx.vertexAttribPointer(pos, 2, glCtx.FLOAT, false, 0, 0);
+    const aPos = glCtx.getAttribLocation(program, "a_position");
+    glCtx.enableVertexAttribArray(aPos);
+    glCtx.vertexAttribPointer(aPos, 2, glCtx.FLOAT, false, 0, 0);
 
-    const uTime = glCtx.getUniformLocation(prog, "u_time");
-    const uRes = glCtx.getUniformLocation(prog, "u_resolution");
-    const uMouse = glCtx.getUniformLocation(prog, "u_mouse");
+    const uRes = glCtx.getUniformLocation(program, "u_resolution");
+    const uTime = glCtx.getUniformLocation(program, "u_time");
 
-    let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+    function syncSize() {
+      if (!canvas) return;
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      const w = Math.floor(window.innerWidth * dpr);
+      const h = Math.floor(window.innerHeight * dpr);
 
-    const handleMouseMove = (event: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      if (rect.width && rect.height) {
-        const nx = (event.clientX - rect.left) / rect.width;
-        const ny = 1.0 - (event.clientY - rect.top) / rect.height;
-        mouse.x = nx * canvas.width;
-        mouse.y = ny * canvas.height;
+      if (canvas.width !== w || canvas.height !== h) {
+        canvas.width = w;
+        canvas.height = h;
+        glCtx.viewport(0, 0, w, h);
       }
-    };
+    }
 
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    syncSize();
     window.addEventListener("resize", syncSize, { passive: true });
 
-    function render(t: number) {
+    let startTime = performance.now();
+
+    function render(currentTime: number) {
       if (!canvas) return;
-      syncSize();
-      glCtx.viewport(0, 0, canvas.width, canvas.height);
-      if (uTime) glCtx.uniform1f(uTime, t * 0.001);
+      const elapsed = (currentTime - startTime) * 0.001;
+
       if (uRes) glCtx.uniform2f(uRes, canvas.width, canvas.height);
-      if (uMouse) glCtx.uniform2f(uMouse, mouse.x, mouse.y);
+      if (uTime) glCtx.uniform1f(uTime, elapsed);
+
       glCtx.drawArrays(glCtx.TRIANGLE_STRIP, 0, 4);
       animationFrameId = requestAnimationFrame(render);
     }
@@ -229,12 +227,11 @@ void main() {
 
     return () => {
       cancelAnimationFrame(animationFrameId);
-      window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", syncSize);
-      glCtx.deleteProgram(prog);
+      glCtx.deleteProgram(program);
       glCtx.deleteShader(vertShader);
       glCtx.deleteShader(fragShader);
-      glCtx.deleteBuffer(buf);
+      if (buffer) glCtx.deleteBuffer(buffer);
     };
   }, []);
 
@@ -243,14 +240,9 @@ void main() {
       aria-hidden="true"
       className="fixed inset-0 pointer-events-none z-0 w-full h-full overflow-hidden select-none"
     >
-      {/* 
-        VISIBILITY CONTROL (Quick CSS tweak):
-        You can change 'opacity-85' below to any Tailwind opacity value:
-        e.g., 'opacity-40' (very subtle/dark), 'opacity-60' (medium), 'opacity-85' (balanced), 'opacity-100' (full)
-      */}
       <canvas
         ref={canvasRef}
-        className="w-full h-full block object-cover opacity-85 transition-opacity duration-700"
+        className="w-full h-full block object-cover opacity-70 transition-opacity duration-700"
         style={{ display: "block", width: "100%", height: "100%" }}
       />
     </div>

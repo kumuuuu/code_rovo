@@ -72,8 +72,10 @@ export default function RootLayout({
         className="min-h-screen bg-[#07090E] text-[#E2E8F0] font-sans flex flex-col selection:bg-cyan-500/20 selection:text-cyan-300 relative"
         suppressHydrationWarning
       >
-        {/* <GlobalBackground /> */}
-        {children}
+        <GlobalBackground />
+        <div className="relative z-10 flex flex-col flex-1">
+          {children}
+        </div>
       </body>
     </html>
   );
