@@ -40,25 +40,57 @@ function getPmLogoConfig(src: string, defaultName: string) {
   return { scale: 1, name: defaultName };
 }
 
-// Helper to configure SE logo sizing, spacing, and styling
+// Helper to configure SE logo sizing, width, and styling
 function getSeLogoConfig(src: string, defaultName: string) {
   const isNext =
     src.toLowerCase().includes("next js") || defaultName.toLowerCase().includes("next");
+  const isJwt =
+    src.toLowerCase().includes("jwt") || defaultName.toLowerCase().includes("jwt");
+  const isKeycloak =
+    src.toLowerCase().includes("keycloak") || defaultName.toLowerCase().includes("keycloak");
+  const isMongo =
+    src.toLowerCase().includes("mongodb") || defaultName.toLowerCase().includes("mongodb");
+  const isMysql =
+    src.toLowerCase().includes("mysql") || defaultName.toLowerCase().includes("mysql");
 
-  // Keycloak: Generous 380px spacing
-  if (src.toLowerCase().includes("keycloak") || defaultName.toLowerCase().includes("keycloak")) {
-    return { scale: 1.15, spacing: 380, invert: false, name: "Keycloak" };
-  }
-  // MongoDB: Generous 420px spacing for wide wordmark
-  if (src.toLowerCase().includes("mongodb") || defaultName.toLowerCase().includes("mongodb")) {
-    return { scale: 1.15, spacing: 420, invert: false, name: "MongoDB" };
-  }
-  // MySQL: Generous 380px spacing
-  if (src.toLowerCase().includes("mysql") || defaultName.toLowerCase().includes("mysql")) {
-    return { scale: 1.2, spacing: 380, invert: false, name: "MySQL" };
+  let width = 76;
+  let scale = 1;
+
+  if (isJwt) {
+    width = 200;
+    scale = 1.05;
+  } else if (isKeycloak) {
+    width = 200;
+    scale = 1.15;
+  } else if (isMongo) {
+    width = 200;
+    scale = 1.15;
+  } else if (isMysql) {
+    width = 76;
+    scale = 1.2;
+  } else if (isNext) {
+    width = 126;
   }
 
-  return { scale: 1, spacing: 245, invert: isNext, name: defaultName };
+  const name = isJwt ? "JWT" : isKeycloak ? "Keycloak" : isMongo ? "MongoDB" : defaultName;
+
+  return { width, scale, invert: isNext, name };
+}
+
+// Calculate normalized center-to-center spacing so every edge-to-edge gap is perfectly uniform
+function applyNormalizedSpacings(items: CurvedWaveLogoItem[], targetGap = 135): CurvedWaveLogoItem[] {
+  const n = items.length;
+  if (n === 0) return items;
+  return items.map((item, idx) => {
+    const nextItem = items[(idx + 1) % n];
+    const wCurr = item.width || 76;
+    const wNext = nextItem.width || 76;
+    const computedSpacing = Math.round(wCurr / 2 + targetGap + wNext / 2);
+    return {
+      ...item,
+      spacing: computedSpacing,
+    };
+  });
 }
 
 // Fallback lists from public/Logos/PM
@@ -84,18 +116,20 @@ const PM_FALLBACK_ITEMS: CurvedWaveLogoItem[] = [
 ];
 
 // Fallback lists from public/Logos/SE
-const SE_FALLBACK_ITEMS: CurvedWaveLogoItem[] = [
-  { name: "React", src: "/Logos/SE/React.png", alt: "React", spacing: 245 },
-  { name: "Next.js", src: "/Logos/SE/next js.png", alt: "Next.js", invert: true, spacing: 245 },
-  { name: "Node.js", src: "/Logos/SE/node-js-icon.png", alt: "Node.js", spacing: 245 },
-  { name: "Java", src: "/Logos/SE/java-programming-language-icon.png", alt: "Java", spacing: 245 },
-  { name: "Spring Boot", src: "/Logos/SE/spring-boot-icon.png", alt: "Spring Boot", spacing: 245 },
-  { name: "Docker", src: "/Logos/SE/docker-icon.png", alt: "Docker", spacing: 245 },
-  { name: "MongoDB", src: "/Logos/SE/mongodb-seeklogo.png", alt: "MongoDB", scale: 1.15, spacing: 420 },
-  { name: "MySQL", src: "/Logos/SE/mysql-icon.png", alt: "MySQL", scale: 1.2, spacing: 380 },
-  { name: "Keycloak", src: "/Logos/SE/keycloak-seeklogo.png", alt: "Keycloak", scale: 1.15, spacing: 380 },
-  { name: "JWT", src: "/Logos/SE/jwt-seeklogo.png", alt: "JWT", spacing: 245 },
+const RAW_SE_FALLBACK_ITEMS: CurvedWaveLogoItem[] = [
+  { name: "React", src: "/Logos/SE/React.png", alt: "React", width: 76 },
+  { name: "Next.js", src: "/Logos/SE/next js.png", alt: "Next.js", invert: true, width: 126 },
+  { name: "Node.js", src: "/Logos/SE/node-js-icon.png", alt: "Node.js", width: 76 },
+  { name: "Java", src: "/Logos/SE/java-programming-language-icon.png", alt: "Java", width: 76 },
+  { name: "Spring Boot", src: "/Logos/SE/spring-boot-icon.png", alt: "Spring Boot", width: 76 },
+  { name: "Docker", src: "/Logos/SE/docker-icon.png", alt: "Docker", width: 76 },
+  { name: "MongoDB", src: "/Logos/SE/mongodb-seeklogo.png", alt: "MongoDB", scale: 1.15, width: 200 },
+  { name: "MySQL", src: "/Logos/SE/mysql-icon.png", alt: "MySQL", scale: 1.2, width: 76 },
+  { name: "Keycloak", src: "/Logos/SE/keycloak-seeklogo.png", alt: "Keycloak", scale: 1.15, width: 200 },
+  { name: "JWT", src: "/Logos/SE/Colorful Starburst JWT Logo-Photoroom.png", alt: "JWT", scale: 1.05, width: 200 },
 ];
+
+const SE_FALLBACK_ITEMS: CurvedWaveLogoItem[] = applyNormalizedSpacings(RAW_SE_FALLBACK_ITEMS, 135);
 
 export function ConcaveLogoCarousel() {
   const [pmLogos, setPmLogos] = useState<CurvedWaveLogoItem[]>(PM_FALLBACK_ITEMS);
@@ -124,19 +158,18 @@ export function ConcaveLogoCarousel() {
               );
             }
             if (data.se && Array.isArray(data.se) && data.se.length > 0) {
-              setSeLogos(
-                data.se.map((item: { name: string; src: string }) => {
-                  const config = getSeLogoConfig(item.src, item.name);
-                  return {
-                    name: config.name,
-                    src: item.src,
-                    alt: config.name,
-                    scale: config.scale,
-                    spacing: config.spacing,
-                    invert: config.invert,
-                  };
-                })
-              );
+              const configured = data.se.map((item: { name: string; src: string }) => {
+                const config = getSeLogoConfig(item.src, item.name);
+                return {
+                  name: config.name,
+                  src: item.src,
+                  alt: config.name,
+                  scale: config.scale,
+                  width: config.width,
+                  invert: config.invert,
+                };
+              });
+              setSeLogos(applyNormalizedSpacings(configured, 135));
             }
           }
         }
