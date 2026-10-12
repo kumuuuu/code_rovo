@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { ReactiveButton } from "./ui/ReactiveButton";
 
 interface AboutCodeRovoProps {
   onOpenContact: (subject?: string) => void;
@@ -51,12 +52,12 @@ export function AboutCodeRovo({ onOpenContact }: AboutCodeRovoProps) {
               </p>
             </div>
 
-            <button
+            <ReactiveButton
               onClick={() => onOpenContact("About CodeRovo Partnership")}
-              className="px-7 py-3.5 rounded-full text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(59,130,246,0.4)] cursor-pointer shrink-0"
+              className="px-7 py-3.5 text-sm rounded-full shrink-0"
             >
               Discuss Your Project
-            </button>
+            </ReactiveButton>
           </div>
         </div>
       </div>

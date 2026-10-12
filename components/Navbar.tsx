@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Logo } from "./Logo";
+import { ReactiveButton } from "./ui/ReactiveButton";
 
 interface NavbarProps {
   onOpenContact: (service?: string) => void;
@@ -123,12 +124,12 @@ export function Navbar({ onOpenContact }: NavbarProps) {
 
           {/* Right: Desktop Action Cluster */}
           <div className="hidden md:flex items-center">
-            <button
+            <ReactiveButton
               onClick={() => onOpenContact()}
-              className="px-5 py-2 rounded-full text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] active:scale-[0.98] transition-all duration-200 shadow-[0_0_20px_-3px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.7)] cursor-pointer"
+              className="px-5 py-2 text-sm rounded-full"
             >
               Discuss a Project
-            </button>
+            </ReactiveButton>
           </div>
 
           {/* Mobile Right Controls: Clean Hamburger Button */}
@@ -193,15 +194,15 @@ export function Navbar({ onOpenContact }: NavbarProps) {
             </div>
 
             <div className="mt-5 pt-4 border-t border-white/8 space-y-3">
-              <button
+              <ReactiveButton
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenContact();
                 }}
-                className="w-full py-3.5 rounded-xl text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] active:scale-[0.99] text-center shadow-[0_0_20px_rgba(59,130,246,0.4)] cursor-pointer"
+                className="w-full py-3.5 text-sm rounded-xl"
               >
                 Discuss a Project
-              </button>
+              </ReactiveButton>
               <div className="text-center text-xs text-slate-400">
                 Direct inquiry:{" "}
                 <a

@@ -1,6 +1,13 @@
 "use client";
 
 import React from "react";
+import { Plus_Jakarta_Sans } from "next/font/google";
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["700"],
+  display: "swap",
+});
 
 export function SecurityTrust() {
   const practices = [
@@ -52,7 +59,7 @@ export function SecurityTrust() {
               className="p-5 sm:p-6 rounded-xl sm:rounded-2xl bg-[#121828]/70 border border-white/8 hover:border-cyan-400/30 transition-all flex flex-col justify-start group"
             >
               <div className="mb-2.5 sm:mb-3">
-                <span className="text-xs font-mono font-medium text-cyan-300 uppercase tracking-wider">
+                <span className={`${plusJakarta.className} text-xs sm:text-[13px] font-bold text-cyan-300 uppercase tracking-wider`}>
                   {item.title}
                 </span>
               </div>

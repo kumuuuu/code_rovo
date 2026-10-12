@@ -46,10 +46,10 @@ export function CallToAction({ onOpenContact }: CallToActionProps) {
             <span>
               Phone:{" "}
               <a
-                href="tel:+9477227686"
+                href="tel:+94705286873"
                 className="text-slate-300 hover:text-white transition-colors font-mono"
               >
-                +94 77227686
+                +94 705286873
               </a>
             </span>
           </div>
