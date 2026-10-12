@@ -51,8 +51,7 @@ export function SecurityTrust() {
               key={idx}
               className="p-5 sm:p-6 rounded-xl sm:rounded-2xl bg-[#121828]/70 border border-white/8 hover:border-cyan-400/30 transition-all flex flex-col justify-start group"
             >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.6)] shrink-0" />
+              <div className="mb-2.5 sm:mb-3">
                 <span className="text-xs font-mono font-medium text-cyan-300 uppercase tracking-wider">
                   {item.title}
                 </span>

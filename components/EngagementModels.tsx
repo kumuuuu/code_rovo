@@ -52,7 +52,7 @@ export function EngagementModels({ onOpenContact }: EngagementModelsProps) {
           <div className="mt-8 pt-6 border-t border-white/8 space-y-2.5">
             <button
               onClick={() => onOpenContact("Project-Based Services")}
-              className="w-full py-3 rounded-xl text-sm font-semibold text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/40 transition-all flex items-center justify-center cursor-pointer"
+              className="w-full py-3 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 active:scale-[0.99] transition-all shadow-[0_0_20px_rgba(0,240,255,0.35)] hover:shadow-[0_0_25px_rgba(0,240,255,0.5)] flex items-center justify-center cursor-pointer"
             >
               Discuss a Project Scope
             </button>
@@ -96,7 +96,7 @@ export function EngagementModels({ onOpenContact }: EngagementModelsProps) {
           <div className="mt-8 pt-6 border-t border-white/8 space-y-2.5">
             <button
               onClick={() => onOpenContact("Monthly Outsourcing")}
-              className="w-full py-3 rounded-xl text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] active:scale-[0.99] transition-all shadow-[0_0_20px_rgba(59,130,246,0.4)] flex items-center justify-center cursor-pointer"
+              className="w-full py-3 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:via-indigo-500 hover:to-purple-500 active:scale-[0.99] transition-all shadow-[0_0_20px_rgba(124,58,237,0.35)] hover:shadow-[0_0_25px_rgba(124,58,237,0.55)] flex items-center justify-center cursor-pointer"
             >
               Explore Monthly Retainers
             </button>
@@ -110,17 +110,11 @@ export function EngagementModels({ onOpenContact }: EngagementModelsProps) {
         </div>
       </div>
 
-      {/* Supporting Copy & Unified CTA */}
-      <div className="mt-12 sm:mt-16 text-center max-w-2xl mx-auto space-y-5">
+      {/* Supporting Copy */}
+      <div className="mt-12 sm:mt-16 text-center max-w-2xl mx-auto">
         <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
           We work with you to define the right engagement based on the work involved, the skills required, the expected workload, and the level of ongoing support needed.
         </p>
-        <button
-          onClick={() => onOpenContact("Engagement Model Assessment")}
-          className="px-8 py-3.5 rounded-full text-sm font-semibold text-white bg-[#3B82F6] hover:bg-[#2563EB] active:scale-[0.98] transition-all shadow-[0_0_25px_rgba(59,130,246,0.45)] cursor-pointer inline-flex items-center justify-center"
-        >
-          Find the Right Engagement Model
-        </button>
       </div>
     </section>
   );
