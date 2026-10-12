@@ -19,6 +19,7 @@ export interface CurvedWaveLogoItem {
   href?: string;
   scale?: number;
   invert?: boolean;
+  spacing?: number;
 }
 
 // Built-in exact 8 SVG vector brand logos from the user's snippet
@@ -340,16 +341,46 @@ export function CurvedWaveCarousel({
     return () => observer.disconnect();
   }, []);
 
+  // Compute spacing per item in one cycle
+  const itemSpacings = useMemo(() => {
+    return items.map((item) =>
+      typeof item.spacing === "number" && item.spacing > 0 ? item.spacing : itemSpacing
+    );
+  }, [items, itemSpacing]);
+
+  // Prefix sums for slot positions within a single cycle
+  const cycleMetrics = useMemo(() => {
+    if (totalItemCount === 0) return { offsets: [], singleWidth: 0 };
+    const offsets: number[] = [];
+    let current = 0;
+    for (let i = 0; i < totalItemCount; i++) {
+      offsets.push(current);
+      current += itemSpacings[i];
+    }
+    return { offsets, singleWidth: current };
+  }, [totalItemCount, itemSpacings]);
+
   // Compute chain repetitions so total chain width spans well past viewport + buffers
   const repeatCount = useMemo(() => {
-    if (totalItemCount === 0 || itemSpacing <= 0) return 2;
-    const singleWidth = totalItemCount * itemSpacing;
+    if (totalItemCount === 0 || cycleMetrics.singleWidth <= 0) return 2;
     const neededWidth = containerWidth + buffer * 2;
-    return Math.max(2, Math.ceil(neededWidth / singleWidth) + 1);
-  }, [totalItemCount, itemSpacing, containerWidth, buffer]);
+    return Math.max(2, Math.ceil(neededWidth / cycleMetrics.singleWidth) + 1);
+  }, [totalItemCount, cycleMetrics.singleWidth, containerWidth, buffer]);
 
   const totalLinks = totalItemCount * repeatCount;
-  const totalChainWidth = totalLinks * itemSpacing;
+  const totalChainWidth = cycleMetrics.singleWidth * repeatCount;
+
+  // Precomputed nominal position for each link in the entire conveyor chain
+  const slotNominalPositions = useMemo(() => {
+    if (totalItemCount === 0 || cycleMetrics.singleWidth <= 0) return [];
+    const positions: number[] = [];
+    for (let i = 0; i < totalLinks; i++) {
+      const cycleIndex = Math.floor(i / totalItemCount);
+      const itemIndex = i % totalItemCount;
+      positions.push(cycleIndex * cycleMetrics.singleWidth + cycleMetrics.offsets[itemIndex]);
+    }
+    return positions;
+  }, [totalLinks, totalItemCount, cycleMetrics]);
 
   // Direct 60fps DOM updater function for true conveyor chain
   const updateSlotPositions = useCallback(
@@ -362,7 +393,7 @@ export function CurvedWaveCarousel({
         if (!el) continue;
 
         // Modular position on the closed conveyor chain
-        const nominalPos = i * itemSpacing;
+        const nominalPos = slotNominalPositions[i] ?? (i * itemSpacing);
         const rawX =
           ((((nominalPos - currentOffset + buffer) % totalChainWidth) + totalChainWidth) %
             totalChainWidth) -
@@ -406,6 +437,7 @@ export function CurvedWaveCarousel({
     [
       totalLinks,
       totalChainWidth,
+      slotNominalPositions,
       itemSpacing,
       buffer,
       containerWidth,
