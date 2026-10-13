@@ -312,6 +312,25 @@ export function CurvedWaveCarousel({
   const [containerWidth, setContainerWidth] = useState(1200);
   const [isHovered, setIsHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") {
+      setIsInView(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { rootMargin: "250px 0px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   // Position offset (pixels)
   const offsetRef = useRef(0);
@@ -451,8 +470,10 @@ export function CurvedWaveCarousel({
     ]
   );
 
-  // Animation frame loop
+  // Animation frame loop - runs ONLY when carousel is in viewport
   useEffect(() => {
+    if (!isInView) return;
+
     let animationFrameId: number;
     let lastTime = performance.now();
 
@@ -483,6 +504,7 @@ export function CurvedWaveCarousel({
     animationFrameId = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(animationFrameId);
   }, [
+    isInView,
     isDragging,
     isHovered,
     pauseOnHover,
@@ -491,10 +513,6 @@ export function CurvedWaveCarousel({
     updateSlotPositions,
   ]);
 
-  // Immediately lay out on mount and dimensions change
-  useEffect(() => {
-    updateSlotPositions(offsetRef.current);
-  }, [updateSlotPositions]);
 
   // Pointer drag event handlers
   const handlePointerDown = useCallback(
