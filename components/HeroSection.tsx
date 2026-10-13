@@ -57,7 +57,7 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
             </div>
 
             {/* Subtitle Badges */}
-            <div className="mt-6 pt-5 border-t border-white/8 flex flex-wrap items-center gap-2 text-[10px] sm:text-xs font-mono tracking-wider uppercase">
+            <div className="mt-6 pt-5 border-t border-white/8 flex flex-wrap items-center gap-2 text-[11px] sm:text-xs font-tight tracking-wider uppercase">
               <span className="text-white font-medium">SOFTWARE DEVELOPMENT</span>
               <span className="text-slate-500">·</span>
               <span className="text-white font-medium">IT OUTSOURCING</span>

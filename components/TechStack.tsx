@@ -70,9 +70,9 @@ export function TechStack() {
           <button
             key={cat.id}
             onClick={() => setActiveCategory(cat.id)}
-            className={`px-3.5 sm:px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider transition-all duration-200 cursor-pointer whitespace-nowrap flex-shrink-0 ${
+            className={`px-3.5 sm:px-4 py-2 rounded-full text-xs font-tight font-medium uppercase tracking-wider transition-all duration-200 cursor-pointer whitespace-nowrap flex-shrink-0 ${
               activeCategory === cat.id
-                ? "bg-white text-[#07090E] font-semibold shadow-[0_0_20px_rgba(255,255,255,0.35)] scale-105"
+                ? "bg-white text-[#07090E] font-bold shadow-[0_0_20px_rgba(255,255,255,0.35)] scale-105"
                 : "bg-[#131824] text-slate-400 hover:text-white border border-white/8 hover:border-white/20 active:bg-white/10"
             }`}
           >

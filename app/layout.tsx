@@ -1,10 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Google_Sans, Plus_Jakarta_Sans, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { GlobalBackground } from "@/components/ui/GlobalBackground";
 
-const inter = Inter({
-  variable: "--font-inter",
+const googleSans = Google_Sans({
+  variable: "--font-google-sans",
+  subsets: ["latin"],
+  display: "swap",
+  adjustFontFallback: false,
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const interTight = Inter_Tight({
+  variable: "--font-inter-tight",
   subsets: ["latin"],
   display: "swap",
 });
@@ -67,7 +80,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} dark antialiased`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${googleSans.variable} ${plusJakartaSans.variable} ${interTight.variable} ${jetbrainsMono.variable} dark antialiased`}
+      suppressHydrationWarning
+    >
       <body
         className="min-h-screen bg-[#07090E] text-[#E2E8F0] font-sans flex flex-col selection:bg-cyan-500/20 selection:text-cyan-300 relative"
         suppressHydrationWarning

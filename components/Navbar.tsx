@@ -111,7 +111,7 @@ export function Navbar({ onOpenContact }: NavbarProps) {
                     }
                     handleNavClick(link.name, link.isContact);
                   }}
-                  className={`text-sm font-medium transition-colors duration-200 cursor-pointer ${isActive
+                  className={`text-sm font-tight font-medium transition-colors duration-200 cursor-pointer ${isActive
                     ? "text-white font-semibold drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]"
                     : "text-slate-400 hover:text-white"
                     }`}
