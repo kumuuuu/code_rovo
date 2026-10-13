@@ -190,7 +190,10 @@ void main() {
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
 
+    let isRunning = !(typeof window !== "undefined" && window.__preloaderActive);
+
     const render = (timeMs: number) => {
+      if (!canvas || !isRunning) return;
       gl.viewport(0, 0, canvas.width, canvas.height);
       if (uTime) gl.uniform1f(uTime, timeMs * 0.001);
       if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
@@ -200,11 +203,36 @@ void main() {
       animationFrameId = requestAnimationFrame(render);
     };
 
-    render(0);
+    function startLoop() {
+      if (!isRunning) {
+        isRunning = true;
+        animationFrameId = requestAnimationFrame(render);
+      }
+    }
+
+    if (isRunning) {
+      animationFrameId = requestAnimationFrame(render);
+    }
+
+    const handlePreloaderExit = () => startLoop();
+    window.addEventListener("preloader:exit", handlePreloaderExit);
+    window.addEventListener("preloader:complete", handlePreloaderExit);
+
+    const handleVisibility = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(animationFrameId);
+      } else if (isRunning) {
+        animationFrameId = requestAnimationFrame(render);
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
 
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("preloader:exit", handlePreloaderExit);
+      window.removeEventListener("preloader:complete", handlePreloaderExit);
+      document.removeEventListener("visibilitychange", handleVisibility);
       if (resizeObserver) resizeObserver.disconnect();
       if (buffer) gl.deleteBuffer(buffer);
       if (vertShader) gl.deleteShader(vertShader);
@@ -214,15 +242,19 @@ void main() {
   }, []);
 
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+    <div
+      className="absolute inset-0 pointer-events-none overflow-hidden z-0"
+      style={{
+        maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 95%)",
+        WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 95%)",
+      }}
+    >
       {/* Real-time WebGL Procedural Shader Canvas */}
       <canvas
         ref={canvasRef}
         className="w-full h-full block opacity-90 transition-opacity duration-700"
       />
-      {/* Subtle bottom fade to seamlessly blend with the page flow */}
-      <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#07090E] via-[#07090E]/60 to-transparent pointer-events-none" />
-      {/* Top subtle vignette */}
+      {/* Top subtle vignette for navbar area */}
       <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#07090E]/80 to-transparent pointer-events-none" />
     </div>
   );

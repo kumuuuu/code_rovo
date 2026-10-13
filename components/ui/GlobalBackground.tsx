@@ -211,9 +211,10 @@ export function GlobalBackground() {
     window.addEventListener("resize", syncSize, { passive: true });
 
     let startTime = performance.now();
+    let isRunning = !(typeof window !== "undefined" && window.__preloaderActive);
 
     function render(currentTime: number) {
-      if (!canvas) return;
+      if (!canvas || !isRunning) return;
       const elapsed = (currentTime - startTime) * 0.001;
 
       if (uRes) glCtx.uniform2f(uRes, canvas.width, canvas.height);
@@ -223,11 +224,37 @@ export function GlobalBackground() {
       animationFrameId = requestAnimationFrame(render);
     }
 
-    animationFrameId = requestAnimationFrame(render);
+    function startLoop() {
+      if (!isRunning) {
+        isRunning = true;
+        startTime = performance.now();
+        animationFrameId = requestAnimationFrame(render);
+      }
+    }
+
+    if (isRunning) {
+      animationFrameId = requestAnimationFrame(render);
+    }
+
+    const handlePreloaderExit = () => startLoop();
+    window.addEventListener("preloader:exit", handlePreloaderExit);
+    window.addEventListener("preloader:complete", handlePreloaderExit);
+
+    const handleVisibility = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(animationFrameId);
+      } else if (isRunning) {
+        animationFrameId = requestAnimationFrame(render);
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
 
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", syncSize);
+      window.removeEventListener("preloader:exit", handlePreloaderExit);
+      window.removeEventListener("preloader:complete", handlePreloaderExit);
+      document.removeEventListener("visibilitychange", handleVisibility);
       glCtx.deleteProgram(program);
       glCtx.deleteShader(vertShader);
       glCtx.deleteShader(fragShader);
