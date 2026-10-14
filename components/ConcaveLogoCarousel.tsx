@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   CurvedWaveCarousel,
   CurvedWaveLogoItem,
@@ -136,7 +136,17 @@ const SE_FALLBACK_ITEMS: CurvedWaveLogoItem[] = applyNormalizedSpacings(RAW_SE_F
 
 export function ConcaveLogoCarousel() {
   const [pmLogos, setPmLogos] = useState<CurvedWaveLogoItem[]>(PM_FALLBACK_ITEMS);
-  const [seLogos, setSeLogos] = useState<CurvedWaveLogoItem[]>(SE_FALLBACK_ITEMS);
+  const [seLogos, setSeLogos] = useState<CurvedWaveLogoItem[]>(RAW_SE_FALLBACK_ITEMS);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Dynamically load logos from public/Logos/PM and public/Logos/SE via API
   useEffect(() => {
@@ -173,7 +183,7 @@ export function ConcaveLogoCarousel() {
                   offsetX: config.offsetX,
                 };
               });
-              setSeLogos(applyNormalizedSpacings(configured, 135));
+              setSeLogos(configured);
             }
           }
         }
@@ -188,14 +198,33 @@ export function ConcaveLogoCarousel() {
     };
   }, []);
 
+  // Compute normalized responsive spacings for SE logos
+  const effectiveSeLogos = useMemo(() => {
+    const targetGap = isMobile ? 80 : 135;
+    const n = seLogos.length;
+    if (n === 0) return seLogos;
+    return seLogos.map((item, idx) => {
+      const nextItem = seLogos[(idx + 1) % n];
+      const scaleFactor = isMobile ? 0.65 : 1;
+      const wCurr = (item.width || 76) * scaleFactor;
+      const wNext = ((nextItem && nextItem.width) || 76) * scaleFactor;
+      const computedSpacing = Math.round(wCurr / 2 + targetGap + wNext / 2);
+      return {
+        ...item,
+        spacing: computedSpacing,
+        offsetX: item.offsetX ? Math.round(item.offsetX * scaleFactor) : 0,
+      };
+    });
+  }, [seLogos, isMobile]);
+
   return (
     <section
       id="tech"
-      className="relative py-16 sm:py-24 w-full overflow-hidden scroll-mt-20"
+      className="relative py-14 sm:py-20 lg:py-24 w-full overflow-hidden scroll-mt-20"
     >
 
       {/* Section Header */}
-      <div className="relative z-10 max-w-3xl mx-auto text-center mb-10 sm:mb-14 px-4 sm:px-6">
+      <div className="relative z-10 max-w-3xl mx-auto text-center mb-8 sm:mb-12 lg:mb-14 px-4 sm:px-6">
         <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
           The technology behind better business solutions.
         </h2>
@@ -205,31 +234,31 @@ export function ConcaveLogoCarousel() {
       </div>
 
       {/* Dual Row Frameless Straight Linear Flow Carousels */}
-      <div className="relative z-10 w-full space-y-6 sm:space-y-8">
+      <div className="relative z-10 w-full space-y-4 sm:space-y-6 lg:space-y-8">
         {/* Row 1: PM Logos (Straight Horizontal Conveyor Flow: Right-to-Left) */}
         <CurvedWaveCarousel
           items={pmLogos}
-          speed={52}
-          height={116}
-          logoHeight={96}
-          logoMaxWidth={240}
+          speed={isMobile ? 36 : 52}
+          height={isMobile ? 70 : 116}
+          logoHeight={isMobile ? 54 : 96}
+          logoMaxWidth={isMobile ? 140 : 240}
           amplitude={0}
           straight={true}
-          itemSpacing={260}
+          itemSpacing={isMobile ? 165 : 260}
           pauseOnHover={false}
           draggable={true}
         />
 
         {/* Row 2: SE Logos (Straight Horizontal Conveyor Flow: Left-to-Right) */}
         <CurvedWaveCarousel
-          items={seLogos}
-          speed={-52}
-          height={96}
-          logoHeight={76}
-          logoMaxWidth={200}
+          items={effectiveSeLogos}
+          speed={isMobile ? -36 : -52}
+          height={isMobile ? 58 : 96}
+          logoHeight={isMobile ? 44 : 76}
+          logoMaxWidth={isMobile ? 120 : 200}
           amplitude={0}
           straight={true}
-          itemSpacing={245}
+          itemSpacing={isMobile ? 150 : 245}
           pauseOnHover={false}
           draggable={true}
         />
