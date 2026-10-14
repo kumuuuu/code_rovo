@@ -220,15 +220,15 @@ export function ConcaveLogoCarousel() {
   return (
     <section
       id="tech"
-      className="relative py-12 sm:py-16 md:py-20 lg:py-24 w-full overflow-hidden scroll-mt-20"
+      className="relative py-24 sm:py-32 lg:py-36 w-full overflow-hidden scroll-mt-20"
     >
 
       {/* Section Header */}
-      <div className="relative z-10 max-w-3xl mx-auto text-center mb-8 sm:mb-12 lg:mb-14 px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.18] sm:leading-[1.15]">
+      <div className="relative z-10 max-w-3xl mx-auto text-center mb-14 sm:mb-18 lg:mb-20 px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.025em] leading-[1.14] text-balance">
           The technology behind better business solutions.
         </h2>
-        <p className="mt-3.5 sm:mt-4 text-sm sm:text-base md:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
+        <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto font-normal text-pretty">
           Our team works across modern web technologies, backend frameworks, databases, APIs, and deployment tools to build, integrate, and maintain solutions that fit business requirements.
         </p>
       </div>

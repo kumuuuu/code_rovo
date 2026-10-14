@@ -83,7 +83,7 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
 
       {/* Scroll indicator with micro-animated downward glow */}
       <div className="relative z-10 mt-3 sm:mt-6 flex flex-col items-center gap-1.5 sm:gap-2 select-none opacity-80 hover:opacity-100 transition-opacity">
-        <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.2em] text-slate-400">
+        <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400">
           Scroll to explore
         </span>
         <div className="w-[1.5px] h-7 sm:h-9 bg-gradient-to-b from-cyan-400/80 via-blue-500/40 to-transparent relative overflow-hidden rounded-full">

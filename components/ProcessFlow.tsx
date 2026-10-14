@@ -40,48 +40,46 @@ export function ProcessFlow() {
   ];
 
   return (
-    <section id="how-we-work" className="relative px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24 max-w-7xl mx-auto scroll-mt-20 overflow-hidden">
+    <section id="how-we-work" className="relative px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-36 max-w-7xl mx-auto scroll-mt-20 overflow-hidden">
       {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 lg:mb-16">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.18] sm:leading-[1.15]">
+      <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18 lg:mb-20">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.025em] leading-[1.14] text-balance">
           A straightforward process from day one.
         </h2>
-        <p className="mt-3.5 sm:mt-4 text-sm sm:text-base md:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
+        <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto font-normal text-pretty">
           Our structured methodology ensures clarity, accountability, and predictable execution across both software engineering and back-office outsourcing engagements.
         </p>
       </div>
 
       {/* 5-Step Progressive Horizontal/Vertical Timeline */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-5 sm:gap-6">
         {steps.map((step, idx) => (
           <div
             key={idx}
-            className="group relative rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.04] backdrop-blur-2xl border border-white/20 hover:border-white/35 p-4 sm:p-5 lg:p-6 transition-all duration-300 flex flex-col justify-between shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_30px_-8px_rgba(0,0,0,0.3)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_16px_40px_-10px_rgba(0,0,0,0.4),0_0_24px_rgba(0,240,255,0.08)]"
+            className="group relative rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.04] backdrop-blur-2xl border border-white/20 hover:border-white/35 p-6 sm:p-7 lg:p-8 flex flex-col justify-between transition-all duration-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_30px_-8px_rgba(0,0,0,0.3)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_16px_40px_-10px_rgba(0,0,0,0.4),0_0_24px_rgba(0,240,255,0.08)] overflow-hidden"
           >
             <div>
-              <h3 className="text-lg font-bold text-white tracking-tight group-hover:text-cyan-200 transition-colors">
+              <h3 className="text-xl font-bold text-white tracking-tight leading-snug group-hover:text-cyan-200 transition-colors text-balance">
                 {step.title}
               </h3>
 
-              {/* Tag with distinct font and accent color */}
-              <div className="mt-2.5 mb-3.5">
-                <span className="inline-flex items-center text-[11px] font-mono font-medium tracking-wide text-cyan-300 bg-cyan-500/10 border border-cyan-500/25 px-2.5 py-1 rounded-md">
-                  {step.tagline}
-                </span>
-              </div>
+              {/* Tagline without pill badge or mono font */}
+              <p className="mt-2 mb-4 text-xs font-semibold text-cyan-400 tracking-wider uppercase">
+                {step.tagline}
+              </p>
 
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="text-sm text-slate-300 leading-relaxed font-normal text-pretty">
                 {step.description}
               </p>
             </div>
 
             {/* Bottom Row: Phase Name */}
-            <div className="mt-5 pt-4 border-t border-white/5 flex items-center justify-between">
-              <span className="text-xs font-mono font-medium text-slate-400 group-hover:text-cyan-300 transition-colors">
+            <div className="mt-8 pt-4 border-t border-white/8 flex items-center justify-between">
+              <span className="text-xs font-semibold tracking-wider uppercase text-slate-400 group-hover:text-cyan-300 transition-colors">
                 {step.phase}
               </span>
               <svg
-                className="w-3.5 h-3.5 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all"
+                className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

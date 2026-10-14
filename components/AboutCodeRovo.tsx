@@ -9,21 +9,21 @@ interface AboutCodeRovoProps {
 
 export function AboutCodeRovo({ onOpenContact }: AboutCodeRovoProps) {
   return (
-    <section id="about" className="relative px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24 max-w-7xl mx-auto scroll-mt-20 overflow-hidden">
+    <section id="about" className="relative px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-36 max-w-7xl mx-auto scroll-mt-20 overflow-hidden">
       {/* Background ambient decorative glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] h-[350px] bg-gradient-to-r from-blue-600/10 via-cyan-500/10 to-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative z-10 max-w-4xl mx-auto">
-        <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] backdrop-blur-2xl border border-white/20 p-5 sm:p-8 md:p-12 lg:p-14 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_16px_50px_-15px_rgba(0,0,0,0.35)] space-y-6 sm:space-y-8">
+        <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.07] via-[#0B0F19]/40 to-[#0B0F19]/30 backdrop-blur-3xl border border-white/15 p-8 sm:p-12 md:p-14 lg:p-16 space-y-8 sm:space-y-10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_12px_40px_-15px_rgba(0,0,0,0.35)]">
           {/* Main Headline */}
           <div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.18] sm:leading-[1.15]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.025em] leading-[1.14] text-balance">
               Technology expertise. Practical business support.
             </h2>
           </div>
 
           {/* Narrative Body Copy */}
-          <div className="space-y-4 sm:space-y-5 text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+          <div className="space-y-5 text-base sm:text-lg text-slate-300 leading-relaxed font-normal text-pretty">
             <p>
               CodeRovo is an IT solutions and outsourcing company focused on helping businesses build digital products, extend their technology capabilities, and support the systems and processes that keep their operations running.
             </p>
@@ -42,19 +42,19 @@ export function AboutCodeRovo({ onOpenContact }: AboutCodeRovoProps) {
           </div>
 
           {/* Brand Promise & CTA Footer */}
-          <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div>
               <div className="text-lg sm:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400">
                 CodeRovo — Your Team Beyond Borders.
               </div>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs sm:text-sm text-slate-400 mt-1 font-medium">
                 Collaborative, scalable technology and operations support.
               </p>
             </div>
 
             <ReactiveButton
               onClick={() => onOpenContact("About CodeRovo Partnership")}
-              className="px-7 py-3.5 text-sm rounded-full shrink-0"
+              className="px-8 py-3.5 text-sm font-semibold rounded-full shrink-0"
             >
               Discuss Your Project
             </ReactiveButton>
