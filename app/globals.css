@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-plus-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-heading: var(--font-google-sans), var(--font-plus-jakarta), sans-serif;
-  --font-display: var(--font-google-sans), var(--font-plus-jakarta), sans-serif;
-  --font-tight: var(--font-inter-tight), -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), monospace;
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: var(--font-plus-jakarta), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: var(--font-plus-jakarta), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-tight: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 @layer base {
@@ -52,7 +52,7 @@
   body {
     background-color: #07090e;
     color: #e2e8f0;
-    font-family: var(--font-plus-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     width: 100%;
     max-width: 100vw;
@@ -61,21 +61,21 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-google-sans), var(--font-plus-jakarta), sans-serif;
-    letter-spacing: -0.02em;
+    font-family: var(--font-plus-jakarta), -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.025em;
   }
 }
 
 .font-heading {
-  font-family: var(--font-google-sans), var(--font-plus-jakarta), sans-serif;
+  font-family: var(--font-plus-jakarta), -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .font-display {
-  font-family: var(--font-google-sans), var(--font-plus-jakarta), sans-serif;
+  font-family: var(--font-plus-jakarta), -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .font-tight {
-  font-family: var(--font-inter-tight), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* Custom background grid & radial glow utilities */

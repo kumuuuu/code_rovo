@@ -1,31 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Google_Sans, Plus_Jakarta_Sans, Inter_Tight, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import { GlobalBackground } from "@/components/ui/GlobalBackground";
-
-const googleSans = Google_Sans({
-  variable: "--font-google-sans",
-  subsets: ["latin"],
-  display: "swap",
-  adjustFontFallback: false,
-});
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const interTight = Inter_Tight({
-  variable: "--font-inter-tight",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -82,7 +71,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${googleSans.variable} ${plusJakartaSans.variable} ${interTight.variable} ${jetbrainsMono.variable} dark antialiased`}
+      className={`${plusJakartaSans.variable} ${inter.variable} dark antialiased`}
       suppressHydrationWarning
     >
       <body
