@@ -52,12 +52,12 @@ export function Footer() {
               Services
             </h4>
             <ul className="space-y-1 sm:space-y-2 text-sm">
-              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">Custom Software Development</a></li>
-              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">Dedicated Remote Teams</a></li>
-              <li><a href="#systems" className="py-1 inline-block hover:text-cyan-300 transition-colors">Business Systems & Operations</a></li>
-              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">API & System Integration</a></li>
-              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">Process Automation & AI</a></li>
-              <li><a href="#services" className="py-1 inline-block hover:text-cyan-300 transition-colors">IT Support & Maintenance</a></li>
+              <li><a href="/services/software-development" className="py-1 inline-block hover:text-cyan-300 transition-colors">Custom Software Development</a></li>
+              <li><a href="/services/monthly-outsourcing" className="py-1 inline-block hover:text-cyan-300 transition-colors">Dedicated Remote Teams</a></li>
+              <li><a href="/services/business-systems-support" className="py-1 inline-block hover:text-cyan-300 transition-colors">Business Systems & Operations</a></li>
+              <li><a href="/services/project-based-services" className="py-1 inline-block hover:text-cyan-300 transition-colors">Project-Based Delivery</a></li>
+              <li><a href="/services/software-development#capabilities" className="py-1 inline-block hover:text-cyan-300 transition-colors">API & System Integration</a></li>
+              <li><a href="/services/business-systems-support#support" className="py-1 inline-block hover:text-cyan-300 transition-colors">IT Support & Maintenance</a></li>
             </ul>
           </div>
 

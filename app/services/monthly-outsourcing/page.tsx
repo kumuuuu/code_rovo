@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ContactModal } from "@/components/ContactModal";
+import { RelatedServices } from "@/components/RelatedServices";
 
 export default function MonthlyOutsourcingPage() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -153,6 +154,9 @@ export default function MonthlyOutsourcingPage() {
             </div>
           </div>
         </section>
+
+        {/* Related Services */}
+        <RelatedServices currentPath="/services/monthly-outsourcing" />
 
         {/* Bottom CTA Banner */}
         <section className="relative px-4 sm:px-6 max-w-7xl mx-auto">

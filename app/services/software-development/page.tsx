@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ContactModal } from "@/components/ContactModal";
+import { RelatedServices } from "@/components/RelatedServices";
 
 export default function SoftwareDevelopmentPage() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -154,6 +155,9 @@ export default function SoftwareDevelopmentPage() {
             </div>
           </div>
         </section>
+
+        {/* Related Services */}
+        <RelatedServices currentPath="/services/software-development" />
 
         {/* CTA Banner */}
         <section className="px-4 sm:px-6 max-w-7xl mx-auto">
