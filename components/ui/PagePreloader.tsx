@@ -125,12 +125,15 @@ export function PagePreloader() {
             autoPlay
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
+            aria-hidden="true"
             onLoadedMetadata={handleLoadedMetadata}
             onTimeUpdate={handleTimeUpdate}
             onEnded={handleEnded}
             className="w-full h-full object-cover select-none pointer-events-none"
-          />
+          >
+            <track kind="captions" src="data:text/vtt,WEBVTT" default />
+          </video>
 
           {/* Vignette & Gradient Overlays for Cinematic Polish */}
           <div className="absolute inset-0 bg-radial from-transparent via-[#07090E]/20 to-[#07090E]/60 pointer-events-none" />
