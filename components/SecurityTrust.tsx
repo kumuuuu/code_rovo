@@ -50,16 +50,16 @@ export function SecurityTrust() {
   ];
 
   return (
-    <section id="security" className="relative px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-36 max-w-7xl mx-auto min-w-0 scroll-mt-20 overflow-hidden">
+    <section id="security" className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-36 min-w-0 scroll-mt-20 overflow-hidden">
       {/* Ambient background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] h-[320px] bg-cyan-600/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="relative z-10 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.07] via-[#0B0F19]/40 to-[#0B0F19]/30 backdrop-blur-3xl border border-white/15 p-6 sm:p-10 md:p-12 lg:p-14 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_12px_40px_-15px_rgba(0,0,0,0.35)] w-full min-w-0">
+      <div className="relative z-10 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.07] via-[#0B0F19]/40 to-[#0B0F19]/30 backdrop-blur-3xl border border-white/15 p-5 sm:p-10 md:p-12 lg:p-14 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_12px_40px_-15px_rgba(0,0,0,0.35)] w-full min-w-0">
         <div className="w-full max-w-3xl mb-8 sm:mb-14 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.025em] leading-[1.14] text-balance">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.025em] leading-[1.18] sm:leading-[1.14] text-balance">
             Responsible delivery. Clear expectations.
           </h2>
-          <p className="mt-4 sm:mt-5 text-base sm:text-lg text-slate-300 leading-relaxed font-normal text-pretty">
+          <p className="mt-4 sm:mt-5 text-sm sm:text-lg text-slate-300 leading-relaxed font-normal text-pretty">
             We recognise the importance of protecting business information, application access, and operational data. Every engagement begins with clear responsibilities and agreed procedures for accessing and handling client information.
           </p>
           <p className="mt-3 sm:mt-4 text-sm sm:text-base text-slate-400 font-medium">
