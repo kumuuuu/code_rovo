@@ -224,7 +224,7 @@ export function Navbar({ onOpenContact }: NavbarProps) {
                 Direct inquiry:{" "}
                 <a
                   href="mailto:hello@coderovo.com"
-                  className="font-mono text-cyan-400 hover:underline"
+                  className="font-medium text-cyan-400 hover:underline"
                 >
                   hello@coderovo.com
                 </a>

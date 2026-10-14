@@ -545,7 +545,7 @@ export const ConcaveCarousel = forwardRef<ConcaveCarouselRef, ConcaveCarouselPro
             </button>
 
             {/* Counter formatted as 01 / 10 */}
-            <div className="font-mono text-xs sm:text-sm tracking-widest text-slate-400 font-semibold select-none">
+            <div className="text-xs sm:text-sm tracking-wider text-slate-400 font-semibold select-none tabular-nums">
               <span className="text-white">
                 {String(normalizedIndex + 1).padStart(2, "0")}
               </span>

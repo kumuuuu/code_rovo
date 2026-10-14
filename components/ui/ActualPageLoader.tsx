@@ -316,7 +316,7 @@ export function ActualPageLoader() {
             transition={{ delay: 0.15, duration: 0.4 }}
             className="mt-3 sm:mt-5 flex flex-col items-center text-center px-4"
           >
-            <span className="font-mono text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.25em] text-slate-300 font-semibold uppercase flex items-center justify-center">
+            <span className="text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.25em] text-slate-300 font-semibold uppercase flex items-center justify-center">
               {isOffline ? (
                 <span className="text-amber-400">Waiting for connection...</span>
               ) : isSlow ? (

@@ -205,7 +205,7 @@ export function ContactModal({
               {/* 02 — What can we help you with? */}
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
+                  <label className="text-[11px] sm:text-xs uppercase tracking-wider text-slate-300 font-semibold">
                     Area of Interest <span className="text-rose-400 font-semibold ml-0.5">*</span>
                   </label>
                   <span className="text-[10px] sm:text-[11px] text-slate-500">
@@ -248,7 +248,7 @@ export function ContactModal({
 
               {/* 03 — Your contact details */}
               <div>
-                <label className="block text-[11px] sm:text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold mb-2">
+                <label className="block text-[11px] sm:text-xs uppercase tracking-wider text-slate-300 font-semibold mb-2">
                   Your Details
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
@@ -307,7 +307,7 @@ export function ContactModal({
 
               {/* 04 — Tell us about your requirements */}
               <div>
-                <label className="block text-[11px] sm:text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold mb-1.5">
+                <label className="block text-[11px] sm:text-xs uppercase tracking-wider text-slate-300 font-semibold mb-1.5">
                   Project Scope or Requirements <span className="text-rose-400 font-semibold ml-0.5">*</span>
                 </label>
                 <textarea
@@ -329,7 +329,7 @@ export function ContactModal({
                   aria-expanded={showAdditionalDetails}
                 >
                   <span className="text-xs sm:text-sm font-medium text-slate-300 flex items-center gap-2">
-                    <span className="text-cyan-400 font-mono text-base">
+                    <span className="text-cyan-400 font-semibold text-sm">
                       {showAdditionalDetails ? "−" : "＋"}
                     </span>
                     <span>Additional Project Details</span>
@@ -350,7 +350,7 @@ export function ContactModal({
                   <div className="p-3.5 sm:p-4 pt-1 border-t border-white/5 space-y-4 animate-in fade-in duration-200">
                     {/* Engagement Type */}
                     <div>
-                      <label className="block text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-1.5">
+                      <label className="block text-[11px] uppercase tracking-wider text-slate-400 font-medium mb-1.5">
                         Engagement Type
                       </label>
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
@@ -380,7 +380,7 @@ export function ContactModal({
 
                     {/* Expected Start */}
                     <div>
-                      <label className="block text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-1.5">
+                      <label className="block text-[11px] uppercase tracking-wider text-slate-400 font-medium mb-1.5">
                         Expected Start
                       </label>
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -432,7 +432,7 @@ export function ContactModal({
                     <span>Prefer email? </span>
                     <a
                       href="mailto:hello@coderovo.com"
-                      className="text-cyan-400 hover:underline font-mono ml-1 font-medium"
+                      className="text-cyan-400 hover:underline ml-1 font-medium"
                     >
                       hello@coderovo.com
                     </a>
@@ -454,7 +454,6 @@ export function ContactModal({
                     ) : (
                       <>
                         Send Project Enquiry
-                        {/* <span className="text-xs font-mono font-bold">↗</span> */}
                       </>
                     )}
                   </button>

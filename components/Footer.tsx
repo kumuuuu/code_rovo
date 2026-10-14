@@ -5,13 +5,13 @@ export function Footer() {
   const currentYear = 2026;
 
   return (
-    <footer className="relative border-t border-white/8 bg-[#07090E] pt-12 sm:pt-16 md:pt-20 pb-8 sm:pb-12 text-slate-400 overflow-hidden">
+    <footer className="relative border-t border-white/8 bg-[#07090E] pt-16 sm:pt-20 md:pt-24 pb-12 sm:pb-16 text-slate-400 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-12 pb-10 sm:pb-16 border-b border-white/6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-12 pb-12 sm:pb-16 border-b border-white/6">
           {/* Col 1: Brand & Social (lg:col-span-4) */}
           <div className="lg:col-span-4 space-y-3 sm:space-y-4">
             <Logo variant="footer" className="h-10 sm:h-11 md:h-12 w-auto" />
-            <div className="text-xs font-mono tracking-wider text-cyan-400 uppercase pt-1 font-semibold">
+            <div className="text-xs font-semibold tracking-wider text-cyan-400 uppercase pt-1">
               Your Team Beyond Borders.
             </div>
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
@@ -48,7 +48,7 @@ export function Footer() {
 
           {/* Col 2: Services (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-2.5 sm:space-y-3">
-            <h3 className="text-xs font-mono uppercase tracking-widest text-slate-200">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-slate-200">
               Services
             </h3>
             <ul className="space-y-1 sm:space-y-2 text-sm">
@@ -63,7 +63,7 @@ export function Footer() {
 
           {/* Col 3: Company & Approach (lg:col-span-2) */}
           <div className="lg:col-span-2 space-y-2.5 sm:space-y-3">
-            <h3 className="text-xs font-mono uppercase tracking-widest text-slate-200">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-slate-200">
               Company
             </h3>
             <ul className="space-y-1 sm:space-y-2 text-sm">
@@ -77,7 +77,7 @@ export function Footer() {
 
           {/* Col 4: Contact info (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-2.5 sm:space-y-3">
-            <h3 className="text-xs font-mono uppercase tracking-widest text-slate-200">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-slate-200">
               Direct Contact
             </h3>
             <p className="text-sm text-slate-300">
@@ -87,7 +87,7 @@ export function Footer() {
               <div>
                 <a
                   href="mailto:hello@coderovo.com"
-                  className="text-sm font-mono text-cyan-400 hover:text-cyan-300 transition-colors py-0.5 inline-block"
+                  className="text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors py-0.5 inline-block"
                 >
                   hello@coderovo.com
                 </a>
@@ -95,14 +95,11 @@ export function Footer() {
               <div>
                 <a
                   href="tel:+94705286873"
-                  className="text-sm font-mono text-slate-300 hover:text-white transition-colors py-0.5 inline-block"
+                  className="text-sm font-medium text-slate-300 hover:text-white transition-colors py-0.5 inline-block"
                 >
                   +94 705286873
                 </a>
               </div>
-              {/* <div className="text-xs text-slate-500 pt-1 font-mono">
-                www.coderovo.com
-              </div> */}
             </div>
           </div>
         </div>
