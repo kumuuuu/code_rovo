@@ -79,27 +79,27 @@ export function AboutCodeRovo({ onOpenContact }: AboutCodeRovoProps) {
   ];
 
   return (
-    <section id="about" className="relative px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-36 w-full max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1920px] mx-auto min-w-0 scroll-mt-20 overflow-hidden">
+    <section id="about" className="relative px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-36 max-w-7xl mx-auto min-w-0 scroll-mt-20 overflow-hidden">
       {/* Background ambient decorative glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[700px] 2xl:max-w-[1100px] 3xl:max-w-[1400px] h-[400px] 2xl:h-[600px] bg-gradient-to-r from-blue-600/10 via-cyan-500/10 to-purple-600/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[700px] h-[400px] bg-gradient-to-r from-blue-600/10 via-cyan-500/10 to-purple-600/10 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 2xl:gap-16 items-start w-full min-w-0">
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start w-full min-w-0">
         {/* Left Column: Editorial Headline & Brand Commitment */}
         <div className="lg:col-span-5 flex flex-col justify-between space-y-6 sm:space-y-8 w-full min-w-0">
           <div>
-            <span className="text-xs 2xl:text-sm uppercase font-medium tracking-[0.25em] text-[#00F0FF] block mb-3">
+            <span className="text-xs uppercase font-medium tracking-[0.25em] text-[#00F0FF] block mb-3">
               ABOUT CODEROVO
             </span>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-6xl 3xl:text-7xl font-bold text-white tracking-[-0.03em] leading-[1.14] text-balance">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.03em] leading-[1.14] text-balance">
               Technology expertise. Practical business support.
             </h2>
 
-            <p className="mt-4 sm:mt-5 text-base sm:text-lg 2xl:text-xl text-slate-300 leading-relaxed font-normal text-pretty">
+            <p className="mt-4 sm:mt-5 text-base sm:text-lg text-slate-300 leading-relaxed font-normal text-pretty">
               CodeRovo is an IT solutions and outsourcing partner focused on helping modern businesses build digital products, scale their engineering capabilities, and manage the essential systems that keep their operations running smoothly.
             </p>
 
-            <p className="mt-3 sm:mt-4 text-sm sm:text-base 2xl:text-lg text-slate-400 leading-relaxed font-normal text-pretty">
+            <p className="mt-3 sm:mt-4 text-sm sm:text-base text-slate-400 leading-relaxed font-normal text-pretty">
               Whether you need to deliver an urgent software release, extend your core engineering capacity, or ensure reliable day-to-day back-office execution, CodeRovo functions as an aligned, collaborative extension of your business.
             </p>
           </div>
@@ -107,10 +107,10 @@ export function AboutCodeRovo({ onOpenContact }: AboutCodeRovoProps) {
           {/* Brand Promise Card & Primary Action */}
           <div className="pt-6 sm:pt-8 border-t border-white/10 space-y-5">
             <div>
-              <div className="text-lg sm:text-xl 2xl:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400">
+              <div className="text-lg sm:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400">
                 CodeRovo — Your Team Beyond Borders.
               </div>
-              <p className="text-xs sm:text-sm 2xl:text-base text-slate-400 mt-1 font-medium">
+              <p className="text-xs sm:text-sm text-slate-400 mt-1 font-medium">
                 Collaborative, scalable technology and operations support.
               </p>
             </div>
@@ -118,7 +118,7 @@ export function AboutCodeRovo({ onOpenContact }: AboutCodeRovoProps) {
             <div>
               <ReactiveButton
                 onClick={() => onOpenContact("About CodeRovo Partnership")}
-                className="px-8 py-3.5 2xl:px-10 2xl:py-4 text-sm 2xl:text-base font-semibold rounded-full"
+                className="px-8 py-3.5 text-sm font-semibold rounded-full"
               >
                 Discuss Your Project
               </ReactiveButton>
@@ -140,29 +140,29 @@ export function AboutCodeRovo({ onOpenContact }: AboutCodeRovoProps) {
             onScroll={handleScroll}
             className="w-full max-w-full min-w-0 overflow-x-auto sm:overflow-visible snap-x snap-mandatory scrollbar-none pb-2 sm:pb-0"
           >
-            <div className="flex sm:grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 2xl:gap-8 w-max sm:w-full min-w-full">
+            <div className="flex sm:grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-max sm:w-full min-w-full">
               {pillars.map((pillar, idx) => (
                 <div
                   key={idx}
-                  className="w-[82vw] max-w-[340px] sm:w-auto md:max-w-none shrink-0 snap-center sm:shrink sm:snap-align-none group relative rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.04] backdrop-blur-2xl border border-white/20 hover:border-white/35 p-6 sm:p-7 md:p-8 2xl:p-10 flex flex-col justify-between transition-all duration-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_30px_-8px_rgba(0,0,0,0.3)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_16px_40px_-10px_rgba(0,0,0,0.4),0_0_24px_rgba(0,240,255,0.08)] overflow-hidden"
+                  className="w-[82vw] max-w-[340px] sm:w-auto md:max-w-none shrink-0 snap-center sm:shrink sm:snap-align-none group relative rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.04] backdrop-blur-2xl border border-white/20 hover:border-white/35 p-6 sm:p-7 md:p-8 flex flex-col justify-between transition-all duration-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_30px_-8px_rgba(0,0,0,0.3)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_16px_40px_-10px_rgba(0,0,0,0.4),0_0_24px_rgba(0,240,255,0.08)] overflow-hidden"
                 >
                   <div>
                     {/* Icon Badge */}
-                    <div className="w-10 h-10 sm:w-11 sm:h-11 2xl:w-12 2xl:h-12 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-white/[0.10] transition-all duration-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
+                    <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-white/[0.10] transition-all duration-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
                       {pillar.icon}
                     </div>
 
-                    <h3 className="text-lg sm:text-xl 2xl:text-2xl font-bold text-white tracking-tight leading-snug group-hover:text-cyan-200 transition-colors text-balance">
+                    <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight leading-snug group-hover:text-cyan-200 transition-colors text-balance">
                       {pillar.title}
                     </h3>
 
-                    <p className="mt-3 text-xs sm:text-sm 2xl:text-base text-slate-300 leading-relaxed font-normal text-pretty">
+                    <p className="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed font-normal text-pretty">
                       {pillar.description}
                     </p>
                   </div>
 
                   {/* Bottom decorative subtle indicator */}
-                  <div className="mt-6 pt-4 border-t border-white/6 flex items-center justify-between text-xs 2xl:text-sm text-slate-400 group-hover:text-cyan-300 transition-colors">
+                  <div className="mt-6 pt-4 border-t border-white/6 flex items-center justify-between text-xs text-slate-400 group-hover:text-cyan-300 transition-colors">
                     <span className="font-medium">Core Capability</span>
                     <span className="transform group-hover:translate-x-1 transition-transform">&rarr;</span>
                   </div>
