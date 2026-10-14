@@ -10,15 +10,15 @@ interface HeroSectionProps {
 
 export function HeroSection({ onOpenContact }: HeroSectionProps) {
   return (
-    <section id="home" className="relative w-full max-w-full min-h-[92vh] sm:min-h-screen flex flex-col justify-between items-center px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 lg:pt-36 pb-8 sm:pb-16 overflow-hidden">
+    <section id="home" className="relative w-full max-w-full min-h-[92vh] sm:min-h-screen flex flex-col justify-between items-center px-4 sm:px-6 lg:px-8 pt-20 sm:pt-28 lg:pt-36 pb-8 sm:pb-16 overflow-hidden">
       {/* Interactive Canvas Background with nodes and atmospheric glows */}
       <HeroCanvas />
 
       {/* Hero Content: Side-by-side grid container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto my-auto py-4 sm:py-8 lg:py-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-8 items-center w-full">
-          {/* Left Column: Headline, subtext, dual CTAs */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left lg:pr-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-10 lg:gap-8 items-center w-full">
+          {/* Text Column: Headline, subtext, dual CTAs (order-2 on mobile, left on desktop) */}
+          <div className="order-2 lg:order-1 lg:col-span-7 flex flex-col items-start text-left lg:pr-6">
             {/* Display Headline */}
             <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-bold text-white tracking-[-0.03em] sm:tracking-[-0.035em] leading-[1.14] sm:leading-[1.12] max-w-2xl">
               Your Technology Team,{" "}
@@ -66,11 +66,11 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
             </div>
           </div>
 
-          {/* Right Column: Prominent Animated Coderovo Logo */}
-          <div className="lg:col-span-5 flex items-center justify-center lg:justify-end w-full mt-4 lg:mt-0">
-            <div className="relative flex items-center justify-center w-full max-w-[280px] sm:max-w-[380px] lg:max-w-[450px] aspect-square overflow-hidden">
+          {/* Logo Column: Displayed first on mobile, right column on desktop */}
+          <div className="order-1 lg:order-2 lg:col-span-5 flex items-center justify-center lg:justify-end w-full mb-2 sm:mb-6 lg:mb-0">
+            <div className="relative flex items-center justify-center w-full max-w-[140px] xs:max-w-[170px] sm:max-w-[260px] lg:max-w-[450px] aspect-square overflow-hidden">
               <CoderovoLogo
-                size="clamp(220px, 68vw, 450px)"
+                size="clamp(120px, 35vw, 450px)"
                 animated={true}
                 interactive={true}
                 glow={true}
