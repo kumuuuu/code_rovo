@@ -1,0 +1,27 @@
+# Coderovo — Your Technology Team, Beyond Borders
+
+> Coderovo helps businesses build, scale, and maintain digital solutions through flexible software engineering teams and reliable IT expertise.
+
+## Core Capabilities
+- **Custom Software Development**: Full-stack web applications, mobile platforms, microservices, cloud infrastructure, and enterprise software engineering.
+- **Business Systems & IT Support**: Operational workflow automation, ERP/CRM integration, system monitoring, database administration, and ongoing maintenance.
+- **Monthly Outsourcing**: Dedicated offshore engineers and developers integrated seamlessly into your engineering cadence.
+- **Project-Based Delivery**: Milestone-driven development with fixed scope, clear accountability, and predictable timelines.
+
+## Priority Pages
+- [Home](https://coderovo.com/): Overview of Coderovo services, engagement models, technology stack, security standards, and client partnerships.
+- [Custom Software Development](https://coderovo.com/services/software-development): High-performance web and mobile application engineering, cloud microservices, and system architecture.
+- [Business Systems & Support](https://coderovo.com/services/business-systems-support): Enterprise business software support, system integration, SLA management, and infrastructure stability.
+- [Monthly Outsourcing](https://coderovo.com/services/monthly-outsourcing): Dedicated engineering talent and remote technical team scaling.
+- [Project-Based Services](https://coderovo.com/services/project-based-services): Fixed-scope software engineering with structured milestones and delivery excellence.
+
+## Technical Stack
+- Frontend: React, Next.js, TypeScript, Tailwind CSS
+- Backend: Node.js, Java, Spring Boot, Python
+- Databases: MongoDB, MySQL, PostgreSQL
+- DevOps & Cloud: Docker, Kubernetes, AWS, Keycloak, JWT authentication
+
+## Contact & Location
+- Email: hello@coderovo.com
+- Phone: +94 705286873
+- Website: https://coderovo.com
