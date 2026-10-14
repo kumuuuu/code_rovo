@@ -428,6 +428,10 @@ export const ConcaveCarousel = forwardRef<ConcaveCarouselRef, ConcaveCarouselPro
                           <img
                             src={item.src}
                             alt={item.alt}
+                            width={96}
+                            height={96}
+                            loading="lazy"
+                            decoding="async"
                             className="max-w-full max-h-full object-contain filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)] group-hover:scale-105 transition-transform duration-300"
                             draggable={false}
                           />
@@ -467,6 +471,10 @@ export const ConcaveCarousel = forwardRef<ConcaveCarouselRef, ConcaveCarouselPro
                             <img
                               src={item.src}
                               alt=""
+                              width={96}
+                              height={96}
+                              loading="lazy"
+                              decoding="async"
                               className="max-w-full max-h-full object-contain"
                               draggable={false}
                             />

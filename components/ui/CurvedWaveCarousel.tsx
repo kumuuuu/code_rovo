@@ -641,6 +641,8 @@ export function CurvedWaveCarousel({
                     <img
                       src={item.src}
                       alt={item.alt || item.name}
+                      width={Math.round(logoMaxWidth)}
+                      height={Math.round(logoHeight)}
                       loading="lazy"
                       decoding="async"
                       draggable={false}
