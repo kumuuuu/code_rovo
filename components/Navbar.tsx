@@ -26,35 +26,52 @@ export function Navbar({ onOpenContact }: NavbarProps) {
   }, [mobileMenuOpen]);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setScrolled(window.scrollY > 25);
-
-      // Detect active section on scroll
-      const sections = [
-        { id: "home", name: "Home" },
-        { id: "services", name: "Services" },
-        { id: "tech", name: "Expertise" },
-        // { id: "systems", name: "Systems We Know" },
-        { id: "about", name: "About Us" },
-        { id: "contact", name: "Contact" },
-      ];
-
-      const scrollPosition = window.scrollY + 180;
-      for (const section of sections) {
-        const el = document.getElementById(section.id);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section.name);
-            break;
-          }
-        }
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 25);
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    handleScroll();
+
+    // Use IntersectionObserver to track active section with zero forced reflows
+    const sections = [
+      { id: "home", name: "Home" },
+      { id: "services", name: "Services" },
+      { id: "tech", name: "Expertise" },
+      { id: "about", name: "About Us" },
+      { id: "contact", name: "Contact" },
+    ];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries.filter((e) => e.isIntersecting);
+        if (visibleEntries.length > 0) {
+          visibleEntries.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+          const activeMatch = sections.find((s) => s.id === visibleEntries[0].target.id);
+          if (activeMatch) {
+            setActiveSection(activeMatch.name);
+          }
+        }
+      },
+      { rootMargin: "-15% 0px -40% 0px", threshold: [0, 0.2, 0.5] }
+    );
+
+    sections.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   const navLinks = [
