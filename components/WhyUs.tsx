@@ -50,12 +50,12 @@ export function WhyUs() {
   ];
 
   return (
-    <section id="why-us" className="relative px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-36 max-w-7xl mx-auto min-w-0 scroll-mt-20 overflow-hidden">
+    <section id="why-us" className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-36 min-w-0 scroll-mt-20 overflow-hidden">
       <div className="w-full max-w-3xl mb-8 sm:mb-16 lg:mb-20">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.025em] leading-[1.14] text-balance">
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.025em] leading-[1.18] sm:leading-[1.14] text-balance">
           A technology partner that understands your business.
         </h2>
-        <p className="mt-4 sm:mt-5 text-base sm:text-lg text-slate-300 leading-relaxed font-normal text-pretty max-w-2xl">
+        <p className="mt-4 sm:mt-5 text-sm sm:text-lg text-slate-300 leading-relaxed font-normal text-pretty max-w-2xl">
           Successful outsourcing requires more than technical skills. It requires clear communication, an understanding of business processes, dependable execution, and the flexibility to adapt as your requirements change.
         </p>
       </div>

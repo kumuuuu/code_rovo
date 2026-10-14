@@ -79,7 +79,7 @@ export function AboutCodeRovo({ onOpenContact }: AboutCodeRovoProps) {
   ];
 
   return (
-    <section id="about" className="relative px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-36 max-w-7xl mx-auto min-w-0 scroll-mt-20 overflow-hidden">
+    <section id="about" className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-36 min-w-0 scroll-mt-20 overflow-hidden">
       {/* Background ambient decorative glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[700px] h-[400px] bg-gradient-to-r from-blue-600/10 via-cyan-500/10 to-purple-600/10 rounded-full blur-[140px] pointer-events-none" />
 
@@ -91,11 +91,11 @@ export function AboutCodeRovo({ onOpenContact }: AboutCodeRovoProps) {
               ABOUT CODEROVO
             </span>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.03em] leading-[1.14] text-balance">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.03em] leading-[1.18] sm:leading-[1.14] text-balance">
               Technology expertise. Practical business support.
             </h2>
 
-            <p className="mt-4 sm:mt-5 text-base sm:text-lg text-slate-300 leading-relaxed font-normal text-pretty">
+            <p className="mt-4 sm:mt-5 text-sm sm:text-lg text-slate-300 leading-relaxed font-normal text-pretty">
               CodeRovo is an IT solutions and outsourcing partner focused on helping modern businesses build digital products, scale their engineering capabilities, and manage the essential systems that keep their operations running smoothly.
             </p>
 

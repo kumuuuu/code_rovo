@@ -95,13 +95,13 @@ export function ServicesSection({ onSelectService }: ServicesSectionProps) {
   ];
 
   return (
-    <section id="services" className="relative px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-36 max-w-7xl mx-auto min-w-0 scroll-mt-20 overflow-hidden">
+    <section id="services" className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-36 min-w-0 scroll-mt-20 overflow-hidden">
       {/* Section Header */}
-      <div className="text-center w-full max-w-3xl mx-auto mb-8 sm:mb-16 lg:mb-20">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.025em] leading-[1.14] text-balance">
+      <div className="text-left sm:text-center w-full max-w-3xl sm:mx-auto mb-8 sm:mb-16 lg:mb-20">
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.025em] leading-[1.18] sm:leading-[1.14] text-balance">
           Technology and outsourcing solutions built around your business.
         </h2>
-        <p className="mt-4 sm:mt-5 text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto font-normal text-pretty">
+        <p className="mt-4 sm:mt-5 text-sm sm:text-lg text-slate-300 leading-relaxed max-w-2xl sm:mx-auto font-normal text-pretty">
           Every business has different technology needs. CodeRovo offers flexible services that help companies develop digital products, extend their teams, maintain existing systems, and manage essential technology and operational tasks.
         </p>
       </div>
