@@ -29,8 +29,15 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   /* config options here */
+  compress: true,
+  poweredByHeader: false,
   cacheComponents: true,
   partialPrefetching: true,
+  images: {
+    formats: ["image/avif", "image/webp"],
+    imageSizes: [32, 48, 64, 96, 128, 160, 240, 320, 384],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+  },
   async headers() {
     return [
       {
