@@ -7,14 +7,16 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["600", "700", "800"],
+  preload: true,
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -147,6 +149,8 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <link rel="preconnect" href="https://coderovo.com" />
+        <link rel="dns-prefetch" href="https://coderovo.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchemas) }}
