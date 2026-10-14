@@ -18,7 +18,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Coderovo — Your Technology Team, Beyond Borders",
+  metadataBase: new URL("https://coderovo.com"),
+  title: {
+    default: "Coderovo — Your Technology Team, Beyond Borders",
+    template: "%s | Coderovo",
+  },
   description:
     "Coderovo helps businesses build, scale, and maintain digital solutions through flexible software engineering teams and reliable IT expertise.",
   keywords: [
@@ -30,8 +34,14 @@ export const metadata: Metadata = {
     "Cloud & DevOps",
     "Offshore Engineering",
     "Enterprise Solutions",
+    "IT Support",
   ],
   authors: [{ name: "Coderovo Technologies" }],
+  creator: "Coderovo",
+  publisher: "Coderovo",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Coderovo — Your Technology Team, Beyond Borders",
     description:
@@ -39,12 +49,33 @@ export const metadata: Metadata = {
     url: "https://coderovo.com",
     siteName: "Coderovo",
     type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "/images/coderovo-logo-full.png",
+        width: 1200,
+        height: 630,
+        alt: "Coderovo — Your Technology Team, Beyond Borders",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Coderovo — Your Technology Team, Beyond Borders",
     description:
       "Coderovo helps businesses build, scale, and maintain digital solutions through flexible software engineering teams and reliable IT expertise.",
+    images: ["/images/coderovo-logo-full.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   icons: {
     icon: [
@@ -63,6 +94,47 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+const jsonLdSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Coderovo",
+    alternateName: "Coderovo Technologies",
+    url: "https://coderovo.com",
+    logo: "https://coderovo.com/images/coderovo-logo-full.png",
+    description:
+      "Coderovo helps businesses build, scale, and maintain digital solutions through flexible software engineering teams and reliable IT expertise.",
+    sameAs: ["https://linkedin.com", "https://instagram.com"],
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+94 705286873",
+      contactType: "customer service",
+      email: "hello@coderovo.com",
+      availableLanguage: ["English"],
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Coderovo",
+    url: "https://coderovo.com",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "Coderovo",
+    image: "https://coderovo.com/images/coderovo-logo-full.png",
+    url: "https://coderovo.com",
+    telephone: "+94 705286873",
+    priceRange: "$$",
+    email: "hello@coderovo.com",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "LK",
+    },
+  },
+];
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -74,6 +146,12 @@ export default function RootLayout({
       className={`${plusJakartaSans.variable} ${inter.variable} dark antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchemas) }}
+        />
+      </head>
       <body
         className="min-h-screen bg-[#07090E] text-[#E2E8F0] font-sans flex flex-col selection:bg-cyan-500/20 selection:text-cyan-300 relative w-full max-w-full overflow-x-hidden"
         suppressHydrationWarning
@@ -86,3 +164,4 @@ export default function RootLayout({
     </html>
   );
 }
+
