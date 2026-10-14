@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef, useState, useCallback } from "react";
-import { motion, AnimatePresence } from "motion/react";
 
 declare global {
   interface Window {
@@ -107,39 +106,35 @@ export function PagePreloader() {
   if (!isLoading) return null;
 
   return (
-    <AnimatePresence>
-      <motion.div
-        key="video-preloader"
-        initial={{ opacity: 1 }}
-        animate={{ opacity: isExiting ? 0 : 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        style={{ willChange: "opacity" }}
-        className="fixed inset-0 z-[100] flex items-center justify-center bg-[#07090E] overflow-hidden pointer-events-auto touch-none select-none overscroll-none"
-      >
-        {/* Full-screen Background Video */}
-        <div className="relative w-full h-full flex items-center justify-center bg-[#07090E]">
-          <video
-            ref={videoRef}
-            src="/Final%20Render%20%5BWide%5D.mp4"
-            autoPlay
-            muted
-            playsInline
-            preload="metadata"
-            aria-hidden="true"
-            onLoadedMetadata={handleLoadedMetadata}
-            onTimeUpdate={handleTimeUpdate}
-            onEnded={handleEnded}
-            className="w-full h-full object-cover select-none pointer-events-none"
-          >
-            <track kind="captions" src="data:text/vtt,WEBVTT" default />
-          </video>
+    <div
+      key="video-preloader"
+      style={{ willChange: "opacity" }}
+      className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#07090E] overflow-hidden pointer-events-auto touch-none select-none overscroll-none transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        isExiting ? "opacity-0 pointer-events-none" : "opacity-100"
+      }`}
+    >
+      {/* Full-screen Background Video */}
+      <div className="relative w-full h-full flex items-center justify-center bg-[#07090E]">
+        <video
+          ref={videoRef}
+          src="/Final%20Render%20%5BWide%5D.mp4"
+          autoPlay
+          muted
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+          onLoadedMetadata={handleLoadedMetadata}
+          onTimeUpdate={handleTimeUpdate}
+          onEnded={handleEnded}
+          className="w-full h-full object-cover select-none pointer-events-none"
+        >
+          <track kind="captions" src="data:text/vtt,WEBVTT" default />
+        </video>
 
-          {/* Vignette & Gradient Overlays for Cinematic Polish */}
-          <div className="absolute inset-0 bg-radial from-transparent via-[#07090E]/20 to-[#07090E]/60 pointer-events-none" />
-        </div>
-      </motion.div>
-    </AnimatePresence>
+        {/* Vignette & Gradient Overlays for Cinematic Polish */}
+        <div className="absolute inset-0 bg-radial from-transparent via-[#07090E]/20 to-[#07090E]/60 pointer-events-none" />
+      </div>
+    </div>
   );
 }
 
