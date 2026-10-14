@@ -73,15 +73,15 @@ export function TechStack() {
       : technologies.filter((t) => t.category === activeCategory);
 
   return (
-    <section id="tech-stack" className="relative px-4 sm:px-6 py-24 sm:py-32 lg:py-36 max-w-7xl mx-auto min-w-0 scroll-mt-20 overflow-hidden">
-      <div className="text-center w-full max-w-3xl mx-auto mb-10 sm:mb-16 lg:mb-20">
+    <section id="tech-stack" className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 py-24 sm:py-32 lg:py-36 min-w-0 scroll-mt-20 overflow-hidden">
+      <div className="text-left sm:text-center w-full max-w-3xl sm:mx-auto mb-10 sm:mb-16 lg:mb-20">
         <span className="text-xs uppercase font-medium tracking-[0.25em] text-[#00F0FF] block mb-3">
           PROVEN ARCHITECTURES
         </span>
         <h2 className="mt-3 sm:mt-4 text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
           Built with modern technology.
         </h2>
-        <p className="mt-3 sm:mt-4 text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto">
+        <p className="mt-3 sm:mt-4 text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl sm:mx-auto">
           We leverage industry-proven languages, frameworks, and cloud services to engineer resilient, scalable software systems without technical debt.
         </p>
       </div>

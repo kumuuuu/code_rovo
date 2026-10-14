@@ -224,11 +224,11 @@ export function ConcaveLogoCarousel() {
     >
 
       {/* Section Header */}
-      <div className="relative z-10 max-w-3xl mx-auto text-center mb-14 sm:mb-18 lg:mb-20 px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.025em] leading-[1.14] text-balance">
+      <div className="relative z-10 w-full max-w-3xl sm:mx-auto text-left sm:text-center mb-14 sm:mb-18 lg:mb-20 px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.025em] leading-[1.18] sm:leading-[1.14] text-balance">
           The technology behind better business solutions.
         </h2>
-        <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto font-normal text-pretty">
+        <p className="mt-4 sm:mt-5 text-sm sm:text-lg text-slate-300 leading-relaxed max-w-2xl sm:mx-auto font-normal text-pretty">
           Our team works across modern web technologies, backend frameworks, databases, APIs, and deployment tools to build, integrate, and maintain solutions that fit business requirements.
         </p>
       </div>
