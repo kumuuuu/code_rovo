@@ -136,7 +136,7 @@ export function ContactModal({
       />
 
       {/* Modal Dialog with strict Viewport Containment and zero horizontal overflow */}
-      <div className="relative w-full max-w-2xl bg-[#0D111A] border border-white/10 rounded-2xl md:rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] z-10 max-h-[90dvh] flex flex-col overflow-hidden box-border">
+      <div className="relative w-full max-w-2xl bg-[#0D111A] border border-white/10 rounded-2xl md:rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.45),0_0_1px_1px_rgba(255,255,255,0.08)] z-10 max-h-[90dvh] flex flex-col overflow-hidden box-border">
         {/* Glow ambient background contained safely inside bounds */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl md:rounded-3xl">
           <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-gradient-to-br from-cyan-500/15 via-blue-500/10 to-transparent blur-3xl rounded-full" />

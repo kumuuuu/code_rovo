@@ -31,7 +31,7 @@ export function CompanyStats() {
   return (
     <section className="relative px-4 sm:px-6 py-8 sm:py-12 max-w-7xl mx-auto z-10">
       {/* Premium dark container with hairline border & backdrop blur */}
-      <div className="relative rounded-2xl sm:rounded-3xl border border-white/10 bg-[#0C101A]/85 backdrop-blur-xl p-5 sm:p-10 md:p-16 shadow-[0_30px_90px_-20px_rgba(0,0,0,0.85)] overflow-hidden">
+      <div className="relative rounded-2xl sm:rounded-3xl border border-white/10 bg-[#0C101A]/85 backdrop-blur-xl p-5 sm:p-10 md:p-16 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_16px_50px_-15px_rgba(0,0,0,0.35)] overflow-hidden">
         {/* Ambient subtle back-glows */}
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-purple-600/10 rounded-full blur-[90px] pointer-events-none" />

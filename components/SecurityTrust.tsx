@@ -31,7 +31,7 @@ export function SecurityTrust() {
       {/* Ambient background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] h-[320px] bg-cyan-600/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="relative z-10 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.07] via-[#0B0F19]/40 to-[#0B0F19]/30 backdrop-blur-3xl border border-white/15 p-6 sm:p-10 md:p-12 shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.22),0_25px_60px_rgba(0,0,0,0.6)]">
+      <div className="relative z-10 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.07] via-[#0B0F19]/40 to-[#0B0F19]/30 backdrop-blur-3xl border border-white/15 p-6 sm:p-10 md:p-12 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_12px_40px_-15px_rgba(0,0,0,0.35)]">
         <div className="max-w-3xl mb-8 sm:mb-10">
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
             Responsible delivery. Clear expectations.
@@ -49,7 +49,7 @@ export function SecurityTrust() {
           {practices.map((item, idx) => (
             <div
               key={idx}
-              className="p-5 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.04] backdrop-blur-2xl border border-white/20 hover:border-white/35 transition-all duration-300 flex flex-col justify-start group shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.28),0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.38),0_25px_60px_rgba(0,0,0,0.6),0_0_30px_rgba(0,240,255,0.12)]"
+              className="p-5 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.04] backdrop-blur-2xl border border-white/20 hover:border-white/35 transition-all duration-300 flex flex-col justify-start group shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_30px_-8px_rgba(0,0,0,0.3)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_16px_40px_-10px_rgba(0,0,0,0.4),0_0_24px_rgba(0,240,255,0.08)]"
             >
               <div className="mb-2.5 sm:mb-3">
                 <span className="font-tight text-xs sm:text-[13px] font-bold text-cyan-300 uppercase tracking-wider">

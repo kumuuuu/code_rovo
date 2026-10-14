@@ -74,7 +74,7 @@ export function SystemsExperience({ onOpenContact }: SystemsExperienceProps) {
       </div>
 
       {/* Systems Carousel Coming Soon Container */}
-      <div className="relative z-10 rounded-2xl sm:rounded-3xl bg-[#0B0F19]/90 border border-white/10 p-8 sm:p-14 text-center shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] overflow-hidden">
+      <div className="relative z-10 rounded-2xl sm:rounded-3xl bg-[#0B0F19]/90 border border-white/10 p-8 sm:p-14 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_16px_40px_-12px_rgba(0,0,0,0.35)] overflow-hidden">
         {/* Ambient subtle backdrop glow */}
         <div className="absolute inset-0 bg-radial from-cyan-500/10 via-blue-600/5 to-transparent pointer-events-none" />
 
@@ -126,7 +126,7 @@ export function SystemsExperience({ onOpenContact }: SystemsExperienceProps) {
       </div>
 
       {/* Copy Beneath the Logo Wall & Adaptability Banner */}
-      <div className="relative z-10 mt-8 rounded-2xl sm:rounded-3xl bg-[#0E131F]/90 border border-white/10 p-6 sm:p-10 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.85)] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+      <div className="relative z-10 mt-8 rounded-2xl sm:rounded-3xl bg-[#0E131F]/90 border border-white/10 p-6 sm:p-10 md:p-12 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_16px_40px_-12px_rgba(0,0,0,0.35)] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
         <div className="max-w-2xl space-y-2">
           <h4 className="text-lg sm:text-xl font-bold text-white">
             Already using a different system? We can adapt.

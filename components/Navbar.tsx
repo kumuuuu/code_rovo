@@ -82,7 +82,7 @@ export function Navbar({ onOpenContact }: NavbarProps) {
       >
         <nav
           className={`pointer-events-auto w-full max-w-full flex items-center justify-between border-solid transition-all duration-300 ease-out ${scrolled
-            ? "h-16 md:h-auto md:max-w-4xl lg:max-w-5xl md:mt-3.5 rounded-none md:rounded-full px-4 sm:px-6 md:px-7 py-0 md:py-2.5 bg-transparent backdrop-blur-md border-b md:border border-white/10 shadow-none md:shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+            ? "h-16 md:h-auto md:max-w-4xl lg:max-w-5xl md:mt-3.5 rounded-none md:rounded-full px-4 sm:px-6 md:px-7 py-0 md:py-2.5 bg-transparent backdrop-blur-md border-b md:border border-white/10 shadow-none md:shadow-[0_10px_30px_-5px_rgba(0,0,0,0.35)]"
             : "h-16 md:h-auto max-w-full mt-0 rounded-none px-4 sm:px-8 lg:px-16 py-0 md:py-4.5 bg-transparent border-b border-transparent shadow-none"
             }`}
         >
@@ -165,7 +165,7 @@ export function Navbar({ onOpenContact }: NavbarProps) {
           />
 
           {/* Integrated Header Dropdown Panel */}
-          <div className="relative z-50 w-full mt-16 max-h-[calc(100dvh-4.5rem)] overflow-y-auto bg-[#07090E]/95 backdrop-blur-2xl border-b border-white/10 px-5 pt-4 pb-6 shadow-[0_25px_50px_rgba(0,0,0,0.95)] animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="relative z-50 w-full mt-16 max-h-[calc(100dvh-4.5rem)] overflow-y-auto bg-[#07090E]/95 backdrop-blur-2xl border-b border-white/10 px-5 pt-4 pb-6 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.6)] animate-in fade-in slide-in-from-top-2 duration-200">
             <div className="flex flex-col space-y-1">
               {navLinks.map((link) => {
                 const isActive = activeSection === link.name;

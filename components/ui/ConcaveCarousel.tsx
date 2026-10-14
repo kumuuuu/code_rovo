@@ -413,7 +413,7 @@ export const ConcaveCarousel = forwardRef<ConcaveCarouselRef, ConcaveCarouselPro
                 >
                   {/* Primary Wall Panel */}
                   <div
-                    className="relative w-full h-full overflow-hidden border border-white/12 shadow-[0_20px_50px_rgba(0,0,0,0.85)] transition-all duration-300 group"
+                    className="relative w-full h-full overflow-hidden border border-white/12 shadow-[0_12px_36px_-8px_rgba(0,0,0,0.4)] transition-all duration-300 group"
                     style={{
                       borderRadius: `${radius}px`,
                       background:
@@ -428,7 +428,7 @@ export const ConcaveCarousel = forwardRef<ConcaveCarouselRef, ConcaveCarouselPro
                           <img
                             src={item.src}
                             alt={item.alt}
-                            className="max-w-full max-h-full object-contain filter drop-shadow-[0_8px_20px_rgba(0,0,0,0.6)] group-hover:scale-105 transition-transform duration-300"
+                            className="max-w-full max-h-full object-contain filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)] group-hover:scale-105 transition-transform duration-300"
                             draggable={false}
                           />
                         </div>
