@@ -95,13 +95,21 @@ export function GlobalBackground() {
         // Color time: independent speeds so colors shift continuously on every blob
         float ct = u_time * 0.22;
 
-        // 6 DISTINCT BLOBS TRAVELING AROUND THE FRAME (Enlarged radii for generous, visible gradient lighting):
+        // Adaptive radii: subtle calibrated glow on PC (previous values) vs balanced spread on mobile
+        float r1 = isMobile ? 0.32 : 0.22;
+        float r2 = isMobile ? 0.34 : 0.24;
+        float r3 = isMobile ? 0.32 : 0.23;
+        float r4 = isMobile ? 0.30 : 0.22;
+        float r5 = isMobile ? 0.28 : 0.20;
+        float r6 = isMobile ? 0.28 : 0.19;
+
+        // 6 DISTINCT BLOBS TRAVELING AROUND THE FRAME:
         // Blob 1: Top-Left & Top Edge
         vec2 pos1 = vec2(
           0.25 + cos(t * 0.55) * 0.18,
           0.75 + sin(t * 0.42) * 0.15
         );
-        float b1 = softBlob(uv, pos1, 0.36, aspect);
+        float b1 = softBlob(uv, pos1, r1, aspect);
         vec3 col1 = getLogoColor(ct * 1.10 + 0.0);
 
         // Blob 2: Top-Right & Right Edge
@@ -109,7 +117,7 @@ export function GlobalBackground() {
           0.78 + sin(t * 0.48 + 1.2) * 0.16,
           0.70 + cos(t * 0.60 + 0.5) * 0.18
         );
-        float b2 = softBlob(uv, pos2, 0.38, aspect);
+        float b2 = softBlob(uv, pos2, r2, aspect);
         vec3 col2 = getLogoColor(ct * 0.85 + 2.1);
 
         // Blob 3: Bottom-Right Corner
@@ -117,7 +125,7 @@ export function GlobalBackground() {
           0.75 + cos(t * 0.50 + 2.4) * 0.17,
           0.25 + sin(t * 0.38 + 1.8) * 0.16
         );
-        float b3 = softBlob(uv, pos3, 0.36, aspect);
+        float b3 = softBlob(uv, pos3, r3, aspect);
         vec3 col3 = getLogoColor(ct * 1.25 + 4.2);
 
         // Blob 4: Bottom-Left Corner
@@ -125,7 +133,7 @@ export function GlobalBackground() {
           0.22 + sin(t * 0.44 + 3.1) * 0.16,
           0.28 + cos(t * 0.52 + 2.0) * 0.17
         );
-        float b4 = softBlob(uv, pos4, 0.35, aspect);
+        float b4 = softBlob(uv, pos4, r4, aspect);
         vec3 col4 = getLogoColor(ct * 0.95 + 1.3);
 
         // Blob 5: Perimeter Runner (Full frame circuit)
@@ -133,7 +141,7 @@ export function GlobalBackground() {
           0.50 + cos(t * 0.35 + 4.0) * 0.40,
           0.50 + sin(t * 0.35 + 4.0) * 0.36
         );
-        float b5 = softBlob(uv, pos5, 0.34, aspect);
+        float b5 = softBlob(uv, pos5, r5, aspect);
         vec3 col5 = getLogoColor(ct * 1.40 + 3.5);
 
         // Blob 6: Diagonal wanderer
@@ -141,7 +149,7 @@ export function GlobalBackground() {
           0.50 + sin(t * 0.30) * 0.35,
           0.50 + cos(t * 0.60) * 0.32
         );
-        float b6 = softBlob(uv, pos6, 0.32, aspect);
+        float b6 = softBlob(uv, pos6, r6, aspect);
         vec3 col6 = getLogoColor(ct * 0.70 + 5.1);
 
         // Combine colored light emissions additively with soft tone response
@@ -158,9 +166,9 @@ export function GlobalBackground() {
         // Calculate total light intensity for contrast & deep black cutoff
         float totalIntensity = b1 + b2 + b3 + b4 + b5 + b6;
 
-        // Smooth roll-off curve: wide ambient gradient diffusion with deep black negative space
-        float toneCurve = smoothstep(0.04, 0.90, totalIntensity);
-        float colorEmission = isMobile ? 0.32 : 0.42;
+        // Smooth roll-off curve: preserves deep velvet obsidian in negative space on PC
+        float toneCurve = smoothstep(isMobile ? 0.05 : 0.06, 0.92, totalIntensity);
+        float colorEmission = isMobile ? 0.28 : 0.35;
         vec3 finalColor = bgObsidian + accumulatedColor * toneCurve * colorEmission;
 
         // Add 1-bit subtle spatial dither to eliminate banding
@@ -299,7 +307,7 @@ export function GlobalBackground() {
     >
       <canvas
         ref={canvasRef}
-        className="w-full h-full block object-cover opacity-65 sm:opacity-80 transition-opacity duration-700"
+        className="w-full h-full block object-cover opacity-60 sm:opacity-70 transition-opacity duration-700"
         style={{ display: "block", width: "100%", height: "100%" }}
       />
     </div>
