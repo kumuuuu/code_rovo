@@ -1,0 +1,2082 @@
+{
+  "url": "http://localhost:3000",
+  "scores": {
+    "overall": 73,
+    "categories": {
+      "security": 60,
+      "social": 85,
+      "robots": 100,
+      "article": 75,
+      "broken_links": 100,
+      "internal_links": 100,
+      "redirects": 100,
+      "llms_txt": 95,
+      "pagespeed": 0,
+      "onpage": 100,
+      "readability": 12,
+      "entity": 0,
+      "link_profile": 15,
+      "hreflang": 0,
+      "duplicate_content": 100
+    },
+    "weights": {
+      "security": 8,
+      "social": 5,
+      "robots": 8,
+      "broken_links": 10,
+      "internal_links": 8,
+      "redirects": 3,
+      "llms_txt": 5,
+      "pagespeed": 13,
+      "onpage": 10,
+      "readability": 8,
+      "entity": 5,
+      "link_profile": 7,
+      "hreflang": 5,
+      "duplicate_content": 5
+    },
+    "scoring_version": 1
+  },
+  "data": {
+    "url": "http://localhost:3000",
+    "domain": "localhost:3000",
+    "timestamp": "2026-10-14T15:56:48.952318",
+    "sections": {
+      "robots": {
+        "url": "http://localhost:3000/robots.txt",
+        "status": 200,
+        "user_agents": {
+          "*": {
+            "allow": [
+              "/"
+            ],
+            "disallow": [
+              "/api/"
+            ]
+          },
+          "Googlebot": {
+            "allow": [],
+            "disallow": []
+          },
+          "Bingbot": {
+            "allow": [],
+            "disallow": []
+          },
+          "Applebot": {
+            "allow": [],
+            "disallow": []
+          },
+          "DuckDuckBot": {
+            "allow": [],
+            "disallow": []
+          },
+          "GPTBot": {
+            "allow": [],
+            "disallow": []
+          },
+          "ChatGPT-User": {
+            "allow": [],
+            "disallow": []
+          },
+          "ClaudeBot": {
+            "allow": [],
+            "disallow": []
+          },
+          "anthropic-ai": {
+            "allow": [],
+            "disallow": []
+          },
+          "PerplexityBot": {
+            "allow": [],
+            "disallow": []
+          },
+          "Applebot-Extended": {
+            "allow": [],
+            "disallow": []
+          },
+          "Google-Extended": {
+            "allow": [],
+            "disallow": []
+          },
+          "Bytespider": {
+            "allow": [],
+            "disallow": []
+          },
+          "CCBot": {
+            "allow": [],
+            "disallow": []
+          },
+          "FacebookBot": {
+            "allow": [],
+            "disallow": []
+          },
+          "cohere-ai": {
+            "allow": [
+              "/"
+            ],
+            "disallow": []
+          }
+        },
+        "sitemaps": [
+          "https://coderovo.com/sitemap.xml"
+        ],
+        "crawl_delays": {},
+        "ai_crawler_status": {
+          "GPTBot": "declared but no rules",
+          "ChatGPT-User": "declared but no rules",
+          "ClaudeBot": "declared but no rules",
+          "PerplexityBot": "declared but no rules",
+          "Google-Extended": "declared but no rules",
+          "Applebot-Extended": "declared but no rules",
+          "Bytespider": "declared but no rules",
+          "CCBot": "declared but no rules",
+          "anthropic-ai": "declared but no rules",
+          "FacebookBot": "declared but no rules",
+          "Amazonbot": "not managed (inherits * rules)"
+        },
+        "issues": [
+          "\u26a0\ufe0f 1 AI crawlers not explicitly managed: Amazonbot"
+        ],
+        "error": null
+      },
+      "security": {
+        "url": "http://localhost:3000",
+        "score": 60,
+        "https": false,
+        "headers_present": {
+          "HSTS (Strict-Transport-Security)": "max-age=63072000; includeSubDomains; preload",
+          "X-Frame-Options": "SAMEORIGIN",
+          "X-Content-Type-Options": "nosniff",
+          "Referrer-Policy": "strict-origin-when-cross-origin",
+          "Permissions-Policy": "camera=(), microphone=(), geolocation=()"
+        },
+        "headers_missing": {
+          "Content-Security-Policy (CSP)": "Prevents XSS, clickjacking, and code injection."
+        },
+        "header_values": {
+          "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "permissions-policy": "camera=(), microphone=(), geolocation=()"
+        },
+        "issues": [
+          "\ud83d\udd34 Site not using HTTPS \u2014 critical for SEO and trust",
+          "\u26a0\ufe0f 1 security header(s) missing"
+        ],
+        "recommendations": [
+          "Migrate to HTTPS and set up 301 redirects from HTTP",
+          "Content-Security-Policy (CSP): Add a Content-Security-Policy header restricting script/style sources."
+        ],
+        "error": null
+      },
+      "social": {
+        "url": "http://localhost:3000",
+        "score": 85,
+        "og_tags": {
+          "og:title": "Coderovo \u2014 Your Technology Team, Beyond Borders",
+          "og:description": "Coderovo helps businesses build, scale, and maintain digital solutions through flexible software engineering teams and reliable IT expertise.",
+          "og:url": "https://coderovo.com",
+          "og:site_name": "Coderovo",
+          "og:locale": "en_US",
+          "og:image": "https://coderovo.com/images/coderovo-logo-full.png",
+          "og:image:width": "1200",
+          "og:image:height": "630",
+          "og:image:alt": "Coderovo \u2014 Your Technology Team, Beyond Borders",
+          "og:type": "website"
+        },
+        "twitter_tags": {
+          "twitter:card": "summary_large_image",
+          "twitter:title": "Coderovo \u2014 Your Technology Team, Beyond Borders",
+          "twitter:description": "Coderovo helps businesses build, scale, and maintain digital solutions through flexible software engineering teams and reliable IT expertise.",
+          "twitter:image": "https://coderovo.com/images/coderovo-logo-full.png"
+        },
+        "og_present": [
+          "og:title",
+          "og:description",
+          "og:image",
+          "og:url",
+          "og:type",
+          "og:site_name",
+          "og:locale"
+        ],
+        "og_missing": [],
+        "twitter_present": [
+          "twitter:card",
+          "twitter:title",
+          "twitter:description",
+          "twitter:image"
+        ],
+        "twitter_missing": [],
+        "issues": [],
+        "recommendations": [],
+        "preview": {
+          "title": "Coderovo \u2014 Your Technology Team, Beyond Borders",
+          "description": "Coderovo helps businesses build, scale, and maintain digital solutions through flexible software engineering teams and reliable IT expertise.",
+          "image": "https://coderovo.com/images/coderovo-logo-full.png",
+          "site_name": "Coderovo"
+        },
+        "error": null
+      },
+      "redirects": {
+        "url": "http://localhost:3000",
+        "final_url": "http://localhost:3000",
+        "chain": [
+          {
+            "step": 1,
+            "url": "http://localhost:3000",
+            "status": 200,
+            "time_ms": 55,
+            "final": true
+          }
+        ],
+        "total_hops": 0,
+        "total_time_ms": 55,
+        "has_loop": false,
+        "has_mixed_protocol": false,
+        "issues": [],
+        "error": null
+      },
+      "llms_txt": {
+        "url": "http://localhost:3000/llms.txt",
+        "full_url": "http://localhost:3000/llms-full.txt",
+        "exists": true,
+        "full_exists": false,
+        "status": 200,
+        "full_status": 404,
+        "parsed": {
+          "title": "Coderovo \u2014 Your Technology Team, Beyond Borders",
+          "description": "Coderovo helps businesses build, scale, and maintain digital solutions through flexible software engineering teams and reliable IT expertise.",
+          "sections": [
+            {
+              "name": "Core Capabilities",
+              "links": []
+            },
+            {
+              "name": "Priority Pages",
+              "links": [
+                {
+                  "title": "Home",
+                  "url": "https://coderovo.com/",
+                  "description": "Overview of Coderovo services, engagement models, technology stack, security standards, and client partnerships."
+                },
+                {
+                  "title": "Custom Software Development",
+                  "url": "https://coderovo.com/services/software-development",
+                  "description": "High-performance web and mobile application engineering, cloud microservices, and system architecture."
+                },
+                {
+                  "title": "Business Systems & Support",
+                  "url": "https://coderovo.com/services/business-systems-support",
+                  "description": "Enterprise business software support, system integration, SLA management, and infrastructure stability."
+                },
+                {
+                  "title": "Monthly Outsourcing",
+                  "url": "https://coderovo.com/services/monthly-outsourcing",
+                  "description": "Dedicated engineering talent and remote technical team scaling."
+                },
+                {
+                  "title": "Project-Based Services",
+                  "url": "https://coderovo.com/services/project-based-services",
+                  "description": "Fixed-scope software engineering with structured milestones and delivery excellence."
+                }
+              ]
+            },
+            {
+              "name": "Technical Stack",
+              "links": []
+            },
+            {
+              "name": "Contact & Location",
+              "links": []
+            }
+          ],
+          "links": [
+            {
+              "title": "Home",
+              "url": "https://coderovo.com/",
+              "description": "Overview of Coderovo services, engagement models, technology stack, security standards, and client partnerships."
+            },
+            {
+              "title": "Custom Software Development",
+              "url": "https://coderovo.com/services/software-development",
+              "description": "High-performance web and mobile application engineering, cloud microservices, and system architecture."
+            },
+            {
+              "title": "Business Systems & Support",
+              "url": "https://coderovo.com/services/business-systems-support",
+              "description": "Enterprise business software support, system integration, SLA management, and infrastructure stability."
+            },
+            {
+              "title": "Monthly Outsourcing",
+              "url": "https://coderovo.com/services/monthly-outsourcing",
+              "description": "Dedicated engineering talent and remote technical team scaling."
+            },
+            {
+              "title": "Project-Based Services",
+              "url": "https://coderovo.com/services/project-based-services",
+              "description": "Fixed-scope software engineering with structured milestones and delivery excellence."
+            }
+          ]
+        },
+        "quality": {
+          "score": 95,
+          "issues": [],
+          "suggestions": []
+        },
+        "error": null
+      },
+      "broken_links": {
+        "page_url": "http://localhost:3000",
+        "total_links": 8,
+        "checked": 8,
+        "broken": [],
+        "redirected": [
+          {
+            "url": "https://linkedin.com",
+            "anchor_text": "[no text]",
+            "is_internal": false,
+            "status": 200,
+            "error": null,
+            "redirect": {
+              "from": "https://linkedin.com",
+              "to": "https://www.linkedin.com/",
+              "hops": 1,
+              "codes": [
+                301
+              ]
+            },
+            "response_time_ms": 672
+          },
+          {
+            "url": "https://instagram.com",
+            "anchor_text": "[no text]",
+            "is_internal": false,
+            "status": 200,
+            "error": null,
+            "redirect": {
+              "from": "https://instagram.com",
+              "to": "https://www.instagram.com/",
+              "hops": 1,
+              "codes": [
+                301
+              ]
+            },
+            "response_time_ms": 1219
+          }
+        ],
+        "timeout": [],
+        "healthy": 6,
+        "summary": {
+          "total": 8,
+          "healthy": 6,
+          "broken": 0,
+          "redirected": 2,
+          "timeout": 0
+        },
+        "issues": [],
+        "error": null
+      },
+      "internal_links": {
+        "start_url": "http://localhost:3000",
+        "domain": "localhost:3000",
+        "pages_crawled": 5,
+        "total_internal_links": 24,
+        "unique_pages_found": 5,
+        "max_depth_reached": 1,
+        "pages": {
+          "http://localhost:3000": {
+            "outgoing_links": 4,
+            "incoming_links": 0
+          },
+          "http://localhost:3000/services/software-development": {
+            "outgoing_links": 5,
+            "incoming_links": 5
+          },
+          "http://localhost:3000/services/project-based-services": {
+            "outgoing_links": 5,
+            "incoming_links": 5
+          },
+          "http://localhost:3000/services/business-systems-support": {
+            "outgoing_links": 5,
+            "incoming_links": 5
+          },
+          "http://localhost:3000/services/monthly-outsourcing": {
+            "outgoing_links": 5,
+            "incoming_links": 5
+          }
+        },
+        "anchor_texts": {
+          "Home": 4,
+          "Custom Software DevelopmentCustom web applications, mobile platforms, APIs, and ": 3,
+          "Dedicated Remote TeamsFlexible monthly outsourcing and senior engineers dedicate": 3,
+          "Business Systems & SupportOperational system management, ERP/CRM workflow automa": 3,
+          "Project-Based DeliveryMilestone-driven software development with fixed scope and": 3,
+          "Explore model details": 2,
+          "Custom Software Development": 2,
+          "Business Systems & Operations": 2,
+          "Project-Based Delivery": 1,
+          "Dedicated Remote Teams": 1
+        },
+        "link_distribution": {
+          "min": 4,
+          "max": 5,
+          "avg": 4.8
+        },
+        "orphan_candidates": [],
+        "nofollow_links": [],
+        "issues": [],
+        "recommendations": [
+          "Increase internal linking \u2014 aim for 3-5 relevant links per 1000 words"
+        ],
+        "error": null
+      },
+      "pagespeed": {
+        "url": "http://localhost:3000",
+        "strategy": "mobile",
+        "performance_score": null,
+        "metrics": {},
+        "opportunities": [],
+        "diagnostics": [],
+        "field_data_available": false,
+        "error": "API error: HTTP 403"
+      },
+      "entity": {
+        "url": "http://localhost:3000",
+        "entity_name": "Coderovo",
+        "entities_in_schema": [
+          {
+            "type": "Organization",
+            "name": "Coderovo",
+            "url": "https://coderovo.com",
+            "sameAs": [
+              "https://linkedin.com",
+              "https://instagram.com"
+            ],
+            "logo": "https://coderovo.com/images/coderovo-logo-full.png",
+            "description": "Coderovo helps businesses build, scale, and maintain digital solutions through flexible software engineering teams and reliable IT expertise.",
+            "identifier": ""
+          }
+        ],
+        "sameas_analysis": {
+          "found": {
+            "LinkedIn": {
+              "url": "https://linkedin.com",
+              "priority": "High",
+              "kg_signal": "Strong"
+            },
+            "Instagram": {
+              "url": "https://instagram.com",
+              "priority": "Low",
+              "kg_signal": "Weak"
+            }
+          },
+          "missing": {
+            "Wikipedia": {
+              "domain": "wikipedia.org",
+              "priority": "Critical",
+              "kg_signal": "Primary"
+            },
+            "Wikidata": {
+              "domain": "wikidata.org",
+              "priority": "Critical",
+              "kg_signal": "Primary"
+            },
+            "Twitter/X": {
+              "domain": "x.com",
+              "priority": "High",
+              "kg_signal": "Strong"
+            }
+          },
+          "issues": [],
+          "total_found": 2,
+          "total_missing_critical": 3
+        },
+        "wikidata": {
+          "found": false,
+          "qid": null,
+          "url": null
+        },
+        "wikipedia": {
+          "found": false,
+          "url": null
+        },
+        "google_kg": {
+          "checked": true,
+          "found": false,
+          "result": null
+        },
+        "nap_issues": [],
+        "issues": [
+          {
+            "severity": "Info",
+            "area": "Wikidata",
+            "finding": "No Wikidata entry found for 'Coderovo'.",
+            "fix": "If the entity meets Wikidata notability guidelines, create or improve an item with accurate third-party references. Do not create one solely for SEO."
+          },
+          {
+            "severity": "Info",
+            "area": "Wikipedia",
+            "finding": "No Wikipedia article found for 'Coderovo'.",
+            "fix": "Only pursue Wikipedia if the entity meets independent notability standards. Otherwise, strengthen official schema, sameAs profiles, citations, and About/Contact signals."
+          },
+          {
+            "severity": "Info",
+            "area": "Google Knowledge Graph",
+            "finding": "No Google Knowledge Graph Search API match found for 'Coderovo'.",
+            "fix": "Improve entity consistency across official site schema, sameAs profiles, authoritative mentions, and organization/person pages."
+          },
+          {
+            "severity": "Info",
+            "area": "sameAs",
+            "finding": "Missing sameAs link to Wikipedia (Primary KG signal).",
+            "fix": "Add the existing official 'wikipedia.org' URL to sameAs; do not create this profile solely for SEO."
+          },
+          {
+            "severity": "Info",
+            "area": "sameAs",
+            "finding": "Missing sameAs link to Wikidata (Primary KG signal).",
+            "fix": "Add the existing official 'wikidata.org' URL to sameAs; do not create this profile solely for SEO."
+          },
+          {
+            "severity": "Info",
+            "area": "sameAs",
+            "finding": "Missing sameAs link to Twitter/X (Strong KG signal).",
+            "fix": "Add 'x.com' profile URL to sameAs array in your entity schema."
+          }
+        ],
+        "summary": {
+          "entities_found": 1,
+          "sameas_count": 2,
+          "sameas_missing_critical": 3,
+          "wikidata_found": false,
+          "wikipedia_found": false,
+          "google_kg_checked": true,
+          "google_kg_found": false,
+          "total_issues": 6
+        }
+      },
+      "link_profile": {
+        "pages_crawled": 6,
+        "total_internal_links": 8,
+        "total_external_links": 26,
+        "unique_internal_targets": 4,
+        "unique_external_domains": 3,
+        "avg_internal_links_per_page": 1.3,
+        "orphan_pages": {
+          "count": 5,
+          "urls": [
+            "https://coderovo.com",
+            "https://coderovo.com/services/business-systems-support",
+            "https://coderovo.com/services/monthly-outsourcing",
+            "https://coderovo.com/services/project-based-services",
+            "https://coderovo.com/services/software-development"
+          ]
+        },
+        "dead_end_pages": {
+          "count": 5,
+          "urls": [
+            "https://coderovo.com",
+            "https://coderovo.com/services/software-development",
+            "https://coderovo.com/services/business-systems-support",
+            "https://coderovo.com/services/monthly-outsourcing",
+            "https://coderovo.com/services/project-based-services"
+          ]
+        },
+        "top_linked_pages": [
+          {
+            "url": "http://localhost:3000/services/project-based-services",
+            "inbound_links": 2
+          },
+          {
+            "url": "http://localhost:3000/services/monthly-outsourcing",
+            "inbound_links": 2
+          },
+          {
+            "url": "http://localhost:3000/services/software-development",
+            "inbound_links": 2
+          },
+          {
+            "url": "http://localhost:3000/services/business-systems-support",
+            "inbound_links": 2
+          }
+        ],
+        "top_external_domains": [
+          {
+            "domain": "www.coderovo.com",
+            "links": 3
+          },
+          {
+            "domain": "linkedin.com",
+            "links": 1
+          },
+          {
+            "domain": "instagram.com",
+            "links": 1
+          }
+        ],
+        "issues": [
+          {
+            "type": "orphan_pages",
+            "severity": "High",
+            "count": 5,
+            "finding": "5 orphan page(s) with zero inbound internal links.",
+            "pages": [
+              "https://coderovo.com",
+              "https://coderovo.com/services/business-systems-support",
+              "https://coderovo.com/services/monthly-outsourcing",
+              "https://coderovo.com/services/project-based-services",
+              "https://coderovo.com/services/software-development"
+            ],
+            "fix": "Add internal links from relevant content pages to these orphan pages."
+          },
+          {
+            "type": "dead_end_pages",
+            "severity": "Medium",
+            "count": 5,
+            "finding": "5 page(s) with no outbound internal links (dead ends).",
+            "pages": [
+              "https://coderovo.com",
+              "https://coderovo.com/services/software-development",
+              "https://coderovo.com/services/business-systems-support",
+              "https://coderovo.com/services/monthly-outsourcing",
+              "https://coderovo.com/services/project-based-services"
+            ],
+            "fix": "Add contextual internal links to related content from these pages."
+          },
+          {
+            "type": "low_internal_linking",
+            "severity": "High",
+            "finding": "Average internal links per page is only 1.3 (target: 5-10).",
+            "fix": "Increase internal linking by adding contextual links within content."
+          }
+        ],
+        "site_url": "http://localhost:3000"
+      },
+      "hreflang": {
+        "url": "http://localhost:3000/",
+        "implementation_method": "none",
+        "hreflang_tags_found": 0,
+        "tags": [],
+        "sitemap": {
+          "found": false,
+          "url": "http://localhost:3000/sitemap.xml",
+          "has_xhtml_namespace": false,
+          "language_variants_found": [],
+          "note": "No hreflang found in sitemap."
+        },
+        "checks": {
+          "hreflang_present": {
+            "passed": false,
+            "severity": "Info",
+            "finding": "No hreflang tags found (HTML, HTTP headers, or sitemap).",
+            "fix": "If this is a single-language site, hreflang is not needed. For multi-language sites, implement hreflang via HTML link tags or sitemap."
+          }
+        },
+        "language_code_issues": [],
+        "return_tag_checks": [],
+        "summary": {
+          "critical": 0,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "passed": 0
+        }
+      },
+      "duplicate_content": {
+        "pages_analyzed": 5,
+        "exact_duplicates": [],
+        "near_duplicates": [],
+        "thin_content": [],
+        "summary": {
+          "exact_duplicate_groups": 0,
+          "near_duplicate_pairs": 0,
+          "thin_pages": 0,
+          "avg_word_count": 491
+        }
+      },
+      "onpage": {
+        "title": "Coderovo \u2014 Your Technology Team, Beyond Borders",
+        "meta_description": "Coderovo helps businesses build, scale, and maintain digital solutions through flexible software engineering teams and reliable IT expertise.",
+        "meta_robots": "index, follow",
+        "x_robots_tag": null,
+        "canonical": "https://coderovo.com",
+        "lang": "en",
+        "charset": "utf-8",
+        "viewport": "width=device-width, initial-scale=1",
+        "favicon": "http://localhost:3000/images/coderovo-logo-animation-ready-exact.svg",
+        "h1": [
+          "Your Technology Team,Beyond Borders."
+        ],
+        "h2": [
+          "Technology and outsourcing solutions built around your business.",
+          "The technology behind better business solutions.",
+          "A technology partner that understands your business.",
+          "A straightforward process from day one.",
+          "Flexible ways to work with CodeRovo.",
+          "Technology expertise. Practical business support.",
+          "Responsible delivery. Clear expectations.",
+          "Let's build a better way forward."
+        ],
+        "h3": [
+          "Custom Software Development",
+          "Dedicated Remote Teams & Team Extension",
+          "Business Systems & Back-Office Support",
+          "API Development & System Integration",
+          "AI & Business Process Automation",
+          "IT Support, Maintenance & Deployment",
+          "Built Around Your Needs",
+          "Clear Communication",
+          "Technical and Operational Experience",
+          "Flexible Engagement",
+          "Understand",
+          "Plan",
+          "Onboard",
+          "Deliver",
+          "Review & Improve",
+          "Project-Based Services",
+          "Monthly Outsourcing"
+        ],
+        "h4": [
+          "Services",
+          "Company",
+          "Direct Contact"
+        ],
+        "h5": [],
+        "h6": [],
+        "images": [
+          {
+            "src": "http://localhost:3000/_next/image?url=%2Fimages%2Fcoderovo-logo-full.png&w=3840&q=75",
+            "alt": "Coderovo",
+            "width": "2400",
+            "height": "800",
+            "is_responsive_fill": false,
+            "loading": null
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (1)-Photoroom.png",
+            "alt": "Hotelbeds",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (2)-Photoroom.png",
+            "alt": "Business Platform 2",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (3)-Photoroom.png",
+            "alt": "Business Platform 3",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (4)-Photoroom.png",
+            "alt": "Business Platform 4",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (5)-Photoroom.png",
+            "alt": "Zhara HS",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (6)-Photoroom.png",
+            "alt": "Business Platform 6",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (7)-Photoroom.png",
+            "alt": "Business Platform 7",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM-Photoroom.png",
+            "alt": "Business Platform 8",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (1)-Photoroom.png",
+            "alt": "Expedia",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (2)-Photoroom.png",
+            "alt": "Business Platform 10",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (3)-Photoroom.png",
+            "alt": "ApprovalMax",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (4)-Photoroom.png",
+            "alt": "Dext",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (5)-Photoroom.png",
+            "alt": "Business Platform 13",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (6)-Photoroom.png",
+            "alt": "Business Platform 14",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (7)-Photoroom.png",
+            "alt": "Business Platform 15",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (8)-Photoroom.png",
+            "alt": "MYOB",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (9)-Photoroom.png",
+            "alt": "Business Platform 17",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM-Photoroom.png",
+            "alt": "Booking.com",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (1)-Photoroom.png",
+            "alt": "Hotelbeds",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (2)-Photoroom.png",
+            "alt": "Business Platform 2",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (3)-Photoroom.png",
+            "alt": "Business Platform 3",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (4)-Photoroom.png",
+            "alt": "Business Platform 4",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (5)-Photoroom.png",
+            "alt": "Zhara HS",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (6)-Photoroom.png",
+            "alt": "Business Platform 6",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (7)-Photoroom.png",
+            "alt": "Business Platform 7",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM-Photoroom.png",
+            "alt": "Business Platform 8",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (1)-Photoroom.png",
+            "alt": "Expedia",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (2)-Photoroom.png",
+            "alt": "Business Platform 10",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (3)-Photoroom.png",
+            "alt": "ApprovalMax",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (4)-Photoroom.png",
+            "alt": "Dext",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (5)-Photoroom.png",
+            "alt": "Business Platform 13",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (6)-Photoroom.png",
+            "alt": "Business Platform 14",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (7)-Photoroom.png",
+            "alt": "Business Platform 15",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (8)-Photoroom.png",
+            "alt": "MYOB",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (9)-Photoroom.png",
+            "alt": "Business Platform 17",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM-Photoroom.png",
+            "alt": "Booking.com",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/SE/React.png",
+            "alt": "React",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/SE/next js.png",
+            "alt": "Next.js",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/SE/node-js-icon.png",
+            "alt": "Node.js",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/SE/java-programming-language-icon.png",
+            "alt": "Java",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/SE/spring-boot-icon.png",
+            "alt": "Spring Boot",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/SE/docker-icon.png",
+            "alt": "Docker",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/SE/mongodb-seeklogo.png",
+            "alt": "MongoDB",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/SE/mysql-icon.png",
+            "alt": "MySQL",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/SE/keycloak-seeklogo.png",
+            "alt": "Keycloak",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/SE/Colorful Starburst JWT Logo-Photoroom.png",
+            "alt": "JWT",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/SE/React.png",
+            "alt": "React",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/SE/next js.png",
+            "alt": "Next.js",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/SE/node-js-icon.png",
+            "alt": "Node.js",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/SE/java-programming-language-icon.png",
+            "alt": "Java",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/SE/spring-boot-icon.png",
+            "alt": "Spring Boot",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/SE/docker-icon.png",
+            "alt": "Docker",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/SE/mongodb-seeklogo.png",
+            "alt": "MongoDB",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/SE/mysql-icon.png",
+            "alt": "MySQL",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/SE/keycloak-seeklogo.png",
+            "alt": "Keycloak",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/Logos/SE/Colorful Starburst JWT Logo-Photoroom.png",
+            "alt": "JWT",
+            "width": null,
+            "height": null,
+            "is_responsive_fill": false,
+            "loading": "lazy"
+          },
+          {
+            "src": "http://localhost:3000/_next/image?url=%2Fimages%2Fcoderovo-logo-footer.png&w=3840&q=75",
+            "alt": "Coderovo",
+            "width": "1683",
+            "height": "379",
+            "is_responsive_fill": false,
+            "loading": null
+          }
+        ],
+        "links": {
+          "internal": [
+            {
+              "href": "http://localhost:3000/services/project-based-services",
+              "text": "Explore model details",
+              "rel": []
+            },
+            {
+              "href": "http://localhost:3000/services/monthly-outsourcing",
+              "text": "Explore model details",
+              "rel": []
+            },
+            {
+              "href": "http://localhost:3000/services/software-development",
+              "text": "Custom Software Development",
+              "rel": []
+            },
+            {
+              "href": "http://localhost:3000/services/monthly-outsourcing",
+              "text": "Dedicated Remote Teams",
+              "rel": []
+            },
+            {
+              "href": "http://localhost:3000/services/business-systems-support",
+              "text": "Business Systems & Operations",
+              "rel": []
+            },
+            {
+              "href": "http://localhost:3000/services/project-based-services",
+              "text": "Project-Based Delivery",
+              "rel": []
+            },
+            {
+              "href": "http://localhost:3000/services/software-development#capabilities",
+              "text": "API & System Integration",
+              "rel": []
+            },
+            {
+              "href": "http://localhost:3000/services/business-systems-support#support",
+              "text": "IT Support & Maintenance",
+              "rel": []
+            }
+          ],
+          "external": [
+            {
+              "href": "mailto:hello@coderovo.com",
+              "text": "hello@coderovo.com",
+              "rel": []
+            },
+            {
+              "href": "tel:+94705286873",
+              "text": "+94 705286873",
+              "rel": []
+            },
+            {
+              "href": "https://linkedin.com",
+              "text": "",
+              "rel": [
+                "noopener",
+                "noreferrer"
+              ]
+            },
+            {
+              "href": "https://instagram.com",
+              "text": "",
+              "rel": [
+                "noopener",
+                "noreferrer"
+              ]
+            },
+            {
+              "href": "mailto:hello@coderovo.com",
+              "text": "hello@coderovo.com",
+              "rel": []
+            },
+            {
+              "href": "tel:+94705286873",
+              "text": "+94 705286873",
+              "rel": []
+            }
+          ]
+        },
+        "pagination": {
+          "prev": null,
+          "next": null
+        },
+        "resource_hints": {
+          "preload": [
+            {
+              "href": "http://localhost:3000/_next/static/chunks/%5Bturbopack%5D_browser_dev_hmr-client_hmr-client_ts_03l4kld1mrwfx._.js",
+              "as": "script",
+              "type": null,
+              "crossorigin": null
+            }
+          ],
+          "preconnect": [],
+          "dns-prefetch": [],
+          "prefetch": [],
+          "prerender": []
+        },
+        "schema": [
+          {
+            "@type": "Organization",
+            "@types": [
+              "Organization"
+            ],
+            "@id": null,
+            "@context": "https://schema.org",
+            "status": "active",
+            "note": "",
+            "has_context": true,
+            "has_type": true,
+            "from_graph": true,
+            "raw": {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Coderovo",
+              "alternateName": "Coderovo Technologies",
+              "url": "https://coderovo.com",
+              "logo": "https://coderovo.com/images/coderovo-logo-full.png",
+              "description": "Coderovo helps businesses build, scale, and maintain digital solutions through flexible software engineering teams and reliable IT expertise.",
+              "sameAs": [
+                "https://linkedin.com",
+                "https://instagram.com"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+94 705286873",
+                "contactType": "customer service",
+                "email": "hello@coderovo.com",
+                "availableLanguage": [
+                  "English"
+                ]
+              }
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@types": [
+              "WebSite"
+            ],
+            "@id": null,
+            "@context": "https://schema.org",
+            "status": "active",
+            "note": "",
+            "has_context": true,
+            "has_type": true,
+            "from_graph": true,
+            "raw": {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Coderovo",
+              "url": "https://coderovo.com"
+            }
+          },
+          {
+            "@type": "ProfessionalService",
+            "@types": [
+              "ProfessionalService"
+            ],
+            "@id": null,
+            "@context": "https://schema.org",
+            "status": "active",
+            "note": "",
+            "has_context": true,
+            "has_type": true,
+            "from_graph": true,
+            "raw": {
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              "name": "Coderovo",
+              "image": "https://coderovo.com/images/coderovo-logo-full.png",
+              "url": "https://coderovo.com",
+              "telephone": "+94 705286873",
+              "priceRange": "$$",
+              "email": "hello@coderovo.com",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "LK"
+              }
+            }
+          }
+        ],
+        "open_graph": {
+          "og:title": "Coderovo \u2014 Your Technology Team, Beyond Borders",
+          "og:description": "Coderovo helps businesses build, scale, and maintain digital solutions through flexible software engineering teams and reliable IT expertise.",
+          "og:url": "https://coderovo.com",
+          "og:site_name": "Coderovo",
+          "og:locale": "en_US",
+          "og:image": "https://coderovo.com/images/coderovo-logo-full.png",
+          "og:image:width": "1200",
+          "og:image:height": "630",
+          "og:image:alt": "Coderovo \u2014 Your Technology Team, Beyond Borders",
+          "og:type": "website"
+        },
+        "twitter_card": {
+          "twitter:card": "summary_large_image",
+          "twitter:title": "Coderovo \u2014 Your Technology Team, Beyond Borders",
+          "twitter:description": "Coderovo helps businesses build, scale, and maintain digital solutions through flexible software engineering teams and reliable IT expertise.",
+          "twitter:image": "https://coderovo.com/images/coderovo-logo-full.png"
+        },
+        "word_count": 884,
+        "hreflang": []
+      },
+      "readability": {
+        "word_count": 698,
+        "sentence_count": 43,
+        "paragraph_count": 46,
+        "syllable_count": 1509,
+        "avg_sentence_length": 16.2,
+        "avg_paragraph_length": 0.9,
+        "avg_syllables_per_word": 2.16,
+        "flesch_reading_ease": 7.5,
+        "flesch_kincaid_grade": 16.3,
+        "reading_level": "Extremely Difficult (post-graduate)",
+        "estimated_reading_time_min": 3.5,
+        "complex_words": 248,
+        "complex_word_pct": 35.5,
+        "issues": [
+          "\u26a0\ufe0f Content is difficult to read (Flesch: 7.5) \u2014 may reduce engagement",
+          "\u26a0\ufe0f 35.5% complex words (3+ syllables) \u2014 consider simplifying"
+        ],
+        "recommendations": [
+          "Simplify vocabulary and shorten sentences",
+          "Rewrite the flagged long sentences below using the suggested replacements."
+        ],
+        "sentence_rewrites": [
+          {
+            "current": "We work with you to define the right engagement based on the work involved, the skills required, the expected workload, and the level of ongoing support needed.",
+            "suggested": "We work with you to define the right engagement based on the work. Involved, the skills required, the expected workload, and the level of ongoing support needed..",
+            "current_word_count": 27,
+            "target_word_count": "15-20"
+          }
+        ]
+      },
+      "article": {
+        "url": "http://localhost:3000",
+        "cms_detected": "generic",
+        "title": "Coderovo \u2014 Your Technology Team, Beyond Borders",
+        "meta_description": "Coderovo helps businesses build, scale, and maintain digital solutions through flexible software engineering teams and reliable IT expertise.",
+        "og_description": "Coderovo helps businesses build, scale, and maintain digital solutions through flexible software engineering teams and reliable IT expertise.",
+        "author": "",
+        "publish_date": "",
+        "labels": [],
+        "headings": {
+          "h1": [
+            "Your Technology Team,Beyond Borders."
+          ],
+          "h2": [
+            "Technology and outsourcing solutions built around your business.",
+            "The technology behind better business solutions.",
+            "A technology partner that understands your business.",
+            "A straightforward process from day one.",
+            "Flexible ways to work with CodeRovo.",
+            "Technology expertise. Practical business support.",
+            "Responsible delivery. Clear expectations.",
+            "Let's build a better way forward."
+          ],
+          "h3": [
+            "Custom Software Development",
+            "Dedicated Remote Teams & Team Extension",
+            "Business Systems & Back-Office Support",
+            "API Development & System Integration",
+            "AI & Business Process Automation",
+            "IT Support, Maintenance & Deployment",
+            "Built Around Your Needs",
+            "Clear Communication",
+            "Technical and Operational Experience",
+            "Flexible Engagement",
+            "Understand",
+            "Plan",
+            "Onboard",
+            "Deliver",
+            "Review & Improve",
+            "Project-Based Services",
+            "Monthly Outsourcing"
+          ]
+        },
+        "paragraphs": [
+          "Flexible technology services and reliable outsourcing support to help your business build, operate, and grow.",
+          "From custom software development and dedicated remote teams to business system support and back-office operations, CodeRovo brings technology expertise and practical business support together.",
+          "Every business has different technology needs. CodeRovo offers flexible services that help companies develop digital products, extend their teams, maintain existing systems, and manage essential technology and operational tasks.",
+          "Build and improve digital solutions tailored to your business requirements, workflows, and customers.",
+          "Add skilled team members to your existing operations or engage a dedicated team to support a defined project or ongoing development roadmap.",
+          "Support day-to-day business processes using accounting, hospitality, booking, CRM, and other operational systems. Services can be tailored to the client's processes and access requirements.",
+          "Connect business applications, automate data flows, and help systems exchange information more efficiently.",
+          "Identify repetitive tasks and explore practical automation opportunities that can reduce manual effort and improve workflow consistency.",
+          "Help keep existing applications and digital systems maintained, updated, tested, and deployed according to agreed requirements.",
+          "Our team works across modern web technologies, backend frameworks, databases, APIs, and deployment tools to build, integrate, and maintain solutions that fit business requirements.",
+          "Successful outsourcing requires more than technical skills. It requires clear communication, an understanding of business processes, dependable execution, and the flexibility to adapt as your requirements change.",
+          "Engagements tailored to your objectives, workload, existing systems, and business priorities.",
+          "Agreed responsibilities, progress updates, clear handovers, and a transparent working relationship.",
+          "Support spanning software development, integrations, business applications, and operational workflows.",
+          "Start with a defined project or an agreed scope of ongoing support, with the option to expand as needs evolve.",
+          "Our structured methodology ensures clarity, accountability, and predictable execution across both software engineering and back-office outsourcing engagements.",
+          "We discuss your business goals, project scope, existing systems, challenges, and expected outcomes.",
+          "We agree on deliverables, responsibilities, required skills, access arrangements, timelines, and the engagement model.",
+          "We establish the necessary communication channels, documentation, system access, workflows, and training.",
+          "Our team carries out the agreed development or operational work and provides progress updates at the agreed intervals.",
+          "We review the work, address feedback, document relevant changes, and identify opportunities for ongoing improvement.",
+          "We work with you to define the right engagement based on the work involved, the skills required, the expected workload, and the level of ongoing support needed.",
+          "Best for businesses with a defined project, integration, application improvement, or specific technical requirement.",
+          "Best for businesses that need continuing development capacity, operational support, or recurring back-office assistance.",
+          "We work with you to define the right engagement based on the work involved, the skills required, the expected workload, and the level of ongoing support needed.",
+          "CodeRovo is an IT solutions and outsourcing company focused on helping businesses build digital products, extend their technology capabilities, and support the systems and processes that keep their operations running.",
+          "Our services span custom software development, remote team extension, API integrations, application maintenance, and business systems and back-office support.",
+          "We understand that every organisation works differently. That's why we take the time to understand each client's requirements, existing systems, and operational processes before shaping a suitable service approach.",
+          "Whether you need support with a software project, additional development capacity, or assistance with established business applications, CodeRovo aims to provide a flexible and collaborative extension of your team.",
+          "We recognise the importance of protecting business information, application access, and operational data. Every engagement should begin with clear responsibilities and agreed procedures for accessing and handling client information.",
+          "Depending on the engagement, our working practices can include:",
+          "Testing, review, and change-management procedures appropriate to the work.",
+          "Tell us what your business needs. Whether it's a software project, a dedicated remote team, or support for your existing systems, let's explore how CodeRovo can help."
+        ],
+        "images": [
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (1)-Photoroom.png",
+            "alt": "Hotelbeds",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (2)-Photoroom.png",
+            "alt": "Business Platform 2",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (3)-Photoroom.png",
+            "alt": "Business Platform 3",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (4)-Photoroom.png",
+            "alt": "Business Platform 4",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (5)-Photoroom.png",
+            "alt": "Zhara HS",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (6)-Photoroom.png",
+            "alt": "Business Platform 6",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (7)-Photoroom.png",
+            "alt": "Business Platform 7",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM-Photoroom.png",
+            "alt": "Business Platform 8",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (1)-Photoroom.png",
+            "alt": "Expedia",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (2)-Photoroom.png",
+            "alt": "Business Platform 10",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (3)-Photoroom.png",
+            "alt": "ApprovalMax",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (4)-Photoroom.png",
+            "alt": "Dext",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (5)-Photoroom.png",
+            "alt": "Business Platform 13",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (6)-Photoroom.png",
+            "alt": "Business Platform 14",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (7)-Photoroom.png",
+            "alt": "Business Platform 15",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (8)-Photoroom.png",
+            "alt": "MYOB",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (9)-Photoroom.png",
+            "alt": "Business Platform 17",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM-Photoroom.png",
+            "alt": "Booking.com",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (1)-Photoroom.png",
+            "alt": "Hotelbeds",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (2)-Photoroom.png",
+            "alt": "Business Platform 2",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (3)-Photoroom.png",
+            "alt": "Business Platform 3",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (4)-Photoroom.png",
+            "alt": "Business Platform 4",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (5)-Photoroom.png",
+            "alt": "Zhara HS",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (6)-Photoroom.png",
+            "alt": "Business Platform 6",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM (7)-Photoroom.png",
+            "alt": "Business Platform 7",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.50 AM-Photoroom.png",
+            "alt": "Business Platform 8",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (1)-Photoroom.png",
+            "alt": "Expedia",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (2)-Photoroom.png",
+            "alt": "Business Platform 10",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (3)-Photoroom.png",
+            "alt": "ApprovalMax",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (4)-Photoroom.png",
+            "alt": "Dext",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (5)-Photoroom.png",
+            "alt": "Business Platform 13",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (6)-Photoroom.png",
+            "alt": "Business Platform 14",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (7)-Photoroom.png",
+            "alt": "Business Platform 15",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (8)-Photoroom.png",
+            "alt": "MYOB",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM (9)-Photoroom.png",
+            "alt": "Business Platform 17",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/PM/WhatsApp Image 2026-10-12 at 2.15.51 AM-Photoroom.png",
+            "alt": "Booking.com",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/SE/React.png",
+            "alt": "React",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/SE/next js.png",
+            "alt": "Next.js",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/SE/node-js-icon.png",
+            "alt": "Node.js",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/SE/java-programming-language-icon.png",
+            "alt": "Java",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/SE/spring-boot-icon.png",
+            "alt": "Spring Boot",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/SE/docker-icon.png",
+            "alt": "Docker",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/SE/mongodb-seeklogo.png",
+            "alt": "MongoDB",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/SE/mysql-icon.png",
+            "alt": "MySQL",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/SE/keycloak-seeklogo.png",
+            "alt": "Keycloak",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/SE/Colorful Starburst JWT Logo-Photoroom.png",
+            "alt": "JWT",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/SE/React.png",
+            "alt": "React",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/SE/next js.png",
+            "alt": "Next.js",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/SE/node-js-icon.png",
+            "alt": "Node.js",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/SE/java-programming-language-icon.png",
+            "alt": "Java",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/SE/spring-boot-icon.png",
+            "alt": "Spring Boot",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/SE/docker-icon.png",
+            "alt": "Docker",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/SE/mongodb-seeklogo.png",
+            "alt": "MongoDB",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/SE/mysql-icon.png",
+            "alt": "MySQL",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/SE/keycloak-seeklogo.png",
+            "alt": "Keycloak",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          },
+          {
+            "src": "/Logos/SE/Colorful Starburst JWT Logo-Photoroom.png",
+            "alt": "JWT",
+            "width": "",
+            "height": "",
+            "loading": "lazy"
+          }
+        ],
+        "structured_data": [
+          {
+            "@type": "Organization",
+            "@context": "https://schema.org",
+            "status": "active",
+            "note": "",
+            "has_context": true,
+            "has_type": true,
+            "raw": {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Coderovo",
+              "alternateName": "Coderovo Technologies",
+              "url": "https://coderovo.com",
+              "logo": "https://coderovo.com/images/coderovo-logo-full.png",
+              "description": "Coderovo helps businesses build, scale, and maintain digital solutions through flexible software engineering teams and reliable IT expertise.",
+              "sameAs": [
+                "https://linkedin.com",
+                "https://instagram.com"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+94 705286873",
+                "contactType": "customer service",
+                "email": "hello@coderovo.com",
+                "availableLanguage": [
+                  "English"
+                ]
+              }
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@context": "https://schema.org",
+            "status": "active",
+            "note": "",
+            "has_context": true,
+            "has_type": true,
+            "raw": {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Coderovo",
+              "url": "https://coderovo.com"
+            }
+          },
+          {
+            "@type": "ProfessionalService",
+            "@context": "https://schema.org",
+            "status": "active",
+            "note": "",
+            "has_context": true,
+            "has_type": true,
+            "raw": {
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              "name": "Coderovo",
+              "image": "https://coderovo.com/images/coderovo-logo-full.png",
+              "url": "https://coderovo.com",
+              "telephone": "+94 705286873",
+              "priceRange": "$$",
+              "email": "hello@coderovo.com",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "LK"
+              }
+            }
+          }
+        ],
+        "readability": {
+          "flesch_reading_ease": 7.8,
+          "fkgl": 15.9,
+          "grade_label": "Difficult (technical / specialist audience)",
+          "word_count": 727,
+          "sentence_count": 49,
+          "avg_sentence_length": 14.8,
+          "avg_syllables_per_word": 2.17
+        },
+        "target_keyword": "existing systems",
+        "extracted_keywords": [
+          "existing systems",
+          "custom software development",
+          "technology expertise practical",
+          "expertise practical business",
+          "practical business support",
+          "software development dedicated",
+          "development dedicated remote",
+          "dedicated remote teams",
+          "business systems back",
+          "systems back office",
+          "back office support",
+          "digital products extend"
+        ],
+        "related_keywords": [
+          "existing systems synonym",
+          "existing erp systems",
+          "streamline existing systems",
+          "streamline existing systems meaning",
+          "existing operating systems",
+          "existing irrigation systems",
+          "integration with existing systems",
+          "existing life safety systems for building",
+          "integration with existing systems meaning",
+          "compatibility with existing systems"
+        ],
+        "seo_issues": [
+          {
+            "severity": "Warning",
+            "area": "Content",
+            "finding": "Content may be thin for a blog post (727 words).",
+            "fix": "Aim for 1,500+ words of substantive, unique content."
+          },
+          {
+            "severity": "Warning",
+            "area": "E-E-A-T",
+            "finding": "No author attribution detected.",
+            "fix": "Add a visible author byline with credentials. Critical post-Dec 2025 E-E-A-T update."
+          },
+          {
+            "severity": "Info",
+            "area": "Freshness",
+            "finding": "No publish date detected in markup.",
+            "fix": "Add visible publish/update date and datePublished in Article schema."
+          },
+          {
+            "severity": "Info",
+            "area": "Readability",
+            "finding": "Content is very difficult to read (Flesch score: 7.8).",
+            "fix": "Simplify sentences. Aim for Flesch score \u2265 50 for broader audience reach."
+          }
+        ]
+      }
+    },
+    "environment": {
+      "primary": "Next.js",
+      "runtime": "JavaScript Framework",
+      "confidence": "medium",
+      "signals": [
+        "Next.js runtime/build markers detected"
+      ],
+      "alternatives": []
+    },
+    "environment_fixes": [
+      {
+        "severity": "warning",
+        "title": "1 security headers missing",
+        "reason": "Missing headers reduce trust and can expose the site to browser/security risks.",
+        "fix": "Set security headers in `next.config.js` `headers()` or at your edge/CDN."
+      },
+      {
+        "severity": "info",
+        "title": "Performance measurement incomplete",
+        "reason": "PageSpeed API returned an error, so CWV recommendations are less reliable.",
+        "fix": "Set `PAGESPEED_API_KEY` in your environment or `.env` file (see `.env.example`), then rerun. The CLI also accepts `--api-key`. Prioritize LCP/INP/CLS fixes from that output."
+      },
+      {
+        "severity": "warning",
+        "title": "Content readability is difficult",
+        "reason": "Long, complex text can reduce engagement and comprehension.",
+        "fix": "Rewrite key sections with shorter sentences (15-20 words), shorter paragraphs (2-4 sentences), and clearer subheadings."
+      }
+    ]
+  }
+}
