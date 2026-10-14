@@ -1,12 +1,35 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 interface ServicesSectionProps {
   onSelectService: (service: string) => void;
 }
 
 export function ServicesSection({ onSelectService }: ServicesSectionProps) {
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const containerLeft = el.getBoundingClientRect().left;
+    const children = el.firstElementChild?.children;
+    if (!children || children.length === 0) return;
+
+    let closestIdx = 0;
+    let minDiff = Infinity;
+    for (let i = 0; i < children.length; i++) {
+      const childRect = children[i].getBoundingClientRect();
+      const diff = Math.abs(childRect.left - containerLeft);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestIdx = i;
+      }
+    }
+    if (closestIdx !== activeIdx) {
+      setActiveIdx(closestIdx);
+    }
+  };
+
   const services = [
     {
       title: "Custom Software Development",
@@ -72,64 +95,91 @@ export function ServicesSection({ onSelectService }: ServicesSectionProps) {
   ];
 
   return (
-    <section id="services" className="relative px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-36 max-w-7xl mx-auto scroll-mt-20 overflow-hidden">
+    <section id="services" className="relative px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-36 2xl:py-44 w-full max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1920px] mx-auto min-w-0 scroll-mt-20 overflow-hidden">
       {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18 lg:mb-20">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.025em] leading-[1.14] text-balance">
+      <div className="text-center w-full max-w-3xl 2xl:max-w-4xl mx-auto mb-8 sm:mb-16 lg:mb-20 2xl:mb-24">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-6xl 3xl:text-7xl font-bold text-white tracking-[-0.025em] leading-[1.14] text-balance">
           Technology and outsourcing solutions built around your business.
         </h2>
-        <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto font-normal text-pretty">
+        <p className="mt-4 sm:mt-5 text-base sm:text-lg 2xl:text-xl 3xl:text-2xl text-slate-300 leading-relaxed max-w-2xl 2xl:max-w-3xl mx-auto font-normal text-pretty">
           Every business has different technology needs. CodeRovo offers flexible services that help companies develop digital products, extend their teams, maintain existing systems, and manage essential technology and operational tasks.
         </p>
       </div>
 
-      {/* 6-Card Grid (3x2 on desktop) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-9">
-        {services.map((item) => (
-          <div
-            key={item.title}
-            onClick={() => onSelectService(item.title)}
-            className="group relative rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.04] backdrop-blur-2xl border border-white/20 hover:border-white/35 p-7 sm:p-8 lg:p-9 flex flex-col justify-between cursor-pointer select-none transition-all duration-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_30px_-8px_rgba(0,0,0,0.3)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_16px_40px_-10px_rgba(0,0,0,0.4),0_0_24px_rgba(0,240,255,0.08)] overflow-hidden"
-          >
-            <div>
-              {/* Line Icon */}
-              <div className="p-3 rounded-xl bg-white/[0.06] border border-white/10 text-cyan-400 group-hover:bg-cyan-500/15 group-hover:border-cyan-400/40 group-hover:text-cyan-300 transition-all duration-300 w-fit mb-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
-                {item.icon}
+      {/* Mobile Swipe Cue with dynamic live counter */}
+      <div className="flex md:hidden items-center justify-between text-xs text-cyan-400/80 mb-3 px-1">
+        <span className="font-medium tracking-wide">Swipe services</span>
+        <span className="text-[11px] text-slate-400 tracking-wider font-semibold">
+          {activeIdx + 1} / {services.length} &rarr;
+        </span>
+      </div>
+
+      {/* Responsive Cards: Horizontal Snap-Peek Slider on Mobile, 3x2 Grid on Tablet/Desktop/2K/4K */}
+      <div
+        onScroll={handleScroll}
+        className="w-full max-w-full min-w-0 overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-none pb-2 md:pb-0"
+      >
+        <div className="flex md:grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 2xl:gap-8 3xl:gap-10 w-max md:w-full min-w-full">
+          {services.map((item) => (
+            <div
+              key={item.title}
+              onClick={() => onSelectService(item.title)}
+              className="w-[82vw] max-w-[340px] sm:w-[68vw] md:w-auto md:max-w-none shrink-0 snap-center md:shrink md:snap-align-none group relative rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.04] backdrop-blur-2xl border border-white/20 hover:border-white/35 p-6 sm:p-8 lg:p-9 2xl:p-11 flex flex-col justify-between cursor-pointer select-none transition-all duration-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_30px_-8px_rgba(0,0,0,0.3)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_16px_40px_-10px_rgba(0,0,0,0.4),0_0_24px_rgba(0,240,255,0.08)] overflow-hidden"
+            >
+              <div>
+                {/* Line Icon */}
+                <div className="p-3 2xl:p-4 rounded-xl 2xl:rounded-2xl bg-white/[0.06] border border-white/10 text-cyan-400 group-hover:bg-cyan-500/15 group-hover:border-cyan-400/40 group-hover:text-cyan-300 transition-all duration-300 w-fit mb-5 sm:mb-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
+                  {item.icon}
+                </div>
+
+                <h3 className="text-xl sm:text-2xl 2xl:text-3xl font-bold text-white tracking-tight leading-snug group-hover:text-cyan-200 transition-colors text-balance">
+                  {item.title}
+                </h3>
+
+                <p className="mt-3.5 text-sm sm:text-base 2xl:text-lg text-slate-300 leading-relaxed font-normal text-pretty">
+                  {item.description}
+                </p>
               </div>
 
-              <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-snug group-hover:text-cyan-200 transition-colors text-balance">
-                {item.title}
-              </h3>
-
-              <p className="mt-3.5 text-sm sm:text-base text-slate-300 leading-relaxed font-normal text-pretty">
-                {item.description}
-              </p>
+              {/* Bottom Row Action */}
+              <div className="mt-7 sm:mt-8 pt-4 sm:pt-5 border-t border-white/8 flex items-center justify-between text-sm 2xl:text-base font-medium text-slate-400 group-hover:text-cyan-300 transition-colors">
+                <span>Discuss requirement</span>
+                <svg
+                  className="w-4 h-4 2xl:w-5 2xl:h-5 transform group-hover:translate-x-1.5 transition-transform duration-200"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </div>
             </div>
+          ))}
+        </div>
+      </div>
 
-            {/* Bottom Row Action */}
-            <div className="mt-8 pt-5 border-t border-white/8 flex items-center justify-between text-sm font-medium text-slate-400 group-hover:text-cyan-300 transition-colors">
-              <span>Discuss requirement</span>
-              <svg
-                className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform duration-200"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </div>
-          </div>
+      {/* Mobile Dynamic Indicator Dots */}
+      <div className="flex md:hidden items-center justify-center gap-1.5 mt-4">
+        {services.map((_, i) => (
+          <span
+            key={i}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              i === activeIdx ? "w-6 bg-cyan-400 shadow-[0_0_8px_rgba(0,240,255,0.6)]" : "w-1.5 bg-white/20"
+            }`}
+          />
         ))}
       </div>
 
-      {/* Footer CTA in section */}
-      <div className="mt-16 sm:mt-20 text-center">
+      {/* Footer Consultation Button - Responsive & Mobile Sized */}
+      <div className="mt-8 sm:mt-14 2xl:mt-20 text-center px-3">
         <button
           onClick={() => onSelectService("Custom Software Development")}
-          className="inline-flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-all group cursor-pointer px-7 py-3.5 rounded-full bg-white/[0.05] hover:bg-white/[0.10] border border-white/12 hover:border-cyan-400/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] active:scale-[0.98]"
+          className="inline-flex items-center justify-center gap-2 text-xs sm:text-sm 2xl:text-base font-medium text-slate-300 hover:text-white transition-all group cursor-pointer px-4 sm:px-6 2xl:px-8 py-2.5 sm:py-3 2xl:py-3.5 rounded-full bg-white/[0.05] hover:bg-white/[0.10] border border-white/12 hover:border-cyan-400/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] active:scale-[0.98] w-auto max-w-full"
         >
-          <span>Have specific service requirements?</span>
-          <span className="text-cyan-400 font-semibold group-hover:underline underline-offset-4">Let&apos;s talk &rarr;</span>
+          <span>Have custom requirements?</span>
+          <span className="text-cyan-400 font-semibold whitespace-nowrap group-hover:underline underline-offset-4">
+            Let&apos;s talk &rarr;
+          </span>
         </button>
       </div>
     </section>

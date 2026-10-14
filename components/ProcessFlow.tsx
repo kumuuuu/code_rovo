@@ -1,6 +1,31 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 
 export function ProcessFlow() {
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const containerLeft = el.getBoundingClientRect().left;
+    const children = el.firstElementChild?.children;
+    if (!children || children.length === 0) return;
+
+    let closestIdx = 0;
+    let minDiff = Infinity;
+    for (let i = 0; i < children.length; i++) {
+      const childRect = children[i].getBoundingClientRect();
+      const diff = Math.abs(childRect.left - containerLeft);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestIdx = i;
+      }
+    }
+    if (closestIdx !== activeIdx) {
+      setActiveIdx(closestIdx);
+    }
+  };
+
   const steps = [
     {
       title: "Understand",
@@ -40,54 +65,79 @@ export function ProcessFlow() {
   ];
 
   return (
-    <section id="how-we-work" className="relative px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-36 max-w-7xl mx-auto scroll-mt-20 overflow-hidden">
+    <section id="how-we-work" className="relative px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-36 2xl:py-44 w-full max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1920px] mx-auto min-w-0 scroll-mt-20 overflow-hidden">
       {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18 lg:mb-20">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.025em] leading-[1.14] text-balance">
+      <div className="text-center w-full max-w-3xl 2xl:max-w-4xl mx-auto mb-8 sm:mb-16 lg:mb-20 2xl:mb-24">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl 2xl:text-6xl 3xl:text-7xl font-bold text-white tracking-[-0.025em] leading-[1.14] text-balance">
           A straightforward process from day one.
         </h2>
-        <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto font-normal text-pretty">
+        <p className="mt-4 sm:mt-5 text-base sm:text-lg 2xl:text-xl 3xl:text-2xl text-slate-300 leading-relaxed max-w-2xl 2xl:max-w-3xl mx-auto font-normal text-pretty">
           Our structured methodology ensures clarity, accountability, and predictable execution across both software engineering and back-office outsourcing engagements.
         </p>
       </div>
 
-      {/* 5-Step Progressive Horizontal/Vertical Timeline */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-5 sm:gap-6">
-        {steps.map((step, idx) => (
-          <div
-            key={idx}
-            className="group relative rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.04] backdrop-blur-2xl border border-white/20 hover:border-white/35 p-6 sm:p-7 lg:p-8 flex flex-col justify-between transition-all duration-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_30px_-8px_rgba(0,0,0,0.3)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_16px_40px_-10px_rgba(0,0,0,0.4),0_0_24px_rgba(0,240,255,0.08)] overflow-hidden"
-          >
-            <div>
-              <h3 className="text-xl font-bold text-white tracking-tight leading-snug group-hover:text-cyan-200 transition-colors text-balance">
-                {step.title}
-              </h3>
+      {/* Mobile Swipe Cue with dynamic live counter */}
+      <div className="flex md:hidden items-center justify-between text-xs text-cyan-400/80 mb-3 px-1">
+        <span className="font-medium tracking-wide">Swipe phases</span>
+        <span className="text-[11px] text-slate-400 tracking-wider font-semibold">
+          {activeIdx + 1} / {steps.length} &rarr;
+        </span>
+      </div>
 
-              {/* Tagline without pill badge or mono font */}
-              <p className="mt-2 mb-4 text-xs font-semibold text-cyan-400 tracking-wider uppercase">
-                {step.tagline}
-              </p>
+      {/* 5-Step Progressive Horizontal Snap Track on Mobile, 5-col Grid on Desktop/2K/4K */}
+      <div
+        onScroll={handleScroll}
+        className="w-full max-w-full min-w-0 overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-none pb-2 md:pb-0"
+      >
+        <div className="flex md:grid gap-4 sm:gap-5 md:grid-cols-5 2xl:gap-6 3xl:gap-8 w-max md:w-full min-w-full">
+          {steps.map((step, idx) => (
+            <div
+              key={idx}
+              className="w-[82vw] max-w-[320px] sm:w-[50vw] md:w-auto md:max-w-none shrink-0 snap-center md:shrink md:snap-align-none group relative rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.04] backdrop-blur-2xl border border-white/20 hover:border-white/35 p-6 sm:p-7 lg:p-8 2xl:p-9 flex flex-col justify-between transition-all duration-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_30px_-8px_rgba(0,0,0,0.3)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_16px_40px_-10px_rgba(0,0,0,0.4),0_0_24px_rgba(0,240,255,0.08)] overflow-hidden"
+            >
+              <div>
+                <h3 className="text-xl 2xl:text-2xl font-bold text-white tracking-tight leading-snug group-hover:text-cyan-200 transition-colors text-balance">
+                  {step.title}
+                </h3>
 
-              <p className="text-sm text-slate-300 leading-relaxed font-normal text-pretty">
-                {step.description}
-              </p>
+                {/* Tagline without pill badge or mono font */}
+                <p className="mt-2 mb-4 text-xs 2xl:text-sm font-semibold text-cyan-400 tracking-wider uppercase">
+                  {step.tagline}
+                </p>
+
+                <p className="text-sm 2xl:text-base text-slate-300 leading-relaxed font-normal text-pretty">
+                  {step.description}
+                </p>
+              </div>
+
+              {/* Bottom Row: Phase Name */}
+              <div className="mt-7 sm:mt-8 pt-4 border-t border-white/8 flex items-center justify-between">
+                <span className="text-xs 2xl:text-sm font-semibold tracking-wider uppercase text-slate-400 group-hover:text-cyan-300 transition-colors">
+                  {step.phase}
+                </span>
+                <svg
+                  className="w-4 h-4 2xl:w-5 2xl:h-5 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
             </div>
+          ))}
+        </div>
+      </div>
 
-            {/* Bottom Row: Phase Name */}
-            <div className="mt-8 pt-4 border-t border-white/8 flex items-center justify-between">
-              <span className="text-xs font-semibold tracking-wider uppercase text-slate-400 group-hover:text-cyan-300 transition-colors">
-                {step.phase}
-              </span>
-              <svg
-                className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
-          </div>
+      {/* Mobile Dynamic Indicator Dots */}
+      <div className="flex md:hidden items-center justify-center gap-1.5 mt-4">
+        {steps.map((_, i) => (
+          <span
+            key={i}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              i === activeIdx ? "w-6 bg-cyan-400 shadow-[0_0_8px_rgba(0,240,255,0.6)]" : "w-1.5 bg-white/20"
+            }`}
+          />
         ))}
       </div>
     </section>

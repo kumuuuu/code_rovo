@@ -99,8 +99,8 @@ export function Navbar({ onOpenContact }: NavbarProps) {
       >
         <nav
           className={`pointer-events-auto w-full max-w-full flex items-center justify-between border-solid transition-all duration-300 ease-out ${scrolled
-            ? "h-16 md:h-auto md:max-w-4xl lg:max-w-5xl md:mt-3.5 rounded-none md:rounded-full px-4 sm:px-6 md:px-7 py-0 md:py-2.5 bg-transparent backdrop-blur-md border-b md:border border-white/10 shadow-none md:shadow-[0_10px_30px_-5px_rgba(0,0,0,0.35)]"
-            : "h-16 md:h-auto max-w-full mt-0 rounded-none px-4 sm:px-8 lg:px-16 py-0 md:py-4.5 bg-transparent border-b border-transparent shadow-none"
+            ? "h-16 md:h-auto md:max-w-4xl lg:max-w-5xl 2xl:max-w-6xl 3xl:max-w-7xl md:mt-3.5 2xl:mt-5 rounded-none md:rounded-full px-4 sm:px-6 md:px-7 2xl:px-9 py-0 md:py-2.5 2xl:py-3.5 bg-transparent backdrop-blur-md border-b md:border border-white/10 shadow-none md:shadow-[0_10px_30px_-5px_rgba(0,0,0,0.35)]"
+            : "h-16 md:h-auto max-w-full 2xl:max-w-[1600px] 3xl:max-w-[1920px] mt-0 rounded-none px-4 sm:px-8 lg:px-16 2xl:px-20 py-0 md:py-4.5 2xl:py-6 bg-transparent border-b border-transparent shadow-none"
             }`}
         >
           {/* Left: Brand / Logo */}
@@ -110,11 +110,11 @@ export function Navbar({ onOpenContact }: NavbarProps) {
             className="flex items-center group focus:outline-none cursor-pointer select-none"
             aria-label="Coderovo Home"
           >
-            <Logo className="h-10 sm:h-11 md:h-12 w-auto" />
+            <Logo className="h-10 sm:h-11 md:h-12 2xl:h-14 w-auto" />
           </a>
 
           {/* Center: Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-8">
+          <div className="hidden md:flex items-center gap-6 lg:gap-8 2xl:gap-10">
             {navLinks.map((link) => {
               const isActive = activeSection === link.name;
               return (
@@ -128,7 +128,7 @@ export function Navbar({ onOpenContact }: NavbarProps) {
                     }
                     handleNavClick(link.name, link.isContact);
                   }}
-                  className={`text-sm font-tight font-medium transition-colors duration-200 cursor-pointer ${isActive
+                  className={`text-sm 2xl:text-base font-tight font-medium transition-colors duration-200 cursor-pointer ${isActive
                     ? "text-white font-semibold drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]"
                     : "text-slate-400 hover:text-white"
                     }`}

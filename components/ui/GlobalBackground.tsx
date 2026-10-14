@@ -37,10 +37,14 @@ export function GlobalBackground() {
         return fract(sin(dot(coord, vec2(12.9898, 78.233))) * 43758.5453) - 0.5;
       }
 
-      // Smooth Gaussian radial falloff with aspect ratio correction
+      // Smooth Gaussian radial falloff with isotropic aspect ratio correction
       float softBlob(vec2 uv, vec2 center, float radius, float aspect) {
         vec2 d = uv - center;
-        d.x *= aspect;
+        if (aspect >= 1.0) {
+          d.x *= aspect;
+        } else {
+          d.y /= aspect;
+        }
         float distSq = dot(d, d);
         return exp(-distSq / (2.0 * radius * radius));
       }
@@ -76,8 +80,14 @@ export function GlobalBackground() {
       }
 
       void main() {
-        vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+        vec2 rawUv = gl_FragCoord.xy / u_resolution.xy;
         float aspect = u_resolution.x / u_resolution.y;
+
+        // Detect mobile screen width or portrait orientation
+        bool isMobile = u_resolution.x < 768.0 || aspect < 0.85;
+
+        // Zoom out coordinates on mobile so color flows along ambient margins, leaving calm dark center
+        vec2 uv = isMobile ? ((rawUv - 0.5) * 1.55 + 0.5) : rawUv;
 
         // Base time for movement and color morphing
         float t = u_time * 0.38;
@@ -149,8 +159,9 @@ export function GlobalBackground() {
         float totalIntensity = b1 + b2 + b3 + b4 + b5 + b6;
 
         // Smooth roll-off curve: preserves deep velvet obsidian in negative space
-        float toneCurve = smoothstep(0.06, 0.92, totalIntensity);
-        vec3 finalColor = bgObsidian + accumulatedColor * toneCurve * 0.35;
+        float toneCurve = smoothstep(isMobile ? 0.08 : 0.06, 0.92, totalIntensity);
+        float colorEmission = isMobile ? 0.20 : 0.35;
+        vec3 finalColor = bgObsidian + accumulatedColor * toneCurve * colorEmission;
 
         // Add 1-bit subtle spatial dither to eliminate banding
         finalColor += (dither(gl_FragCoord.xy) / 255.0);
@@ -288,7 +299,7 @@ export function GlobalBackground() {
     >
       <canvas
         ref={canvasRef}
-        className="w-full h-full block object-cover opacity-70 transition-opacity duration-700"
+        className="w-full h-full block object-cover opacity-40 sm:opacity-70 transition-opacity duration-700"
         style={{ display: "block", width: "100%", height: "100%" }}
       />
     </div>
