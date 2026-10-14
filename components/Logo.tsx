@@ -19,8 +19,9 @@ export function Logo({
         <Image
           src="/images/coderovo-logo-footer.png"
           alt="Coderovo"
-          width={1683}
-          height={379}
+          width={360}
+          height={81}
+          sizes="(max-width: 640px) 160px, 220px"
           priority={priority}
           className="h-full w-auto object-contain"
         />
@@ -33,8 +34,9 @@ export function Logo({
       <Image
         src="/images/coderovo-logo-full.png"
         alt="Coderovo"
-        width={2400}
-        height={800}
+        width={280}
+        height={93}
+        sizes="(max-width: 640px) 120px, (max-width: 1024px) 140px, 160px"
         priority={priority}
         className="h-full w-auto object-contain"
       />
