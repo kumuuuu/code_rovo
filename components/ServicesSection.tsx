@@ -72,13 +72,13 @@ export function ServicesSection({ onSelectService }: ServicesSectionProps) {
   ];
 
   return (
-    <section id="services" className="relative px-4 sm:px-6 py-16 sm:py-24 max-w-7xl mx-auto scroll-mt-20 overflow-hidden">
+    <section id="services" className="relative px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24 max-w-7xl mx-auto scroll-mt-20 overflow-hidden">
       {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
-        <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
+      <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 lg:mb-16">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.18] sm:leading-[1.15]">
           Technology and outsourcing solutions built around your business.
         </h2>
-        <p className="mt-3.5 sm:mt-4 text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto">
+        <p className="mt-3.5 sm:mt-4 text-sm sm:text-base md:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
           Every business has different technology needs. CodeRovo offers flexible services that help companies develop digital products, extend their teams, maintain existing systems, and manage essential technology and operational tasks.
         </p>
       </div>
@@ -88,7 +88,7 @@ export function ServicesSection({ onSelectService }: ServicesSectionProps) {
         {services.map((item) => (
           <div
             key={item.title}
-            className="group relative rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.04] backdrop-blur-2xl border border-white/20 hover:border-white/35 p-5 sm:p-7 md:p-8 transition-all duration-300 flex flex-col shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_30px_-8px_rgba(0,0,0,0.3)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_16px_40px_-10px_rgba(0,0,0,0.4),0_0_24px_rgba(0,240,255,0.08)] overflow-hidden"
+            className="group relative rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.04] backdrop-blur-2xl border border-white/20 hover:border-white/35 p-5 sm:p-6 lg:p-8 transition-all duration-300 flex flex-col shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_30px_-8px_rgba(0,0,0,0.3)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_16px_40px_-10px_rgba(0,0,0,0.4),0_0_24px_rgba(0,240,255,0.08)] overflow-hidden"
           >
             {/* Top Row: Line Icon */}
             <div className="mb-4 sm:mb-5">
@@ -101,7 +101,7 @@ export function ServicesSection({ onSelectService }: ServicesSectionProps) {
               {item.title}
             </h3>
 
-            <p className="mt-2.5 sm:mt-3 text-sm text-slate-300 leading-relaxed">
+            <p className="mt-2 sm:mt-2.5 text-xs sm:text-sm text-slate-300 leading-relaxed">
               {item.description}
             </p>
           </div>

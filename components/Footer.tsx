@@ -5,8 +5,8 @@ export function Footer() {
   const currentYear = 2026;
 
   return (
-    <footer className="relative border-t border-white/8 bg-[#07090E] pt-14 sm:pt-20 pb-8 sm:pb-12 text-slate-400 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <footer className="relative border-t border-white/8 bg-[#07090E] pt-12 sm:pt-16 md:pt-20 pb-8 sm:pb-12 text-slate-400 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-12 pb-10 sm:pb-16 border-b border-white/6">
           {/* Col 1: Brand & Social (lg:col-span-4) */}
           <div className="lg:col-span-4 space-y-3 sm:space-y-4">

@@ -9,30 +9,30 @@ interface EngagementModelsProps {
 
 export function EngagementModels({ onOpenContact }: EngagementModelsProps) {
   return (
-    <section id="engagement" className="relative px-4 sm:px-6 py-16 sm:py-24 max-w-7xl mx-auto scroll-mt-20 overflow-hidden">
-      <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-        <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
+    <section id="engagement" className="relative px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24 max-w-7xl mx-auto scroll-mt-20 overflow-hidden">
+      <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 lg:mb-16">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.18] sm:leading-[1.15]">
           Flexible ways to work with CodeRovo.
         </h2>
-        <p className="mt-3.5 text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto">
+        <p className="mt-3.5 sm:mt-4 text-sm sm:text-base md:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
           We work with you to define the right engagement based on the work involved, the skills required, the expected workload, and the level of ongoing support needed.
         </p>
       </div>
 
       {/* Dual Model Comparison Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
         {/* Model 1: Project-Based Services */}
-        <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.04] backdrop-blur-2xl border border-white/20 hover:border-white/35 p-6 sm:p-8 md:p-10 transition-all duration-300 flex flex-col justify-between shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_30px_-8px_rgba(0,0,0,0.3)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_16px_40px_-10px_rgba(0,0,0,0.4),0_0_24px_rgba(0,240,255,0.08)]">
+        <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.04] backdrop-blur-2xl border border-white/20 hover:border-white/35 p-5 sm:p-7 md:p-9 transition-all duration-300 flex flex-col justify-between shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_30px_-8px_rgba(0,0,0,0.3)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_16px_40px_-10px_rgba(0,0,0,0.4),0_0_24px_rgba(0,240,255,0.08)]">
           <div>
-            <h3 className="text-2xl font-bold text-white tracking-tight">
+            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
               Project-Based Services
             </h3>
 
-            <p className="mt-3 text-sm text-slate-300 leading-relaxed">
+            <p className="mt-2.5 sm:mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
               Best for businesses with a defined project, integration, application improvement, or specific technical requirement.
             </p>
 
-            <ul className="mt-6 space-y-3 border-t border-white/8 pt-6">
+            <ul className="mt-5 sm:mt-6 space-y-2.5 sm:space-y-3 border-t border-white/8 pt-5 sm:pt-6">
               {[
                 "Agreed scope and deliverables",
                 "Defined milestones",
@@ -49,7 +49,7 @@ export function EngagementModels({ onOpenContact }: EngagementModelsProps) {
             </ul>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-white/8 space-y-2.5">
+          <div className="mt-7 sm:mt-8 pt-5 sm:pt-6 border-t border-white/8 space-y-2.5">
             <button
               onClick={() => onOpenContact("Project-Based Services")}
               className="w-full py-3 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 active:scale-[0.99] transition-all shadow-[0_0_20px_rgba(0,240,255,0.35)] hover:shadow-[0_0_25px_rgba(0,240,255,0.5)] flex items-center justify-center cursor-pointer"
@@ -66,7 +66,7 @@ export function EngagementModels({ onOpenContact }: EngagementModelsProps) {
         </div>
 
         {/* Model 2: Monthly Outsourcing */}
-        <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.04] backdrop-blur-2xl border border-cyan-400/35 hover:border-cyan-400/65 p-6 sm:p-8 md:p-10 transition-all duration-300 flex flex-col justify-between shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_30px_-8px_rgba(0,0,0,0.3)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_16px_40px_-10px_rgba(0,0,0,0.4),0_0_24px_rgba(0,240,255,0.12)]">
+        <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.04] backdrop-blur-2xl border border-cyan-400/35 hover:border-cyan-400/65 p-5 sm:p-7 md:p-9 transition-all duration-300 flex flex-col justify-between shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_30px_-8px_rgba(0,0,0,0.3)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_16px_40px_-10px_rgba(0,0,0,0.4),0_0_24px_rgba(0,240,255,0.12)]">
           <div>
             <h3 className="text-2xl font-bold text-white tracking-tight">
               Monthly Outsourcing

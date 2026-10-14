@@ -8,18 +8,18 @@ interface CallToActionProps {
 
 export function CallToAction({ onOpenContact }: CallToActionProps) {
   return (
-    <section id="contact" className="relative px-4 sm:px-6 py-12 sm:py-20 max-w-7xl mx-auto scroll-mt-20">
-      <div className="relative rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] bg-gradient-to-b from-white/[0.08] to-white/[0.02] backdrop-blur-2xl border border-white/20 p-6 sm:p-12 md:p-20 text-center overflow-hidden shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_16px_50px_-15px_rgba(0,0,0,0.35)]">
+    <section id="contact" className="relative px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 max-w-7xl mx-auto scroll-mt-20">
+      <div className="relative rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] bg-gradient-to-b from-white/[0.08] to-white/[0.02] backdrop-blur-2xl border border-white/20 p-6 sm:p-10 md:p-16 lg:p-20 text-center overflow-hidden shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_16px_50px_-15px_rgba(0,0,0,0.35)]">
         {/* Concentric radial glow using brand violet & cyan */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[500px] md:w-[700px] h-[250px] sm:h-[350px] bg-gradient-to-r from-cyan-500/15 via-blue-600/15 to-purple-600/15 rounded-full blur-[90px] sm:blur-[110px] pointer-events-none" />
         <div className="absolute inset-0 bg-dot-matrix opacity-30 pointer-events-none" />
 
-        <div className="relative z-10 max-w-3xl mx-auto space-y-4 sm:space-y-6">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight leading-[1.12]">
+        <div className="relative z-10 max-w-3xl mx-auto space-y-3.5 sm:space-y-5">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.14] sm:leading-[1.12]">
             Let&apos;s build a better way forward.
           </h2>
 
-          <p className="text-slate-300 text-sm sm:text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="text-slate-300 text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-relaxed">
             Tell us what your business needs. Whether it&apos;s a software project, a dedicated remote team, or support for your existing systems, let&apos;s explore how CodeRovo can help.
           </p>
 
