@@ -57,13 +57,13 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
             </div>
 
             {/* Subtitle Badges */}
-            <div className="mt-6 pt-5 border-t border-white/8 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[11px] sm:text-xs font-tight tracking-wider uppercase">
+            {/* <div className="mt-6 pt-5 border-t border-white/8 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[11px] sm:text-xs font-tight tracking-wider uppercase">
               <span className="text-white font-medium">SOFTWARE DEVELOPMENT</span>
               <span className="text-slate-500 hidden xs:inline select-none">·</span>
               <span className="text-white font-medium">IT OUTSOURCING</span>
               <span className="text-slate-500 hidden sm:inline select-none">·</span>
               <span className="text-white font-medium">BUSINESS SYSTEMS SUPPORT</span>
-            </div>
+            </div> */}
           </div>
 
           {/* Logo Column: Displayed first on mobile, right column on desktop */}
