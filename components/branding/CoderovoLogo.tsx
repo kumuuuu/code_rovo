@@ -148,7 +148,7 @@ export function CoderovoLogo({
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        className="w-full h-full overflow-visible"
+        className="w-full h-full overflow-hidden"
       >
         <defs>
           {/* Unified silhouette clip path */}

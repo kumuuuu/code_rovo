@@ -25,7 +25,7 @@ export function WhyUs() {
   ];
 
   return (
-    <section id="why-us" className="relative px-4 sm:px-6 py-16 sm:py-24 max-w-7xl mx-auto scroll-mt-20">
+    <section id="why-us" className="relative px-4 sm:px-6 py-16 sm:py-24 max-w-7xl mx-auto scroll-mt-20 overflow-hidden">
       <div className="max-w-3xl mb-10 sm:mb-16">
         <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
           A technology partner that understands your business.

@@ -10,13 +10,13 @@ interface HeroSectionProps {
 
 export function HeroSection({ onOpenContact }: HeroSectionProps) {
   return (
-    <section id="home" className="relative min-h-[92vh] sm:min-h-screen flex flex-col justify-between items-center px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 lg:pt-36 pb-8 sm:pb-16 overflow-hidden">
+    <section id="home" className="relative w-full max-w-full min-h-[92vh] sm:min-h-screen flex flex-col justify-between items-center px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 lg:pt-36 pb-8 sm:pb-16 overflow-hidden">
       {/* Interactive Canvas Background with nodes and atmospheric glows */}
       <HeroCanvas />
 
       {/* Hero Content: Side-by-side grid container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto my-auto py-4 sm:py-8 lg:py-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-8 items-center w-full">
           {/* Left Column: Headline, subtext, dual CTAs */}
           <div className="lg:col-span-7 flex flex-col items-start text-left lg:pr-6">
             {/* Display Headline */}
@@ -57,18 +57,18 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
             </div>
 
             {/* Subtitle Badges */}
-            <div className="mt-6 pt-5 border-t border-white/8 flex flex-wrap items-center gap-2 text-[11px] sm:text-xs font-tight tracking-wider uppercase">
+            <div className="mt-6 pt-5 border-t border-white/8 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[11px] sm:text-xs font-tight tracking-wider uppercase">
               <span className="text-white font-medium">SOFTWARE DEVELOPMENT</span>
-              <span className="text-slate-500">·</span>
+              <span className="text-slate-500 hidden xs:inline select-none">·</span>
               <span className="text-white font-medium">IT OUTSOURCING</span>
-              <span className="text-slate-500">·</span>
+              <span className="text-slate-500 hidden sm:inline select-none">·</span>
               <span className="text-white font-medium">BUSINESS SYSTEMS SUPPORT</span>
             </div>
           </div>
 
           {/* Right Column: Prominent Animated Coderovo Logo */}
           <div className="lg:col-span-5 flex items-center justify-center lg:justify-end w-full mt-4 lg:mt-0">
-            <div className="relative flex items-center justify-center w-full max-w-[280px] sm:max-w-[380px] lg:max-w-[450px] aspect-square">
+            <div className="relative flex items-center justify-center w-full max-w-[280px] sm:max-w-[380px] lg:max-w-[450px] aspect-square overflow-hidden">
               <CoderovoLogo
                 size="clamp(220px, 68vw, 450px)"
                 animated={true}

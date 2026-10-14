@@ -28,7 +28,7 @@ export default function Home() {
   };
 
   return (
-    <div className="relative min-h-screen bg-transparent text-[#E2E8F0] selection:bg-cyan-500/25 selection:text-cyan-200">
+    <div className="relative min-h-screen bg-transparent text-[#E2E8F0] selection:bg-cyan-500/25 selection:text-cyan-200 w-full max-w-full overflow-x-hidden">
       {/* Intro Liquid Metaball Loading Animation & Seamless Reveal */}
       <PagePreloader />
 
@@ -36,7 +36,7 @@ export default function Home() {
       <Navbar onOpenContact={handleOpenContact} />
 
       {/* Main Content Flow */}
-      <main className="relative flex flex-col">
+      <main className="relative flex flex-col w-full max-w-full overflow-x-hidden">
         {/* 01. Hero Section */}
         <HeroSection onOpenContact={handleOpenContact} />
 
