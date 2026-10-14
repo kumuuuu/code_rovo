@@ -61,7 +61,7 @@ export default function MonthlyOutsourcingPage() {
         <section className="relative px-4 sm:px-6 max-w-7xl mx-auto mb-16 sm:mb-24">
           <div className="max-w-3xl">
             {/* Breadcrumb */}
-            <div className="flex items-center gap-2 text-xs font-mono text-slate-400 mb-6">
+            <div className="flex items-center gap-2 text-xs font-medium text-slate-400 mb-6">
               <Link href="/" className="hover:text-cyan-400 transition-colors">Home</Link>
               <span>/</span>
               <Link href="/#engagement" className="hover:text-cyan-400 transition-colors">Engagement Models</Link>

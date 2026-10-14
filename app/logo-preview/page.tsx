@@ -29,7 +29,7 @@ export default function LogoPreviewPage() {
         />
       </div>
 
-      <div className="mt-8 flex flex-wrap gap-4 items-center justify-center bg-white/5 border border-white/10 px-6 py-3 rounded-full text-xs font-mono">
+      <div className="mt-8 flex flex-wrap gap-4 items-center justify-center bg-white/5 border border-white/10 px-6 py-3 rounded-full text-xs font-medium">
         <button
           onClick={() => setAnimated(!animated)}
           className={`px-3 py-1.5 rounded-full transition-colors ${
