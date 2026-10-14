@@ -33,7 +33,7 @@ export function HeroSection({ onOpenContact }: HeroSectionProps) {
             </p>
 
             {/* Crisp supporting text */}
-            <p className="mt-2.5 sm:mt-3.5 text-sm sm:text-base text-slate-400 max-w-xl font-normal leading-relaxed">
+            <p className="mt-2.5 sm:mt-3.5 text-sm sm:text-base text-slate-300 max-w-xl font-normal leading-relaxed">
               From custom software development and dedicated remote teams to business system support and back-office operations, CodeRovo brings technology expertise and practical business support together.
             </p>
 

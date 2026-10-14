@@ -48,9 +48,9 @@ export function Footer() {
 
           {/* Col 2: Services (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-2.5 sm:space-y-3">
-            <h4 className="text-xs font-mono uppercase tracking-widest text-slate-200">
+            <h3 className="text-xs font-mono uppercase tracking-widest text-slate-200">
               Services
-            </h4>
+            </h3>
             <ul className="space-y-1 sm:space-y-2 text-sm">
               <li><a href="/services/software-development" className="py-1 inline-block hover:text-cyan-300 transition-colors">Custom Software Development</a></li>
               <li><a href="/services/monthly-outsourcing" className="py-1 inline-block hover:text-cyan-300 transition-colors">Dedicated Remote Teams</a></li>
@@ -63,9 +63,9 @@ export function Footer() {
 
           {/* Col 3: Company & Approach (lg:col-span-2) */}
           <div className="lg:col-span-2 space-y-2.5 sm:space-y-3">
-            <h4 className="text-xs font-mono uppercase tracking-widest text-slate-200">
+            <h3 className="text-xs font-mono uppercase tracking-widest text-slate-200">
               Company
-            </h4>
+            </h3>
             <ul className="space-y-1 sm:space-y-2 text-sm">
               <li><a href="#home" className="py-1 inline-block hover:text-white transition-colors">Overview</a></li>
               <li><a href="#about" className="py-1 inline-block hover:text-white transition-colors">About CodeRovo</a></li>
@@ -77,9 +77,9 @@ export function Footer() {
 
           {/* Col 4: Contact info (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-2.5 sm:space-y-3">
-            <h4 className="text-xs font-mono uppercase tracking-widest text-slate-200">
+            <h3 className="text-xs font-mono uppercase tracking-widest text-slate-200">
               Direct Contact
-            </h4>
+            </h3>
             <p className="text-sm text-slate-300">
               Ready to explore software development or back-office operational outsourcing? Connect with our team.
             </p>

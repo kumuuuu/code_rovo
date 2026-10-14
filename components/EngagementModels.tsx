@@ -58,6 +58,7 @@ export function EngagementModels({ onOpenContact }: EngagementModelsProps) {
             </button>
             <Link
               href="/services/project-based-services"
+              aria-label="Explore project-based services model details"
               className="block text-center text-xs font-medium text-cyan-400 hover:text-cyan-300 py-1 transition-colors"
             >
               Explore model details
@@ -102,6 +103,7 @@ export function EngagementModels({ onOpenContact }: EngagementModelsProps) {
             </button>
             <Link
               href="/services/monthly-outsourcing"
+              aria-label="Explore monthly outsourcing model details"
               className="block text-center text-xs font-medium text-cyan-400 hover:text-cyan-300 py-1 transition-colors"
             >
               Explore model details
