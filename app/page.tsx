@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import dynamic from "next/dynamic";
 import { PagePreloader } from "@/components/ui/PagePreloader";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
@@ -14,7 +15,12 @@ import { AboutCodeRovo } from "@/components/AboutCodeRovo";
 import { SecurityTrust } from "@/components/SecurityTrust";
 import { CallToAction } from "@/components/CallToAction";
 import { Footer } from "@/components/Footer";
-import { ContactModal } from "@/components/ContactModal";
+
+// Lazy-load ContactModal so 24 KiB form bundle is deferred off the critical main thread
+const ContactModal = dynamic(
+  () => import("@/components/ContactModal").then((mod) => mod.ContactModal),
+  { ssr: false }
+);
 
 export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -71,12 +77,14 @@ export default function Home() {
       {/* 10. Comprehensive Footer */}
       <Footer />
 
-      {/* Interactive Contact & Inquiry Modal */}
-      <ContactModal
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-        defaultService={selectedService}
-      />
+      {/* Interactive Contact & Inquiry Modal (Mounted on Demand) */}
+      {isContactOpen && (
+        <ContactModal
+          isOpen={isContactOpen}
+          onClose={() => setIsContactOpen(false)}
+          defaultService={selectedService}
+        />
+      )}
     </div>
   );
 }
