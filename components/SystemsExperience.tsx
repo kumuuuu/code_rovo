@@ -80,7 +80,7 @@ export function SystemsExperience({ onOpenContact }: SystemsExperienceProps) {
 
         <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
           {/* Animated Carousel Wireframe / Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-[#00F0FF] text-xs font-mono font-medium tracking-wide mb-6">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-[#00F0FF] text-xs font-medium tracking-wider mb-6">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
@@ -90,16 +90,16 @@ export function SystemsExperience({ onOpenContact }: SystemsExperienceProps) {
 
           {/* Carousel Preview Wireframe Graphic */}
           <div className="w-full max-w-md my-4 py-6 px-4 rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-center gap-3 sm:gap-4 overflow-hidden">
-            <div className="w-20 sm:w-28 h-16 sm:h-20 rounded-lg bg-white/[0.04] border border-white/5 opacity-40 scale-90 flex items-center justify-center text-[10px] font-mono text-slate-500">
+            <div className="w-20 sm:w-28 h-16 sm:h-20 rounded-lg bg-white/[0.04] border border-white/5 opacity-40 scale-90 flex items-center justify-center text-[11px] font-medium text-slate-500">
               Accounting
             </div>
             <div className="w-28 sm:w-36 h-20 sm:h-24 rounded-xl bg-cyan-500/10 border border-cyan-400/30 shadow-[0_0_20px_rgba(0,240,255,0.15)] flex flex-col items-center justify-center gap-1">
               <svg className="w-6 h-6 text-cyan-400 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16m-7 6h7" />
               </svg>
-              <span className="text-[11px] font-mono font-semibold text-cyan-300">Interactive Wall</span>
+              <span className="text-[11px] font-semibold text-cyan-300">Interactive Wall</span>
             </div>
-            <div className="w-20 sm:w-28 h-16 sm:h-20 rounded-lg bg-white/[0.04] border border-white/5 opacity-40 scale-90 flex items-center justify-center text-[10px] font-mono text-slate-500">
+            <div className="w-20 sm:w-28 h-16 sm:h-20 rounded-lg bg-white/[0.04] border border-white/5 opacity-40 scale-90 flex items-center justify-center text-[11px] font-medium text-slate-500">
               Hospitality
             </div>
           </div>
@@ -116,7 +116,7 @@ export function SystemsExperience({ onOpenContact }: SystemsExperienceProps) {
             {categories.map((cat, idx) => (
               <span
                 key={idx}
-                className="text-[11px] font-mono px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-slate-300 hover:text-cyan-300 transition-colors"
+                className="text-[11px] font-medium px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-slate-300 hover:text-cyan-300 transition-colors"
               >
                 {cat.title} ({cat.systems.slice(0, 3).map((s) => s.name).join(" · ")}...)
               </span>
@@ -148,7 +148,7 @@ export function SystemsExperience({ onOpenContact }: SystemsExperienceProps) {
       </div>
 
       {/* Trademark & Legal Experience Disclaimer */}
-      <p className="relative z-10 text-[11px] font-mono text-slate-500 text-center pt-6 max-w-3xl mx-auto">
+      <p className="relative z-10 text-[11px] font-medium text-slate-500 text-center pt-6 max-w-3xl mx-auto">
         All trademarks and logos belong to their respective owners. Their inclusion indicates relevant team experience only and does not imply endorsement or partnership.
       </p>
     </section>

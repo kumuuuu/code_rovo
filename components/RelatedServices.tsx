@@ -36,7 +36,7 @@ export function RelatedServices({ currentPath }: RelatedServicesProps) {
       <div className="border-t border-white/8 pt-12 sm:pt-16">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
-            <span className="text-xs uppercase font-mono tracking-widest text-cyan-400 font-semibold block mb-2">
+            <span className="text-xs uppercase tracking-[0.25em] text-cyan-400 font-semibold block mb-2">
               EXPLORE MORE SOLUTIONS
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
@@ -45,29 +45,29 @@ export function RelatedServices({ currentPath }: RelatedServicesProps) {
           </div>
           <Link
             href="/#services"
-            className="text-xs font-mono text-slate-400 hover:text-cyan-300 transition-colors inline-flex items-center gap-1.5"
+            className="text-xs font-medium text-slate-400 hover:text-cyan-300 transition-colors inline-flex items-center gap-1.5"
           >
             View all services
             <span>&rarr;</span>
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7">
           {related.map((service) => (
             <Link
               key={service.href}
               href={service.href}
-              className="group p-5 sm:p-6 rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-cyan-500/30 transition-all flex flex-col justify-between"
+              className="group p-6 sm:p-7 rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-cyan-500/30 transition-all flex flex-col justify-between"
             >
               <div>
                 <h3 className="text-base sm:text-lg font-semibold text-white group-hover:text-cyan-300 transition-colors">
                   {service.title}
                 </h3>
-                <p className="mt-2 text-xs sm:text-sm text-slate-400 leading-relaxed">
+                <p className="mt-2.5 text-xs sm:text-sm text-slate-400 leading-relaxed">
                   {service.description}
                 </p>
               </div>
-              <div className="mt-4 pt-3 border-t border-white/6 flex items-center text-xs font-mono text-cyan-400 group-hover:translate-x-1 transition-transform">
+              <div className="mt-5 pt-3.5 border-t border-white/6 flex items-center text-xs font-medium text-cyan-400 group-hover:translate-x-1 transition-transform">
                 <span>Learn more</span>
                 <span className="ml-1.5">&rarr;</span>
               </div>

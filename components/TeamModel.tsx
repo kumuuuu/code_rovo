@@ -49,13 +49,13 @@ export function TeamModel() {
   ];
 
   return (
-    <section id="team" className="relative px-4 sm:px-6 py-16 sm:py-24 max-w-7xl mx-auto scroll-mt-20">
-      <div className="relative rounded-2xl sm:rounded-3xl bg-[#0A0D15]/90 border border-white/8 p-5 sm:p-10 md:p-16 overflow-hidden">
+    <section id="team" className="relative px-4 sm:px-6 py-24 sm:py-32 lg:py-36 max-w-7xl mx-auto scroll-mt-20">
+      <div className="relative rounded-2xl sm:rounded-3xl bg-[#0A0D15]/90 border border-white/8 p-7 sm:p-12 md:p-16 overflow-hidden">
         {/* Ambient glow backdrop */}
         <div className="absolute -top-32 -right-32 w-80 h-80 bg-purple-600/15 rounded-full blur-[100px] pointer-events-none" />
 
-        <div className="relative z-10 max-w-3xl mb-10 sm:mb-16">
-          <span className="text-xs uppercase font-mono font-medium tracking-[0.2em] text-[#A855F7]">
+        <div className="relative z-10 max-w-3xl mb-12 sm:mb-16 lg:mb-20">
+          <span className="text-xs uppercase font-medium tracking-[0.25em] text-[#A855F7] block mb-3">
             OUR TEAM
           </span>
           <h2 className="mt-3 sm:mt-4 text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
@@ -67,30 +67,32 @@ export function TeamModel() {
         </div>
 
         {/* 4 Pillars Grid */}
-        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6">
+        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8">
           {pillars.map((pillar, idx) => (
             <div
               key={idx}
-              className="relative rounded-xl sm:rounded-2xl bg-[#111624]/60 border border-white/6 hover:border-white/16 p-5 sm:p-6 transition-all duration-300 group hover:bg-[#141B2D]"
+              className="relative rounded-2xl bg-[#111624]/60 border border-white/6 hover:border-white/16 p-6 sm:p-7 md:p-8 transition-all duration-300 group hover:bg-[#141B2D] flex flex-col justify-between"
             >
-              <div
-                className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-white mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300"
-                style={{ color: pillar.accent }}
-              >
-                {pillar.icon}
+              <div>
+                <div
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-white mb-5 group-hover:scale-110 transition-transform duration-300"
+                  style={{ color: pillar.accent }}
+                >
+                  {pillar.icon}
+                </div>
+
+                <div className="text-[11px] font-medium tracking-wider text-slate-400 uppercase mb-1.5">
+                  {pillar.tagline}
+                </div>
+
+                <h3 className="text-lg sm:text-xl font-semibold text-white tracking-tight">
+                  {pillar.title}
+                </h3>
+
+                <p className="mt-3 text-sm text-slate-300 leading-relaxed">
+                  {pillar.description}
+                </p>
               </div>
-
-              <div className="text-[11px] font-mono tracking-wider text-slate-400 uppercase mb-1">
-                {pillar.tagline}
-              </div>
-
-              <h3 className="text-lg sm:text-xl font-semibold text-white tracking-tight">
-                {pillar.title}
-              </h3>
-
-              <p className="mt-2 sm:mt-3 text-sm text-slate-300 leading-relaxed">
-                {pillar.description}
-              </p>
             </div>
           ))}
         </div>
