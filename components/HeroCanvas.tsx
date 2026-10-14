@@ -157,10 +157,12 @@ void main() {
     const uRes = gl.getUniformLocation(program, "u_resolution");
     const uMouse = gl.getUniformLocation(program, "u_mouse");
 
+    let cachedRect = canvas.getBoundingClientRect();
+
     const syncSize = () => {
       const w = canvas.clientWidth || window.innerWidth || 1280;
       const h = canvas.clientHeight || window.innerHeight || 720;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.25);
       const displayW = Math.floor(w * dpr);
       const displayH = Math.floor(h * dpr);
 
@@ -168,6 +170,7 @@ void main() {
         canvas.width = displayW;
         canvas.height = displayH;
       }
+      cachedRect = canvas.getBoundingClientRect();
     };
 
     if (typeof ResizeObserver !== "undefined") {
@@ -179,10 +182,9 @@ void main() {
     const mouse = { x: canvas.width / 2, y: canvas.height / 2 };
 
     const handleMouseMove = (event: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      if (rect.width && rect.height) {
-        const nx = (event.clientX - rect.left) / rect.width;
-        const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      if (cachedRect.width && cachedRect.height) {
+        const nx = (event.clientX - cachedRect.left) / cachedRect.width;
+        const ny = 1.0 - (event.clientY - cachedRect.top) / cachedRect.height;
         mouse.x = nx * canvas.width;
         mouse.y = ny * canvas.height;
       }
@@ -191,21 +193,31 @@ void main() {
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
 
     let isRunning = !(typeof window !== "undefined" && window.__preloaderActive);
+    let isInView = true;
+    let isPageVisible = !document.hidden;
+    let lastFrameTime = 0;
+    const targetInterval = 1000 / 45; // Smooth 45fps cap saves ~30% GPU/CPU time
 
     const render = (timeMs: number) => {
-      if (!canvas || !isRunning) return;
+      if (!canvas || !isRunning || !isInView || !isPageVisible) return;
+      animationFrameId = requestAnimationFrame(render);
+
+      const delta = timeMs - lastFrameTime;
+      if (delta < targetInterval) return;
+      lastFrameTime = timeMs - (delta % targetInterval);
+
       gl.viewport(0, 0, canvas.width, canvas.height);
       if (uTime) gl.uniform1f(uTime, timeMs * 0.001);
       if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
       if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
 
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-      animationFrameId = requestAnimationFrame(render);
     };
 
     function startLoop() {
       if (!isRunning) {
         isRunning = true;
+        cancelAnimationFrame(animationFrameId);
         animationFrameId = requestAnimationFrame(render);
       }
     }
@@ -214,14 +226,34 @@ void main() {
       animationFrameId = requestAnimationFrame(render);
     }
 
+    // Viewport intersection observer: stops shader loop when off-screen
+    let intersectionObserver: IntersectionObserver | null = null;
+    if (typeof IntersectionObserver !== "undefined") {
+      intersectionObserver = new IntersectionObserver(
+        ([entry]) => {
+          isInView = entry.isIntersecting;
+          if (!isInView) {
+            cancelAnimationFrame(animationFrameId);
+          } else if (isRunning && isPageVisible) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = requestAnimationFrame(render);
+          }
+        },
+        { rootMargin: "100px 0px" }
+      );
+      intersectionObserver.observe(canvas);
+    }
+
     const handlePreloaderExit = () => startLoop();
     window.addEventListener("preloader:exit", handlePreloaderExit);
     window.addEventListener("preloader:complete", handlePreloaderExit);
 
     const handleVisibility = () => {
-      if (document.hidden) {
+      isPageVisible = !document.hidden;
+      if (!isPageVisible) {
         cancelAnimationFrame(animationFrameId);
-      } else if (isRunning) {
+      } else if (isRunning && isInView) {
+        cancelAnimationFrame(animationFrameId);
         animationFrameId = requestAnimationFrame(render);
       }
     };
@@ -233,6 +265,7 @@ void main() {
       window.removeEventListener("preloader:exit", handlePreloaderExit);
       window.removeEventListener("preloader:complete", handlePreloaderExit);
       document.removeEventListener("visibilitychange", handleVisibility);
+      if (intersectionObserver) intersectionObserver.disconnect();
       if (resizeObserver) resizeObserver.disconnect();
       if (buffer) gl.deleteBuffer(buffer);
       if (vertShader) gl.deleteShader(vertShader);

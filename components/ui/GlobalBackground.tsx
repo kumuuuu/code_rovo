@@ -196,7 +196,8 @@ export function GlobalBackground() {
 
     function syncSize() {
       if (!canvas) return;
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      // Ambient blurred background does not require high DPR oversampling
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.0);
       const w = Math.floor(window.innerWidth * dpr);
       const h = Math.floor(window.innerHeight * dpr);
 
@@ -212,28 +213,45 @@ export function GlobalBackground() {
 
     let startTime = performance.now();
     let isRunning = !(typeof window !== "undefined" && window.__preloaderActive);
+    let lastRenderTime = 0;
+    const targetInterval = 1000 / 32; // ~32 FPS is visually indistinguishable for slow ambient blobs and cuts GPU/CPU overhead in half
 
     function render(currentTime: number) {
-      if (!canvas || !isRunning) return;
+      if (!canvas || !isRunning || document.hidden) return;
+      animationFrameId = requestAnimationFrame(render);
+
+      const delta = currentTime - lastRenderTime;
+      if (delta < targetInterval) return;
+      lastRenderTime = currentTime - (delta % targetInterval);
+
       const elapsed = (currentTime - startTime) * 0.001;
 
       if (uRes) glCtx.uniform2f(uRes, canvas.width, canvas.height);
       if (uTime) glCtx.uniform1f(uTime, elapsed);
 
       glCtx.drawArrays(glCtx.TRIANGLE_STRIP, 0, 4);
-      animationFrameId = requestAnimationFrame(render);
     }
 
     function startLoop() {
       if (!isRunning) {
         isRunning = true;
         startTime = performance.now();
+        cancelAnimationFrame(animationFrameId);
         animationFrameId = requestAnimationFrame(render);
       }
     }
 
+    // Defer start until browser is idle or after initial frame
     if (isRunning) {
-      animationFrameId = requestAnimationFrame(render);
+      if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+        (window as Window & { requestIdleCallback: (cb: () => void) => number }).requestIdleCallback(() => {
+          animationFrameId = requestAnimationFrame(render);
+        });
+      } else {
+        setTimeout(() => {
+          animationFrameId = requestAnimationFrame(render);
+        }, 100);
+      }
     }
 
     const handlePreloaderExit = () => startLoop();
@@ -244,6 +262,7 @@ export function GlobalBackground() {
       if (document.hidden) {
         cancelAnimationFrame(animationFrameId);
       } else if (isRunning) {
+        cancelAnimationFrame(animationFrameId);
         animationFrameId = requestAnimationFrame(render);
       }
     };
